@@ -1,0 +1,2248 @@
+_____________________________________________________________________
++ Program class: jp/recognize/scenery/android/a
+  Superclass:    android/view/SurfaceView
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class jp.recognize.scenery.android.a extends android.view.SurfaceView
+
+Interfaces (count = 2):
+  + Class [android/hardware/Camera$AutoFocusCallback]
+  + Class [android/view/SurfaceHolder$Callback]
+
+Constant Pool (count = 156):
+  + Integer [-2147483648]
+  + String [supported preview size]
+  + String [surfaceChanged]
+  + String [surfaceCreated]
+  + String [surfaceDestroyed]
+  + Class [android/hardware/Camera]
+  + Class [android/hardware/Camera$AutoFocusCallback]
+  + Class [android/hardware/Camera$Parameters]
+  + Class [android/hardware/Camera$Size]
+  + Class [android/util/Log]
+  + Class [android/view/SurfaceHolder]
+  + Class [android/view/SurfaceHolder$Callback]
+  + Class [android/view/SurfaceView]
+  + Class [java/io/IOException]
+  + Class [java/lang/Class]
+  + Class [java/lang/RuntimeException]
+  + Class [java/util/Iterator]
+  + Class [java/util/List]
+  + Class [jp/recognize/scenery/android/a]
+  + Fieldref [android/hardware/Camera$Size.height I]
+  + Fieldref [android/hardware/Camera$Size.width I]
+  + Fieldref [jp/recognize/scenery/android/a.a Ljava/lang/String;]
+  + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+  + Fieldref [jp/recognize/scenery/android/a.c Landroid/hardware/Camera$PictureCallback;]
+  + Methodref [android/hardware/Camera.autoFocus (Landroid/hardware/Camera$AutoFocusCallback;)V]
+  + Methodref [android/hardware/Camera.getParameters ()Landroid/hardware/Camera$Parameters;]
+  + Methodref [android/hardware/Camera.open ()Landroid/hardware/Camera;]
+  + Methodref [android/hardware/Camera.release ()V]
+  + Methodref [android/hardware/Camera.setParameters (Landroid/hardware/Camera$Parameters;)V]
+  + Methodref [android/hardware/Camera.setPreviewCallback (Landroid/hardware/Camera$PreviewCallback;)V]
+  + Methodref [android/hardware/Camera.setPreviewDisplay (Landroid/view/SurfaceHolder;)V]
+  + Methodref [android/hardware/Camera.startPreview ()V]
+  + Methodref [android/hardware/Camera.stopPreview ()V]
+  + Methodref [android/hardware/Camera.takePicture (Landroid/hardware/Camera$ShutterCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;)V]
+  + Methodref [android/hardware/Camera$Parameters.getSupportedPreviewSizes ()Ljava/util/List;]
+  + Methodref [android/hardware/Camera$Parameters.setPreviewSize (II)V]
+  + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/view/SurfaceView.<init> (Landroid/content/Context;)V]
+  + Methodref [android/view/SurfaceView.onTouchEvent (Landroid/view/MotionEvent;)Z]
+  + Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
+  + Methodref [java/lang/RuntimeException.<init> (Ljava/lang/Throwable;)V]
+  + Methodref [jp/recognize/scenery/android/a.a ()V]
+  + Methodref [jp/recognize/scenery/android/a.a (Ljava/util/List;)Landroid/hardware/Camera$Size;]
+  + Methodref [jp/recognize/scenery/android/a.getHolder ()Landroid/view/SurfaceHolder;]
+  + InterfaceMethodref [android/view/SurfaceHolder.addCallback (Landroid/view/SurfaceHolder$Callback;)V]
+  + InterfaceMethodref [android/view/SurfaceHolder.setType (I)V]
+  + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
+  + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
+  + InterfaceMethodref [java/util/List.iterator ()Ljava/util/Iterator;]
+  + NameAndType [<init> (Landroid/content/Context;)V]
+  + NameAndType [<init> (Ljava/lang/Throwable;)V]
+  + NameAndType [a ()V]
+  + NameAndType [a (Ljava/util/List;)Landroid/hardware/Camera$Size;]
+  + NameAndType [a Ljava/lang/String;]
+  + NameAndType [addCallback (Landroid/view/SurfaceHolder$Callback;)V]
+  + NameAndType [autoFocus (Landroid/hardware/Camera$AutoFocusCallback;)V]
+  + NameAndType [b Landroid/hardware/Camera;]
+  + NameAndType [c Landroid/hardware/Camera$PictureCallback;]
+  + NameAndType [d (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [getHolder ()Landroid/view/SurfaceHolder;]
+  + NameAndType [getParameters ()Landroid/hardware/Camera$Parameters;]
+  + NameAndType [getSimpleName ()Ljava/lang/String;]
+  + NameAndType [getSupportedPreviewSizes ()Ljava/util/List;]
+  + NameAndType [hasNext ()Z]
+  + NameAndType [height I]
+  + NameAndType [iterator ()Ljava/util/Iterator;]
+  + NameAndType [next ()Ljava/lang/Object;]
+  + NameAndType [onTouchEvent (Landroid/view/MotionEvent;)Z]
+  + NameAndType [open ()Landroid/hardware/Camera;]
+  + NameAndType [release ()V]
+  + NameAndType [setParameters (Landroid/hardware/Camera$Parameters;)V]
+  + NameAndType [setPreviewCallback (Landroid/hardware/Camera$PreviewCallback;)V]
+  + NameAndType [setPreviewDisplay (Landroid/view/SurfaceHolder;)V]
+  + NameAndType [setPreviewSize (II)V]
+  + NameAndType [setType (I)V]
+  + NameAndType [startPreview ()V]
+  + NameAndType [stopPreview ()V]
+  + NameAndType [takePicture (Landroid/hardware/Camera$ShutterCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;)V]
+  + NameAndType [width I]
+  + Utf8 [()Landroid/hardware/Camera$Parameters;]
+  + Utf8 [()Landroid/hardware/Camera;]
+  + Utf8 [()Landroid/view/SurfaceHolder;]
+  + Utf8 [()Ljava/lang/Object;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Ljava/util/Iterator;]
+  + Utf8 [()Ljava/util/List;]
+  + Utf8 [()V]
+  + Utf8 [()Z]
+  + Utf8 [(I)V]
+  + Utf8 [(II)V]
+  + Utf8 [(Landroid/content/Context;)V]
+  + Utf8 [(Landroid/content/Context;Landroid/hardware/Camera$PictureCallback;)V]
+  + Utf8 [(Landroid/hardware/Camera$AutoFocusCallback;)V]
+  + Utf8 [(Landroid/hardware/Camera$Parameters;)V]
+  + Utf8 [(Landroid/hardware/Camera$PreviewCallback;)V]
+  + Utf8 [(Landroid/hardware/Camera$ShutterCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;)V]
+  + Utf8 [(Landroid/view/MotionEvent;)Z]
+  + Utf8 [(Landroid/view/SurfaceHolder$Callback;)V]
+  + Utf8 [(Landroid/view/SurfaceHolder;)V]
+  + Utf8 [(Landroid/view/SurfaceHolder;III)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/Throwable;)V]
+  + Utf8 [(Ljava/util/List;)Landroid/hardware/Camera$Size;]
+  + Utf8 [(ZLandroid/hardware/Camera;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [Landroid/hardware/Camera$PictureCallback;]
+  + Utf8 [Landroid/hardware/Camera;]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [a]
+  + Utf8 [addCallback]
+  + Utf8 [android/hardware/Camera]
+  + Utf8 [android/hardware/Camera$AutoFocusCallback]
+  + Utf8 [android/hardware/Camera$Parameters]
+  + Utf8 [android/hardware/Camera$Size]
+  + Utf8 [android/util/Log]
+  + Utf8 [android/view/SurfaceHolder]
+  + Utf8 [android/view/SurfaceHolder$Callback]
+  + Utf8 [android/view/SurfaceView]
+  + Utf8 [autoFocus]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
+  + Utf8 [getHolder]
+  + Utf8 [getParameters]
+  + Utf8 [getSimpleName]
+  + Utf8 [getSupportedPreviewSizes]
+  + Utf8 [hasNext]
+  + Utf8 [height]
+  + Utf8 [iterator]
+  + Utf8 [java/io/IOException]
+  + Utf8 [java/lang/Class]
+  + Utf8 [java/lang/RuntimeException]
+  + Utf8 [java/util/Iterator]
+  + Utf8 [java/util/List]
+  + Utf8 [jp/recognize/scenery/android/a]
+  + Utf8 [next]
+  + Utf8 [onAutoFocus]
+  + Utf8 [onTouchEvent]
+  + Utf8 [open]
+  + Utf8 [release]
+  + Utf8 [setParameters]
+  + Utf8 [setPreviewCallback]
+  + Utf8 [setPreviewDisplay]
+  + Utf8 [setPreviewSize]
+  + Utf8 [setType]
+  + Utf8 [startPreview]
+  + Utf8 [stopPreview]
+  + Utf8 [supported preview size]
+  + Utf8 [surfaceChanged]
+  + Utf8 [surfaceCreated]
+  + Utf8 [surfaceDestroyed]
+  + Utf8 [takePicture]
+  + Utf8 [width]
+
+Fields (count = 3):
+  + Field:        a Ljava/lang/String;
+    Access flags: 0x12
+      = private final java.lang.String a
+  + Field:        b Landroid/hardware/Camera;
+    Access flags: 0x2
+      = private android.hardware.Camera b
+  + Field:        c Landroid/hardware/Camera$PictureCallback;
+    Access flags: 0x2
+      = private android.hardware.Camera$PictureCallback c
+
+Methods (count = 8):
+  - Method:       <init>(Landroid/content/Context;Landroid/hardware/Camera$PictureCallback;)V
+    Access flags: 0x1
+      = public a(android.content.Context,android.hardware.Camera$PictureCallback)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 40, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #38
+        + Methodref [android/view/SurfaceView.<init> (Landroid/content/Context;)V]
+      [5] aload_0 v0
+      [6] ldc #19
+        + Class [jp/recognize/scenery/android/a]
+      [8] invokevirtual #40
+        + Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
+      [11] putfield #22
+        + Fieldref [jp/recognize/scenery/android/a.a Ljava/lang/String;]
+      [14] aload_0 v0
+      [15] aload_2 v2
+      [16] putfield #24
+        + Fieldref [jp/recognize/scenery/android/a.c Landroid/hardware/Camera$PictureCallback;]
+      [19] aload_0 v0
+      [20] invokevirtual #44
+        + Methodref [jp/recognize/scenery/android/a.getHolder ()Landroid/view/SurfaceHolder;]
+      [23] aload_0 v0
+      [24] invokeinterface #45
+        + InterfaceMethodref [android/view/SurfaceHolder.addCallback (Landroid/view/SurfaceHolder$Callback;)V]
+      [29] aload_0 v0
+      [30] invokevirtual #44
+        + Methodref [jp/recognize/scenery/android/a.getHolder ()Landroid/view/SurfaceHolder;]
+      [33] iconst_3
+      [34] invokeinterface #46
+        + InterfaceMethodref [android/view/SurfaceHolder.setType (I)V]
+      [39] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       surfaceChanged(Landroid/view/SurfaceHolder;III)V
+    Access flags: 0x1
+      = public void surfaceChanged(android.view.SurfaceHolder,int,int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 26, locals = 5, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #22
+        + Fieldref [jp/recognize/scenery/android/a.a Ljava/lang/String;]
+      [4] ldc #3
+        + String [surfaceChanged]
+      [6] invokestatic #37
+        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+      [9] pop
+      [10] aload_0 v0
+      [11] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [14] ifnonnull +4 (target=18)
+      [17] return
+      [18] aload_0 v0
+      [19] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [22] invokevirtual #32
+        + Methodref [android/hardware/Camera.startPreview ()V]
+      [25] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       surfaceCreated(Landroid/view/SurfaceHolder;)V
+    Access flags: 0x1
+      = public void surfaceCreated(android.view.SurfaceHolder)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 76, locals = 4, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #22
+        + Fieldref [jp/recognize/scenery/android/a.a Ljava/lang/String;]
+      [4] ldc #4
+        + String [surfaceCreated]
+      [6] invokestatic #37
+        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+      [9] pop
+      [10] aload_0 v0
+      [11] invokestatic #27
+        + Methodref [android/hardware/Camera.open ()Landroid/hardware/Camera;]
+      [14] putfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [17] aload_0 v0
+      [18] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [21] invokevirtual #26
+        + Methodref [android/hardware/Camera.getParameters ()Landroid/hardware/Camera$Parameters;]
+      [24] astore_2 v2
+      [25] aload_0 v0
+      [26] aload_2 v2
+      [27] invokevirtual #35
+        + Methodref [android/hardware/Camera$Parameters.getSupportedPreviewSizes ()Ljava/util/List;]
+      [30] invokespecial #43
+        + Methodref [jp/recognize/scenery/android/a.a (Ljava/util/List;)Landroid/hardware/Camera$Size;]
+      [33] astore_3 v3
+      [34] aload_2 v2
+      [35] aload_3 v3
+      [36] getfield #21
+        + Fieldref [android/hardware/Camera$Size.width I]
+      [39] aload_3 v3
+      [40] getfield #20
+        + Fieldref [android/hardware/Camera$Size.height I]
+      [43] invokevirtual #36
+        + Methodref [android/hardware/Camera$Parameters.setPreviewSize (II)V]
+      [46] aload_0 v0
+      [47] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [50] aload_2 v2
+      [51] invokevirtual #29
+        + Methodref [android/hardware/Camera.setParameters (Landroid/hardware/Camera$Parameters;)V]
+      [54] aload_0 v0
+      [55] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [58] aload_1 v1
+      [59] invokevirtual #31
+        + Methodref [android/hardware/Camera.setPreviewDisplay (Landroid/view/SurfaceHolder;)V]
+      [62] goto +13 (target=75)
+      [65] astore_2 v2
+      [66] new #16
+        + Class [java/lang/RuntimeException]
+      [69] dup
+      [70] aload_2 v2
+      [71] invokespecial #41
+        + Methodref [java/lang/RuntimeException.<init> (Ljava/lang/Throwable;)V]
+      [74] athrow
+      [75] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (10 -> 62: 65):
+      + Class [java/io/IOException]
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/util/List;)Landroid/hardware/Camera$Size;
+    Access flags: 0x2
+      = private android.hardware.Camera$Size a(java.util.List)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 75, locals = 7, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #22
+        + Fieldref [jp/recognize/scenery/android/a.a Ljava/lang/String;]
+      [4] ldc #2
+        + String [supported preview size]
+      [6] invokestatic #37
+        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+      [9] pop
+      [10] ldc #1
+        + Integer [-2147483648]
+      [12] istore_2 v2
+      [13] aconst_null
+      [14] astore_3 v3
+      [15] aload_1 v1
+      [16] invokeinterface #49
+        + InterfaceMethodref [java/util/List.iterator ()Ljava/util/Iterator;]
+      [21] astore v5
+      [23] goto +40 (target=63)
+      [26] aload v5
+      [28] invokeinterface #48
+        + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
+      [33] checkcast #9
+        + Class [android/hardware/Camera$Size]
+      [36] astore v4
+      [38] aload v4
+      [40] getfield #21
+        + Fieldref [android/hardware/Camera$Size.width I]
+      [43] aload v4
+      [45] getfield #20
+        + Fieldref [android/hardware/Camera$Size.height I]
+      [48] imul
+      [49] istore v6
+      [51] iload_2 v2
+      [52] iload v6
+      [54] ificmpge +9 (target=63)
+      [57] iload v6
+      [59] istore_2 v2
+      [60] aload v4
+      [62] astore_3 v3
+      [63] aload v5
+      [65] invokeinterface #47
+        + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
+      [70] ifne -44 (target=26)
+      [73] aload_3 v3
+      [74] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       surfaceDestroyed(Landroid/view/SurfaceHolder;)V
+    Access flags: 0x1
+      = public void surfaceDestroyed(android.view.SurfaceHolder)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 15, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #22
+        + Fieldref [jp/recognize/scenery/android/a.a Ljava/lang/String;]
+      [4] ldc #5
+        + String [surfaceDestroyed]
+      [6] invokestatic #37
+        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+      [9] pop
+      [10] aload_0 v0
+      [11] invokevirtual #42
+        + Methodref [jp/recognize/scenery/android/a.a ()V]
+      [14] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()V
+    Access flags: 0x1
+      = public void a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 36, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [4] ifnonnull +4 (target=8)
+      [7] return
+      [8] aload_0 v0
+      [9] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [12] aconst_null
+      [13] invokevirtual #30
+        + Methodref [android/hardware/Camera.setPreviewCallback (Landroid/hardware/Camera$PreviewCallback;)V]
+      [16] aload_0 v0
+      [17] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [20] invokevirtual #33
+        + Methodref [android/hardware/Camera.stopPreview ()V]
+      [23] aload_0 v0
+      [24] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [27] invokevirtual #28
+        + Methodref [android/hardware/Camera.release ()V]
+      [30] aload_0 v0
+      [31] aconst_null
+      [32] putfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [35] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onAutoFocus(ZLandroid/hardware/Camera;)V
+    Access flags: 0x1
+      = public void onAutoFocus(boolean,android.hardware.Camera)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 16, locals = 3, stack = 4):
+      [0] iload_1 v1
+      [1] ifne +4 (target=5)
+      [4] return
+      [5] aload_2 v2
+      [6] aconst_null
+      [7] aconst_null
+      [8] aload_0 v0
+      [9] getfield #24
+        + Fieldref [jp/recognize/scenery/android/a.c Landroid/hardware/Camera$PictureCallback;]
+      [12] invokevirtual #34
+        + Methodref [android/hardware/Camera.takePicture (Landroid/hardware/Camera$ShutterCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;)V]
+      [15] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onTouchEvent(Landroid/view/MotionEvent;)Z
+    Access flags: 0x1
+      = public boolean onTouchEvent(android.view.MotionEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #23
+        + Fieldref [jp/recognize/scenery/android/a.b Landroid/hardware/Camera;]
+      [4] aload_0 v0
+      [5] invokevirtual #25
+        + Methodref [android/hardware/Camera.autoFocus (Landroid/hardware/Camera$AutoFocusCallback;)V]
+      [8] aload_0 v0
+      [9] aload_1 v1
+      [10] invokespecial #39
+        + Methodref [android/view/SurfaceView.onTouchEvent (Landroid/view/MotionEvent;)Z]
+      [13] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: jp/recognize/scenery/android/CameraPreviewActivity
+  Superclass:    android/app/Activity
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class jp.recognize.scenery.android.CameraPreviewActivity extends android.app.Activity
+
+Interfaces (count = 0):
+
+Constant Pool (count = 55):
+  + String [画面をタップして撮影してください。]
+  + Class [android/app/Activity]
+  + Class [android/widget/Toast]
+  + Class [jp/recognize/scenery/android/CameraPreviewActivity]
+  + Class [jp/recognize/scenery/android/a]
+  + Class [jp/recognize/scenery/android/b]
+  + Fieldref [jp/recognize/scenery/android/CameraPreviewActivity.a Ljp/recognize/scenery/android/a;]
+  + Methodref [android/app/Activity.<init> ()V]
+  + Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+  + Methodref [android/app/Activity.onDestroy ()V]
+  + Methodref [android/app/Activity.onPause ()V]
+  + Methodref [android/app/Activity.onStop ()V]
+  + Methodref [android/widget/Toast.makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+  + Methodref [android/widget/Toast.show ()V]
+  + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.setContentView (Landroid/view/View;)V]
+  + Methodref [jp/recognize/scenery/android/a.<init> (Landroid/content/Context;Landroid/hardware/Camera$PictureCallback;)V]
+  + Methodref [jp/recognize/scenery/android/a.a ()V]
+  + Methodref [jp/recognize/scenery/android/b.<init> (Ljp/recognize/scenery/android/CameraPreviewActivity;)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;Landroid/hardware/Camera$PictureCallback;)V]
+  + NameAndType [<init> (Ljp/recognize/scenery/android/CameraPreviewActivity;)V]
+  + NameAndType [a ()V]
+  + NameAndType [a Ljp/recognize/scenery/android/a;]
+  + NameAndType [makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+  + NameAndType [onCreate (Landroid/os/Bundle;)V]
+  + NameAndType [onDestroy ()V]
+  + NameAndType [onPause ()V]
+  + NameAndType [onStop ()V]
+  + NameAndType [setContentView (Landroid/view/View;)V]
+  + NameAndType [show ()V]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/content/Context;Landroid/hardware/Camera$PictureCallback;)V]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+  + Utf8 [(Landroid/os/Bundle;)V]
+  + Utf8 [(Landroid/view/View;)V]
+  + Utf8 [(Ljp/recognize/scenery/android/CameraPreviewActivity;)Ljp/recognize/scenery/android/a;]
+  + Utf8 [(Ljp/recognize/scenery/android/CameraPreviewActivity;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Ljp/recognize/scenery/android/a;]
+  + Utf8 [a]
+  + Utf8 [android/app/Activity]
+  + Utf8 [android/widget/Toast]
+  + Utf8 [jp/recognize/scenery/android/CameraPreviewActivity]
+  + Utf8 [jp/recognize/scenery/android/a]
+  + Utf8 [jp/recognize/scenery/android/b]
+  + Utf8 [makeText]
+  + Utf8 [onCreate]
+  + Utf8 [onDestroy]
+  + Utf8 [onPause]
+  + Utf8 [onStop]
+  + Utf8 [setContentView]
+  + Utf8 [show]
+  + Utf8 [画面をタップして撮影してください。]
+
+Fields (count = 1):
+  + Field:        a Ljp/recognize/scenery/android/a;
+    Access flags: 0x2
+      = private jp.recognize.scenery.android.a a
+
+Methods (count = 6):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public CameraPreviewActivity()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #8
+        + Methodref [android/app/Activity.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreate(Landroid/os/Bundle;)V
+    Access flags: 0x4
+      = protected void onCreate(android.os.Bundle)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 44, locals = 2, stack = 7):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #9
+        + Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+      [5] aload_0 v0
+      [6] new #5
+        + Class [jp/recognize/scenery/android/a]
+      [9] dup
+      [10] aload_0 v0
+      [11] new #6
+        + Class [jp/recognize/scenery/android/b]
+      [14] dup
+      [15] aload_0 v0
+      [16] invokespecial #18
+        + Methodref [jp/recognize/scenery/android/b.<init> (Ljp/recognize/scenery/android/CameraPreviewActivity;)V]
+      [19] invokespecial #16
+        + Methodref [jp/recognize/scenery/android/a.<init> (Landroid/content/Context;Landroid/hardware/Camera$PictureCallback;)V]
+      [22] putfield #7
+        + Fieldref [jp/recognize/scenery/android/CameraPreviewActivity.a Ljp/recognize/scenery/android/a;]
+      [25] aload_0 v0
+      [26] aload_0 v0
+      [27] getfield #7
+        + Fieldref [jp/recognize/scenery/android/CameraPreviewActivity.a Ljp/recognize/scenery/android/a;]
+      [30] invokevirtual #15
+        + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.setContentView (Landroid/view/View;)V]
+      [33] aload_0 v0
+      [34] ldc #1
+        + String [画面をタップして撮影してください。]
+      [36] iconst_1
+      [37] invokestatic #13
+        + Methodref [android/widget/Toast.makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+      [40] invokevirtual #14
+        + Methodref [android/widget/Toast.show ()V]
+      [43] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onDestroy()V
+    Access flags: 0x4
+      = protected void onDestroy()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #10
+        + Methodref [android/app/Activity.onDestroy ()V]
+      [4] aload_0 v0
+      [5] getfield #7
+        + Fieldref [jp/recognize/scenery/android/CameraPreviewActivity.a Ljp/recognize/scenery/android/a;]
+      [8] invokevirtual #17
+        + Methodref [jp/recognize/scenery/android/a.a ()V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onStop()V
+    Access flags: 0x4
+      = protected void onStop()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #12
+        + Methodref [android/app/Activity.onStop ()V]
+      [4] aload_0 v0
+      [5] getfield #7
+        + Fieldref [jp/recognize/scenery/android/CameraPreviewActivity.a Ljp/recognize/scenery/android/a;]
+      [8] invokevirtual #17
+        + Methodref [jp/recognize/scenery/android/a.a ()V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onPause()V
+    Access flags: 0x4
+      = protected void onPause()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #11
+        + Methodref [android/app/Activity.onPause ()V]
+      [4] aload_0 v0
+      [5] getfield #7
+        + Fieldref [jp/recognize/scenery/android/CameraPreviewActivity.a Ljp/recognize/scenery/android/a;]
+      [8] invokevirtual #17
+        + Methodref [jp/recognize/scenery/android/a.a ()V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljp/recognize/scenery/android/CameraPreviewActivity;)Ljp/recognize/scenery/android/a;
+    Access flags: 0x1008
+      = static synthetic jp.recognize.scenery.android.a a(jp.recognize.scenery.android.CameraPreviewActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #7
+        + Fieldref [jp/recognize/scenery/android/CameraPreviewActivity.a Ljp/recognize/scenery/android/a;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: jp/recognize/scenery/android/b
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class jp.recognize.scenery.android.b extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/hardware/Camera$PictureCallback]
+
+Constant Pool (count = 69):
+  + String [RESULT_PICTURE_SIZE]
+  + String [image.jpg]
+  + Class [android/content/Intent]
+  + Class [android/hardware/Camera$PictureCallback]
+  + Class [java/io/BufferedOutputStream]
+  + Class [java/io/IOException]
+  + Class [java/lang/Object]
+  + Class [jp/recognize/scenery/android/CameraPreviewActivity]
+  + Class [jp/recognize/scenery/android/a]
+  + Class [jp/recognize/scenery/android/b]
+  + Class [jp/recognize/scenery/android/c]
+  + Fieldref [jp/recognize/scenery/android/b.a Ljp/recognize/scenery/android/CameraPreviewActivity;]
+  + Methodref [android/content/Intent.<init> ()V]
+  + Methodref [android/content/Intent.putExtra (Ljava/lang/String;I)Landroid/content/Intent;]
+  + Methodref [java/io/BufferedOutputStream.<init> (Ljava/io/OutputStream;)V]
+  + Methodref [java/io/BufferedOutputStream.write ([B)V]
+  + Methodref [java/lang/Object.<init> ()V]
+  + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.a (Ljp/recognize/scenery/android/CameraPreviewActivity;)Ljp/recognize/scenery/android/a;]
+  + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.finish ()V]
+  + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.openFileOutput (Ljava/lang/String;I)Ljava/io/FileOutputStream;]
+  + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.setResult (I)V]
+  + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.setResult (ILandroid/content/Intent;)V]
+  + Methodref [jp/recognize/scenery/android/a.a ()V]
+  + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Ljava/io/OutputStream;)V]
+  + NameAndType [a ()V]
+  + NameAndType [a (Ljava/io/Closeable;)V]
+  + NameAndType [a (Ljp/recognize/scenery/android/CameraPreviewActivity;)Ljp/recognize/scenery/android/a;]
+  + NameAndType [a Ljp/recognize/scenery/android/CameraPreviewActivity;]
+  + NameAndType [finish ()V]
+  + NameAndType [openFileOutput (Ljava/lang/String;I)Ljava/io/FileOutputStream;]
+  + NameAndType [putExtra (Ljava/lang/String;I)Landroid/content/Intent;]
+  + NameAndType [setResult (I)V]
+  + NameAndType [setResult (ILandroid/content/Intent;)V]
+  + NameAndType [write ([B)V]
+  + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(ILandroid/content/Intent;)V]
+  + Utf8 [(Ljava/io/Closeable;)V]
+  + Utf8 [(Ljava/io/OutputStream;)V]
+  + Utf8 [(Ljava/lang/String;I)Landroid/content/Intent;]
+  + Utf8 [(Ljava/lang/String;I)Ljava/io/FileOutputStream;]
+  + Utf8 [(Ljp/recognize/scenery/android/CameraPreviewActivity;)Ljp/recognize/scenery/android/a;]
+  + Utf8 [(Ljp/recognize/scenery/android/CameraPreviewActivity;)V]
+  + Utf8 [([B)V]
+  + Utf8 [([BLandroid/hardware/Camera;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Ljp/recognize/scenery/android/CameraPreviewActivity;]
+  + Utf8 [RESULT_PICTURE_SIZE]
+  + Utf8 [a]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/hardware/Camera$PictureCallback]
+  + Utf8 [finish]
+  + Utf8 [image.jpg]
+  + Utf8 [java/io/BufferedOutputStream]
+  + Utf8 [java/io/IOException]
+  + Utf8 [java/lang/Object]
+  + Utf8 [jp/recognize/scenery/android/CameraPreviewActivity]
+  + Utf8 [jp/recognize/scenery/android/a]
+  + Utf8 [jp/recognize/scenery/android/b]
+  + Utf8 [jp/recognize/scenery/android/c]
+  + Utf8 [onPictureTaken]
+  + Utf8 [openFileOutput]
+  + Utf8 [putExtra]
+  + Utf8 [setResult]
+  + Utf8 [write]
+
+Fields (count = 1):
+  + Field:        a Ljp/recognize/scenery/android/CameraPreviewActivity;
+    Access flags: 0x1010
+      = final synthetic jp.recognize.scenery.android.CameraPreviewActivity a
+
+Methods (count = 2):
+  - Method:       <init>(Ljp/recognize/scenery/android/CameraPreviewActivity;)V
+    Access flags: 0x0
+      = b(jp.recognize.scenery.android.CameraPreviewActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #12
+        + Fieldref [jp/recognize/scenery/android/b.a Ljp/recognize/scenery/android/CameraPreviewActivity;]
+      [5] aload_0 v0
+      [6] invokespecial #17
+        + Methodref [java/lang/Object.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onPictureTaken([BLandroid/hardware/Camera;)V
+    Access flags: 0x1
+      = public void onPictureTaken(byte[],android.hardware.Camera)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 127, locals = 7, stack = 3):
+      [0] aconst_null
+      [1] astore_3 v3
+      [2] aconst_null
+      [3] astore v4
+      [5] aload_0 v0
+      [6] getfield #12
+        + Fieldref [jp/recognize/scenery/android/b.a Ljp/recognize/scenery/android/CameraPreviewActivity;]
+      [9] ldc #2
+        + String [image.jpg]
+      [11] iconst_0
+      [12] invokevirtual #20
+        + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.openFileOutput (Ljava/lang/String;I)Ljava/io/FileOutputStream;]
+      [15] astore_3 v3
+      [16] new #5
+        + Class [java/io/BufferedOutputStream]
+      [19] dup
+      [20] aload_3 v3
+      [21] invokespecial #15
+        + Methodref [java/io/BufferedOutputStream.<init> (Ljava/io/OutputStream;)V]
+      [24] astore v4
+      [26] aload v4
+      [28] aload_1 v1
+      [29] invokevirtual #16
+        + Methodref [java/io/BufferedOutputStream.write ([B)V]
+      [32] aload_0 v0
+      [33] getfield #12
+        + Fieldref [jp/recognize/scenery/android/b.a Ljp/recognize/scenery/android/CameraPreviewActivity;]
+      [36] invokestatic #18
+        + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.a (Ljp/recognize/scenery/android/CameraPreviewActivity;)Ljp/recognize/scenery/android/a;]
+      [39] invokevirtual #23
+        + Methodref [jp/recognize/scenery/android/a.a ()V]
+      [42] new #3
+        + Class [android/content/Intent]
+      [45] dup
+      [46] invokespecial #13
+        + Methodref [android/content/Intent.<init> ()V]
+      [49] astore v5
+      [51] aload v5
+      [53] ldc #1
+        + String [RESULT_PICTURE_SIZE]
+      [55] aload_1 v1
+      [56] arraylength
+      [57] invokevirtual #14
+        + Methodref [android/content/Intent.putExtra (Ljava/lang/String;I)Landroid/content/Intent;]
+      [60] pop
+      [61] aload_0 v0
+      [62] getfield #12
+        + Fieldref [jp/recognize/scenery/android/b.a Ljp/recognize/scenery/android/CameraPreviewActivity;]
+      [65] iconst_m1
+      [66] aload v5
+      [68] invokevirtual #22
+        + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.setResult (ILandroid/content/Intent;)V]
+      [71] goto +39 (target=110)
+      [74] astore v5
+      [76] aload_0 v0
+      [77] getfield #12
+        + Fieldref [jp/recognize/scenery/android/b.a Ljp/recognize/scenery/android/CameraPreviewActivity;]
+      [80] iconst_0
+      [81] invokevirtual #21
+        + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.setResult (I)V]
+      [84] aload v4
+      [86] invokestatic #24
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [89] aload_3 v3
+      [90] invokestatic #24
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [93] goto +26 (target=119)
+      [96] astore v6
+      [98] aload v4
+      [100] invokestatic #24
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [103] aload_3 v3
+      [104] invokestatic #24
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [107] aload v6
+      [109] athrow
+      [110] aload v4
+      [112] invokestatic #24
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [115] aload_3 v3
+      [116] invokestatic #24
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [119] aload_0 v0
+      [120] getfield #12
+        + Fieldref [jp/recognize/scenery/android/b.a Ljp/recognize/scenery/android/CameraPreviewActivity;]
+      [123] invokevirtual #19
+        + Methodref [jp/recognize/scenery/android/CameraPreviewActivity.finish ()V]
+      [126] return
+      Code attribute exceptions (count = 2):
+      - ExceptionInfo (5 -> 71: 74):
+      + Class [java/io/IOException]
+      - ExceptionInfo (5 -> 84: 96):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: jp/recognize/scenery/android/c
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class jp.recognize.scenery.android.c extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 16):
+  + Class [java/io/Closeable]
+  + Class [java/io/IOException]
+  + Class [java/lang/Object]
+  + Class [jp/recognize/scenery/android/c]
+  + InterfaceMethodref [java/io/Closeable.close ()V]
+  + NameAndType [close ()V]
+  + Utf8 [()V]
+  + Utf8 [(Ljava/io/Closeable;)V]
+  + Utf8 [Code]
+  + Utf8 [a]
+  + Utf8 [close]
+  + Utf8 [java/io/Closeable]
+  + Utf8 [java/io/IOException]
+  + Utf8 [java/lang/Object]
+  + Utf8 [jp/recognize/scenery/android/c]
+
+Fields (count = 0):
+
+Methods (count = 1):
+  + Method:       a(Ljava/io/Closeable;)V
+    Access flags: 0x9
+      = public static void a(java.io.Closeable)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 16, locals = 2, stack = 1):
+      [0] aload_0 v0
+      [1] ifnonnull +4 (target=5)
+      [4] return
+      [5] aload_0 v0
+      [6] invokeinterface #5
+        + InterfaceMethodref [java/io/Closeable.close ()V]
+      [11] goto +4 (target=15)
+      [14] astore_1 v1
+      [15] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (5 -> 11: 14):
+      + Class [java/io/IOException]
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: jp/recognize/scenery/android/sampleActivity
+  Superclass:    android/app/Activity
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class jp.recognize.scenery.android.sampleActivity extends android.app.Activity
+
+Interfaces (count = 0):
+
+Constant Pool (count = 326):
+  + Integer [-16711681]
+  + Integer [-65281]
+  + Float [12.0]
+  + String [Q2mFRML6C3hdjZ9qi0Vd3VKoL0yQZFmHLm4R9kbKEe]
+  + String [RESULT_PICTURE_SIZE]
+  + String [analysis]
+  + String [default]
+  + String [english+japanese]
+  + String [https://scenery.recognize.jp/v1/scenery/api/recognition]
+  + String [image.jpg]
+  + String [画像の取得に失敗しました。]
+  + String [画像サイズの取得に失敗しました。]
+  + String [認識中です。]
+  + Class [android/app/Activity]
+  + Class [android/app/ProgressDialog]
+  + Class [android/content/Intent]
+  + Class [android/graphics/Bitmap]
+  + Class [android/graphics/BitmapFactory]
+  + Class [android/graphics/Canvas]
+  + Class [android/graphics/Paint]
+  + Class [android/graphics/Paint$Style]
+  + Class [android/graphics/Rect]
+  + Class [android/os/Handler]
+  + Class [android/widget/ImageView]
+  + Class [android/widget/ImageView$ScaleType]
+  + Class [android/widget/Toast]
+  + Class [java/io/BufferedInputStream]
+  + Class [java/io/ByteArrayInputStream]
+  + Class [java/lang/Thread]
+  + Class [java/net/URL]
+  + Class [jp/recognize/ImageContentType]
+  + Class [jp/recognize/RecognitionResult$Word]
+  + Class [jp/recognize/SceneryRecognitionJob]
+  + Class [jp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor]
+  + Class [jp/recognize/SceneryRecognizer]
+  + Class [jp/recognize/Shape$Polygon]
+  + Class [jp/recognize/Shape$Rectangle]
+  + Class [jp/recognize/client/HttpSceneryRecognitionRequest]
+  + Class [jp/recognize/client/HttpSceneryRecognitionRequest$HttpSceneryRecognitionHint]
+  + Class [jp/recognize/client/HttpSceneryRecognitionRequest$InputStreamImageContent]
+  + Class [jp/recognize/client/HttpSceneryRecognizer]
+  + Class [jp/recognize/scenery/android/CameraPreviewActivity]
+  + Class [jp/recognize/scenery/android/c]
+  + Class [jp/recognize/scenery/android/d]
+  + Class [jp/recognize/scenery/android/sampleActivity]
+  + Fieldref [android/graphics/Paint$Style.FILL Landroid/graphics/Paint$Style;]
+  + Fieldref [android/graphics/Paint$Style.STROKE Landroid/graphics/Paint$Style;]
+  + Fieldref [android/graphics/Rect.left I]
+  + Fieldref [android/graphics/Rect.top I]
+  + Fieldref [android/widget/ImageView$ScaleType.FIT_XY Landroid/widget/ImageView$ScaleType;]
+  + Fieldref [jp/recognize/ImageContentType.IMAGE_JPEG Ljp/recognize/ImageContentType;]
+  + Fieldref [jp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor.Unknown Ljp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor;]
+  + Fieldref [jp/recognize/scenery/android/sampleActivity.a Landroid/os/Handler;]
+  + Fieldref [jp/recognize/scenery/android/sampleActivity.b Landroid/widget/ImageView;]
+  + Fieldref [jp/recognize/scenery/android/sampleActivity.c Landroid/graphics/Paint;]
+  + Fieldref [jp/recognize/scenery/android/sampleActivity.d Landroid/graphics/Paint;]
+  + Fieldref [jp/recognize/scenery/android/sampleActivity.e Landroid/graphics/Paint;]
+  + Methodref [android/app/Activity.<init> ()V]
+  + Methodref [android/app/Activity.onActivityResult (IILandroid/content/Intent;)V]
+  + Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+  + Methodref [android/app/ProgressDialog.<init> (Landroid/content/Context;)V]
+  + Methodref [android/app/ProgressDialog.setMessage (Ljava/lang/CharSequence;)V]
+  + Methodref [android/app/ProgressDialog.setProgressStyle (I)V]
+  + Methodref [android/app/ProgressDialog.show ()V]
+  + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+  + Methodref [android/graphics/Bitmap.copy (Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;]
+  + Methodref [android/graphics/Bitmap.getConfig ()Landroid/graphics/Bitmap$Config;]
+  + Methodref [android/graphics/Bitmap.recycle ()V]
+  + Methodref [android/graphics/BitmapFactory.decodeByteArray ([BII)Landroid/graphics/Bitmap;]
+  + Methodref [android/graphics/Canvas.<init> (Landroid/graphics/Bitmap;)V]
+  + Methodref [android/graphics/Canvas.drawRect (Landroid/graphics/Rect;Landroid/graphics/Paint;)V]
+  + Methodref [android/graphics/Canvas.drawText (Ljava/lang/String;FFLandroid/graphics/Paint;)V]
+  + Methodref [android/graphics/Paint.<init> ()V]
+  + Methodref [android/graphics/Paint.setAlpha (I)V]
+  + Methodref [android/graphics/Paint.setColor (I)V]
+  + Methodref [android/graphics/Paint.setStyle (Landroid/graphics/Paint$Style;)V]
+  + Methodref [android/graphics/Paint.setTextSize (F)V]
+  + Methodref [android/graphics/Rect.<init> (IIII)V]
+  + Methodref [android/graphics/Rect.height ()I]
+  + Methodref [android/graphics/Rect.width ()I]
+  + Methodref [android/os/Handler.<init> ()V]
+  + Methodref [android/widget/ImageView.<init> (Landroid/content/Context;)V]
+  + Methodref [android/widget/ImageView.setScaleType (Landroid/widget/ImageView$ScaleType;)V]
+  + Methodref [android/widget/Toast.makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+  + Methodref [android/widget/Toast.show ()V]
+  + Methodref [java/io/BufferedInputStream.<init> (Ljava/io/InputStream;I)V]
+  + Methodref [java/io/BufferedInputStream.read ([B)I]
+  + Methodref [java/io/ByteArrayInputStream.<init> ([B)V]
+  + Methodref [java/lang/Thread.<init> (Ljava/lang/Runnable;)V]
+  + Methodref [java/lang/Thread.start ()V]
+  + Methodref [java/net/URL.<init> (Ljava/lang/String;)V]
+  + Methodref [jp/recognize/client/HttpSceneryRecognitionRequest.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljp/recognize/client/HttpSceneryRecognitionRequest$HttpImageContent;Ljp/recognize/client/HttpSceneryRecognitionRequest$HttpSceneryRecognitionHint;)V]
+  + Methodref [jp/recognize/client/HttpSceneryRecognitionRequest$HttpSceneryRecognitionHint.<init> (Ljp/recognize/Shape$Rectangle;ILjp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor;Z)V]
+  + Methodref [jp/recognize/client/HttpSceneryRecognitionRequest$InputStreamImageContent.<init> (Ljp/recognize/ImageContentType;Ljava/io/InputStream;)V]
+  + Methodref [jp/recognize/client/HttpSceneryRecognizer.<init> (Ljava/net/URL;)V]
+  + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+  + Methodref [jp/recognize/scenery/android/d.<init> (Ljp/recognize/scenery/android/sampleActivity;ILandroid/app/ProgressDialog;)V]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.a (I)[B]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.a ([B)[Ljp/recognize/RecognitionResult$Word;]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.a ([B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.openFileInput (Ljava/lang/String;)Ljava/io/FileInputStream;]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.setContentView (Landroid/view/View;)V]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.startActivityForResult (Landroid/content/Intent;I)V]
+  + InterfaceMethodref [jp/recognize/RecognitionResult$Word.getShape ()Ljp/recognize/Shape$Polygon;]
+  + InterfaceMethodref [jp/recognize/RecognitionResult$Word.getText ()Ljava/lang/String;]
+  + InterfaceMethodref [jp/recognize/SceneryRecognitionJob.getResultAsWords (I)[Ljp/recognize/RecognitionResult$Word;]
+  + InterfaceMethodref [jp/recognize/SceneryRecognitionJob.waitFor ()V]
+  + InterfaceMethodref [jp/recognize/SceneryRecognizer.recognize (Ljp/recognize/SceneryRecognitionRequest;)Ljp/recognize/SceneryRecognitionJob;]
+  + InterfaceMethodref [jp/recognize/Shape$Polygon.getBounds ()Ljp/recognize/Shape$Rectangle;]
+  + InterfaceMethodref [jp/recognize/Shape$Rectangle.getBottom ()I]
+  + InterfaceMethodref [jp/recognize/Shape$Rectangle.getLeft ()I]
+  + InterfaceMethodref [jp/recognize/Shape$Rectangle.getRight ()I]
+  + InterfaceMethodref [jp/recognize/Shape$Rectangle.getTop ()I]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (IIII)V]
+  + NameAndType [<init> (Landroid/content/Context;)V]
+  + NameAndType [<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  + NameAndType [<init> (Landroid/graphics/Bitmap;)V]
+  + NameAndType [<init> (Ljava/io/InputStream;I)V]
+  + NameAndType [<init> (Ljava/lang/Runnable;)V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljp/recognize/client/HttpSceneryRecognitionRequest$HttpImageContent;Ljp/recognize/client/HttpSceneryRecognitionRequest$HttpSceneryRecognitionHint;)V]
+  + NameAndType [<init> (Ljava/net/URL;)V]
+  + NameAndType [<init> (Ljp/recognize/ImageContentType;Ljava/io/InputStream;)V]
+  + NameAndType [<init> (Ljp/recognize/Shape$Rectangle;ILjp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor;Z)V]
+  + NameAndType [<init> (Ljp/recognize/scenery/android/sampleActivity;ILandroid/app/ProgressDialog;)V]
+  + NameAndType [<init> ([B)V]
+  + NameAndType [FILL Landroid/graphics/Paint$Style;]
+  + NameAndType [FIT_XY Landroid/widget/ImageView$ScaleType;]
+  + NameAndType [IMAGE_JPEG Ljp/recognize/ImageContentType;]
+  + NameAndType [STROKE Landroid/graphics/Paint$Style;]
+  + NameAndType [Unknown Ljp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor;]
+  + NameAndType [a (I)[B]
+  + NameAndType [a (Ljava/io/Closeable;)V]
+  + NameAndType [a ([B)[Ljp/recognize/RecognitionResult$Word;]
+  + NameAndType [a ([B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;]
+  + NameAndType [a Landroid/os/Handler;]
+  + NameAndType [b Landroid/widget/ImageView;]
+  + NameAndType [c Landroid/graphics/Paint;]
+  + NameAndType [copy (Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;]
+  + NameAndType [d Landroid/graphics/Paint;]
+  + NameAndType [decodeByteArray ([BII)Landroid/graphics/Bitmap;]
+  + NameAndType [drawRect (Landroid/graphics/Rect;Landroid/graphics/Paint;)V]
+  + NameAndType [drawText (Ljava/lang/String;FFLandroid/graphics/Paint;)V]
+  + NameAndType [e Landroid/graphics/Paint;]
+  + NameAndType [getBottom ()I]
+  + NameAndType [getBounds ()Ljp/recognize/Shape$Rectangle;]
+  + NameAndType [getConfig ()Landroid/graphics/Bitmap$Config;]
+  + NameAndType [getIntExtra (Ljava/lang/String;I)I]
+  + NameAndType [getLeft ()I]
+  + NameAndType [getResultAsWords (I)[Ljp/recognize/RecognitionResult$Word;]
+  + NameAndType [getRight ()I]
+  + NameAndType [getShape ()Ljp/recognize/Shape$Polygon;]
+  + NameAndType [getText ()Ljava/lang/String;]
+  + NameAndType [getTop ()I]
+  + NameAndType [height ()I]
+  + NameAndType [left I]
+  + NameAndType [makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+  + NameAndType [onActivityResult (IILandroid/content/Intent;)V]
+  + NameAndType [onCreate (Landroid/os/Bundle;)V]
+  + NameAndType [openFileInput (Ljava/lang/String;)Ljava/io/FileInputStream;]
+  + NameAndType [read ([B)I]
+  + NameAndType [recognize (Ljp/recognize/SceneryRecognitionRequest;)Ljp/recognize/SceneryRecognitionJob;]
+  + NameAndType [recycle ()V]
+  + NameAndType [setAlpha (I)V]
+  + NameAndType [setColor (I)V]
+  + NameAndType [setContentView (Landroid/view/View;)V]
+  + NameAndType [setMessage (Ljava/lang/CharSequence;)V]
+  + NameAndType [setProgressStyle (I)V]
+  + NameAndType [setScaleType (Landroid/widget/ImageView$ScaleType;)V]
+  + NameAndType [setStyle (Landroid/graphics/Paint$Style;)V]
+  + NameAndType [setTextSize (F)V]
+  + NameAndType [show ()V]
+  + NameAndType [start ()V]
+  + NameAndType [startActivityForResult (Landroid/content/Intent;I)V]
+  + NameAndType [top I]
+  + NameAndType [waitFor ()V]
+  + NameAndType [width ()I]
+  + Utf8 [()I]
+  + Utf8 [()Landroid/graphics/Bitmap$Config;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Ljp/recognize/Shape$Polygon;]
+  + Utf8 [()Ljp/recognize/Shape$Rectangle;]
+  + Utf8 [()V]
+  + Utf8 [(F)V]
+  + Utf8 [(I)V]
+  + Utf8 [(I)[B]
+  + Utf8 [(I)[Ljp/recognize/RecognitionResult$Word;]
+  + Utf8 [(IIII)V]
+  + Utf8 [(IILandroid/content/Intent;)V]
+  + Utf8 [(Landroid/content/Context;)V]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/Class;)V]
+  + Utf8 [(Landroid/content/Intent;I)V]
+  + Utf8 [(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;]
+  + Utf8 [(Landroid/graphics/Bitmap;)V]
+  + Utf8 [(Landroid/graphics/Paint$Style;)V]
+  + Utf8 [(Landroid/graphics/Rect;Landroid/graphics/Paint;)V]
+  + Utf8 [(Landroid/os/Bundle;)V]
+  + Utf8 [(Landroid/view/View;)V]
+  + Utf8 [(Landroid/widget/ImageView$ScaleType;)V]
+  + Utf8 [(Ljava/io/Closeable;)V]
+  + Utf8 [(Ljava/io/InputStream;I)V]
+  + Utf8 [(Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/Runnable;)V]
+  + Utf8 [(Ljava/lang/String;)Ljava/io/FileInputStream;]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;FFLandroid/graphics/Paint;)V]
+  + Utf8 [(Ljava/lang/String;I)I]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljp/recognize/client/HttpSceneryRecognitionRequest$HttpImageContent;Ljp/recognize/client/HttpSceneryRecognitionRequest$HttpSceneryRecognitionHint;)V]
+  + Utf8 [(Ljava/net/URL;)V]
+  + Utf8 [(Ljp/recognize/ImageContentType;Ljava/io/InputStream;)V]
+  + Utf8 [(Ljp/recognize/SceneryRecognitionRequest;)Ljp/recognize/SceneryRecognitionJob;]
+  + Utf8 [(Ljp/recognize/Shape$Rectangle;ILjp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor;Z)V]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;)Landroid/os/Handler;]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;)Landroid/widget/ImageView;]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;I)[B]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;ILandroid/app/ProgressDialog;)V]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;[B)[Ljp/recognize/RecognitionResult$Word;]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;[B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;]
+  + Utf8 [([B)I]
+  + Utf8 [([B)V]
+  + Utf8 [([B)[Ljp/recognize/RecognitionResult$Word;]
+  + Utf8 [([BII)Landroid/graphics/Bitmap;]
+  + Utf8 [([B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [FILL]
+  + Utf8 [FIT_XY]
+  + Utf8 [I]
+  + Utf8 [IMAGE_JPEG]
+  + Utf8 [Landroid/graphics/Paint$Style;]
+  + Utf8 [Landroid/graphics/Paint;]
+  + Utf8 [Landroid/os/Handler;]
+  + Utf8 [Landroid/widget/ImageView$ScaleType;]
+  + Utf8 [Landroid/widget/ImageView;]
+  + Utf8 [Ljp/recognize/ImageContentType;]
+  + Utf8 [Ljp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor;]
+  + Utf8 [Q2mFRML6C3hdjZ9qi0Vd3VKoL0yQZFmHLm4R9kbKEe]
+  + Utf8 [RESULT_PICTURE_SIZE]
+  + Utf8 [STROKE]
+  + Utf8 [Unknown]
+  + Utf8 [a]
+  + Utf8 [analysis]
+  + Utf8 [android/app/Activity]
+  + Utf8 [android/app/ProgressDialog]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/graphics/Bitmap]
+  + Utf8 [android/graphics/BitmapFactory]
+  + Utf8 [android/graphics/Canvas]
+  + Utf8 [android/graphics/Paint]
+  + Utf8 [android/graphics/Paint$Style]
+  + Utf8 [android/graphics/Rect]
+  + Utf8 [android/os/Handler]
+  + Utf8 [android/widget/ImageView]
+  + Utf8 [android/widget/ImageView$ScaleType]
+  + Utf8 [android/widget/Toast]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [copy]
+  + Utf8 [d]
+  + Utf8 [decodeByteArray]
+  + Utf8 [default]
+  + Utf8 [drawRect]
+  + Utf8 [drawText]
+  + Utf8 [e]
+  + Utf8 [english+japanese]
+  + Utf8 [getBottom]
+  + Utf8 [getBounds]
+  + Utf8 [getConfig]
+  + Utf8 [getIntExtra]
+  + Utf8 [getLeft]
+  + Utf8 [getResultAsWords]
+  + Utf8 [getRight]
+  + Utf8 [getShape]
+  + Utf8 [getText]
+  + Utf8 [getTop]
+  + Utf8 [height]
+  + Utf8 [https://scenery.recognize.jp/v1/scenery/api/recognition]
+  + Utf8 [image.jpg]
+  + Utf8 [java/io/BufferedInputStream]
+  + Utf8 [java/io/ByteArrayInputStream]
+  + Utf8 [java/lang/Thread]
+  + Utf8 [java/net/URL]
+  + Utf8 [jp/recognize/ImageContentType]
+  + Utf8 [jp/recognize/RecognitionResult$Word]
+  + Utf8 [jp/recognize/SceneryRecognitionJob]
+  + Utf8 [jp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor]
+  + Utf8 [jp/recognize/SceneryRecognizer]
+  + Utf8 [jp/recognize/Shape$Polygon]
+  + Utf8 [jp/recognize/Shape$Rectangle]
+  + Utf8 [jp/recognize/client/HttpSceneryRecognitionRequest]
+  + Utf8 [jp/recognize/client/HttpSceneryRecognitionRequest$HttpSceneryRecognitionHint]
+  + Utf8 [jp/recognize/client/HttpSceneryRecognitionRequest$InputStreamImageContent]
+  + Utf8 [jp/recognize/client/HttpSceneryRecognizer]
+  + Utf8 [jp/recognize/scenery/android/CameraPreviewActivity]
+  + Utf8 [jp/recognize/scenery/android/c]
+  + Utf8 [jp/recognize/scenery/android/d]
+  + Utf8 [jp/recognize/scenery/android/sampleActivity]
+  + Utf8 [left]
+  + Utf8 [makeText]
+  + Utf8 [onActivityResult]
+  + Utf8 [onCreate]
+  + Utf8 [openFileInput]
+  + Utf8 [read]
+  + Utf8 [recognize]
+  + Utf8 [recycle]
+  + Utf8 [setAlpha]
+  + Utf8 [setColor]
+  + Utf8 [setContentView]
+  + Utf8 [setMessage]
+  + Utf8 [setProgressStyle]
+  + Utf8 [setScaleType]
+  + Utf8 [setStyle]
+  + Utf8 [setTextSize]
+  + Utf8 [show]
+  + Utf8 [start]
+  + Utf8 [startActivityForResult]
+  + Utf8 [top]
+  + Utf8 [waitFor]
+  + Utf8 [width]
+  + Utf8 [画像の取得に失敗しました。]
+  + Utf8 [画像サイズの取得に失敗しました。]
+  + Utf8 [認識中です。]
+
+Fields (count = 5):
+  + Field:        a Landroid/os/Handler;
+    Access flags: 0x2
+      = private android.os.Handler a
+  + Field:        b Landroid/widget/ImageView;
+    Access flags: 0x2
+      = private android.widget.ImageView b
+  + Field:        c Landroid/graphics/Paint;
+    Access flags: 0x2
+      = private android.graphics.Paint c
+  + Field:        d Landroid/graphics/Paint;
+    Access flags: 0x2
+      = private android.graphics.Paint d
+  + Field:        e Landroid/graphics/Paint;
+    Access flags: 0x2
+      = private android.graphics.Paint e
+
+Methods (count = 11):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public sampleActivity()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 16, locals = 1, stack = 3):
+      [0] aload_0 v0
+      [1] invokespecial #58
+        + Methodref [android/app/Activity.<init> ()V]
+      [4] aload_0 v0
+      [5] new #23
+        + Class [android/os/Handler]
+      [8] dup
+      [9] invokespecial #82
+        + Methodref [android/os/Handler.<init> ()V]
+      [12] putfield #53
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.a Landroid/os/Handler;]
+      [15] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreate(Landroid/os/Bundle;)V
+    Access flags: 0x1
+      = public void onCreate(android.os.Bundle)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 162, locals = 3, stack = 4):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #60
+        + Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+      [5] aload_0 v0
+      [6] new #20
+        + Class [android/graphics/Paint]
+      [9] dup
+      [10] invokespecial #74
+        + Methodref [android/graphics/Paint.<init> ()V]
+      [13] putfield #55
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.c Landroid/graphics/Paint;]
+      [16] aload_0 v0
+      [17] getfield #55
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.c Landroid/graphics/Paint;]
+      [20] getstatic #46
+        + Fieldref [android/graphics/Paint$Style.FILL Landroid/graphics/Paint$Style;]
+      [23] invokevirtual #77
+        + Methodref [android/graphics/Paint.setStyle (Landroid/graphics/Paint$Style;)V]
+      [26] aload_0 v0
+      [27] getfield #55
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.c Landroid/graphics/Paint;]
+      [30] ldc #2
+        + Integer [-65281]
+      [32] invokevirtual #76
+        + Methodref [android/graphics/Paint.setColor (I)V]
+      [35] aload_0 v0
+      [36] getfield #55
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.c Landroid/graphics/Paint;]
+      [39] sipush 128
+      [42] invokevirtual #75
+        + Methodref [android/graphics/Paint.setAlpha (I)V]
+      [45] aload_0 v0
+      [46] new #20
+        + Class [android/graphics/Paint]
+      [49] dup
+      [50] invokespecial #74
+        + Methodref [android/graphics/Paint.<init> ()V]
+      [53] putfield #56
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.d Landroid/graphics/Paint;]
+      [56] aload_0 v0
+      [57] getfield #56
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.d Landroid/graphics/Paint;]
+      [60] getstatic #47
+        + Fieldref [android/graphics/Paint$Style.STROKE Landroid/graphics/Paint$Style;]
+      [63] invokevirtual #77
+        + Methodref [android/graphics/Paint.setStyle (Landroid/graphics/Paint$Style;)V]
+      [66] aload_0 v0
+      [67] getfield #56
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.d Landroid/graphics/Paint;]
+      [70] ldc #2
+        + Integer [-65281]
+      [72] invokevirtual #76
+        + Methodref [android/graphics/Paint.setColor (I)V]
+      [75] aload_0 v0
+      [76] new #20
+        + Class [android/graphics/Paint]
+      [79] dup
+      [80] invokespecial #74
+        + Methodref [android/graphics/Paint.<init> ()V]
+      [83] putfield #57
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.e Landroid/graphics/Paint;]
+      [86] aload_0 v0
+      [87] getfield #57
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.e Landroid/graphics/Paint;]
+      [90] getstatic #47
+        + Fieldref [android/graphics/Paint$Style.STROKE Landroid/graphics/Paint$Style;]
+      [93] invokevirtual #77
+        + Methodref [android/graphics/Paint.setStyle (Landroid/graphics/Paint$Style;)V]
+      [96] aload_0 v0
+      [97] getfield #57
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.e Landroid/graphics/Paint;]
+      [100] ldc #1
+        + Integer [-16711681]
+      [102] invokevirtual #76
+        + Methodref [android/graphics/Paint.setColor (I)V]
+      [105] aload_0 v0
+      [106] getfield #57
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.e Landroid/graphics/Paint;]
+      [109] ldc #3
+        + Float [12.0]
+      [111] invokevirtual #78
+        + Methodref [android/graphics/Paint.setTextSize (F)V]
+      [114] aload_0 v0
+      [115] new #24
+        + Class [android/widget/ImageView]
+      [118] dup
+      [119] aload_0 v0
+      [120] invokespecial #83
+        + Methodref [android/widget/ImageView.<init> (Landroid/content/Context;)V]
+      [123] putfield #54
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.b Landroid/widget/ImageView;]
+      [126] aload_0 v0
+      [127] getfield #54
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.b Landroid/widget/ImageView;]
+      [130] getstatic #50
+        + Fieldref [android/widget/ImageView$ScaleType.FIT_XY Landroid/widget/ImageView$ScaleType;]
+      [133] invokevirtual #84
+        + Methodref [android/widget/ImageView.setScaleType (Landroid/widget/ImageView$ScaleType;)V]
+      [136] aload_0 v0
+      [137] aload_0 v0
+      [138] getfield #54
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.b Landroid/widget/ImageView;]
+      [141] invokevirtual #103
+        + Methodref [jp/recognize/scenery/android/sampleActivity.setContentView (Landroid/view/View;)V]
+      [144] new #16
+        + Class [android/content/Intent]
+      [147] dup
+      [148] aload_0 v0
+      [149] ldc #42
+        + Class [jp/recognize/scenery/android/CameraPreviewActivity]
+      [151] invokespecial #65
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [154] astore_2 v2
+      [155] aload_0 v0
+      [156] aload_2 v2
+      [157] iconst_1
+      [158] invokevirtual #104
+        + Methodref [jp/recognize/scenery/android/sampleActivity.startActivityForResult (Landroid/content/Intent;I)V]
+      [161] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onActivityResult(IILandroid/content/Intent;)V
+    Access flags: 0x4
+      = protected void onActivityResult(int,int,android.content.Intent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 106, locals = 6, stack = 7):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] iload_2 v2
+      [3] aload_3 v3
+      [4] invokespecial #59
+        + Methodref [android/app/Activity.onActivityResult (IILandroid/content/Intent;)V]
+      [7] iload_1 v1
+      [8] iconst_1
+      [9] ificmpeq +4 (target=13)
+      [12] return
+      [13] iload_2 v2
+      [14] iconst_m1
+      [15] ificmpeq +14 (target=29)
+      [18] aload_0 v0
+      [19] ldc #11
+        + String [画像の取得に失敗しました。]
+      [21] iconst_1
+      [22] invokestatic #85
+        + Methodref [android/widget/Toast.makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+      [25] invokevirtual #86
+        + Methodref [android/widget/Toast.show ()V]
+      [28] return
+      [29] aload_3 v3
+      [30] ldc #5
+        + String [RESULT_PICTURE_SIZE]
+      [32] iconst_m1
+      [33] invokevirtual #66
+        + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+      [36] istore v4
+      [38] iload v4
+      [40] iconst_m1
+      [41] ificmpne +14 (target=55)
+      [44] aload_0 v0
+      [45] ldc #12
+        + String [画像サイズの取得に失敗しました。]
+      [47] iconst_1
+      [48] invokestatic #85
+        + Methodref [android/widget/Toast.makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+      [51] invokevirtual #86
+        + Methodref [android/widget/Toast.show ()V]
+      [54] return
+      [55] new #15
+        + Class [android/app/ProgressDialog]
+      [58] dup
+      [59] aload_0 v0
+      [60] invokespecial #61
+        + Methodref [android/app/ProgressDialog.<init> (Landroid/content/Context;)V]
+      [63] astore v5
+      [65] aload v5
+      [67] iconst_0
+      [68] invokevirtual #63
+        + Methodref [android/app/ProgressDialog.setProgressStyle (I)V]
+      [71] aload v5
+      [73] ldc #13
+        + String [認識中です。]
+      [75] invokevirtual #62
+        + Methodref [android/app/ProgressDialog.setMessage (Ljava/lang/CharSequence;)V]
+      [78] aload v5
+      [80] invokevirtual #64
+        + Methodref [android/app/ProgressDialog.show ()V]
+      [83] new #29
+        + Class [java/lang/Thread]
+      [86] dup
+      [87] new #44
+        + Class [jp/recognize/scenery/android/d]
+      [90] dup
+      [91] aload_0 v0
+      [92] iload v4
+      [94] aload v5
+      [96] invokespecial #98
+        + Methodref [jp/recognize/scenery/android/d.<init> (Ljp/recognize/scenery/android/sampleActivity;ILandroid/app/ProgressDialog;)V]
+      [99] invokespecial #90
+        + Methodref [java/lang/Thread.<init> (Ljava/lang/Runnable;)V]
+      [102] invokevirtual #91
+        + Methodref [java/lang/Thread.start ()V]
+      [105] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(I)[B
+    Access flags: 0x2
+      = private byte[] a(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 61, locals = 7, stack = 4):
+      [0] aconst_null
+      [1] astore_2 v2
+      [2] aconst_null
+      [3] astore_3 v3
+      [4] iload_1 v1
+      [5] newarray 8
+      [7] astore v4
+      [9] aload_0 v0
+      [10] ldc #10
+        + String [image.jpg]
+      [12] invokevirtual #102
+        + Methodref [jp/recognize/scenery/android/sampleActivity.openFileInput (Ljava/lang/String;)Ljava/io/FileInputStream;]
+      [15] astore_2 v2
+      [16] new #27
+        + Class [java/io/BufferedInputStream]
+      [19] dup
+      [20] aload_2 v2
+      [21] iload_1 v1
+      [22] invokespecial #87
+        + Methodref [java/io/BufferedInputStream.<init> (Ljava/io/InputStream;I)V]
+      [25] astore_3 v3
+      [26] aload_3 v3
+      [27] aload v4
+      [29] invokevirtual #88
+        + Methodref [java/io/BufferedInputStream.read ([B)I]
+      [32] pop
+      [33] aload v4
+      [35] astore v6
+      [37] aload_3 v3
+      [38] invokestatic #97
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [41] aload_2 v2
+      [42] invokestatic #97
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [45] aload v6
+      [47] areturn
+      [48] astore v5
+      [50] aload_3 v3
+      [51] invokestatic #97
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [54] aload_2 v2
+      [55] invokestatic #97
+        + Methodref [jp/recognize/scenery/android/c.a (Ljava/io/Closeable;)V]
+      [58] aload v5
+      [60] athrow
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (4 -> 37: 48):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a([B)[Ljp/recognize/RecognitionResult$Word;
+    Access flags: 0x2
+      = private jp.recognize.RecognitionResult$Word[] a(byte[])
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 85, locals = 4, stack = 14):
+      [0] new #41
+        + Class [jp/recognize/client/HttpSceneryRecognizer]
+      [3] dup
+      [4] new #30
+        + Class [java/net/URL]
+      [7] dup
+      [8] ldc #9
+        + String [https://scenery.recognize.jp/v1/scenery/api/recognition]
+      [10] invokespecial #92
+        + Methodref [java/net/URL.<init> (Ljava/lang/String;)V]
+      [13] invokespecial #96
+        + Methodref [jp/recognize/client/HttpSceneryRecognizer.<init> (Ljava/net/URL;)V]
+      [16] astore_2 v2
+      [17] aload_2 v2
+      [18] new #38
+        + Class [jp/recognize/client/HttpSceneryRecognitionRequest]
+      [21] dup
+      [22] ldc #4
+        + String [Q2mFRML6C3hdjZ9qi0Vd3VKoL0yQZFmHLm4R9kbKEe]
+      [24] ldc #8
+        + String [english+japanese]
+      [26] ldc #7
+        + String [default]
+      [28] ldc #6
+        + String [analysis]
+      [30] new #40
+        + Class [jp/recognize/client/HttpSceneryRecognitionRequest$InputStreamImageContent]
+      [33] dup
+      [34] getstatic #51
+        + Fieldref [jp/recognize/ImageContentType.IMAGE_JPEG Ljp/recognize/ImageContentType;]
+      [37] new #28
+        + Class [java/io/ByteArrayInputStream]
+      [40] dup
+      [41] aload_1 v1
+      [42] invokespecial #89
+        + Methodref [java/io/ByteArrayInputStream.<init> ([B)V]
+      [45] invokespecial #95
+        + Methodref [jp/recognize/client/HttpSceneryRecognitionRequest$InputStreamImageContent.<init> (Ljp/recognize/ImageContentType;Ljava/io/InputStream;)V]
+      [48] new #39
+        + Class [jp/recognize/client/HttpSceneryRecognitionRequest$HttpSceneryRecognitionHint]
+      [51] dup
+      [52] aconst_null
+      [53] iconst_0
+      [54] getstatic #52
+        + Fieldref [jp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor.Unknown Ljp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor;]
+      [57] iconst_0
+      [58] invokespecial #94
+        + Methodref [jp/recognize/client/HttpSceneryRecognitionRequest$HttpSceneryRecognitionHint.<init> (Ljp/recognize/Shape$Rectangle;ILjp/recognize/SceneryRecognitionRequest$SceneryRecognitionHint$LetterColor;Z)V]
+      [61] invokespecial #93
+        + Methodref [jp/recognize/client/HttpSceneryRecognitionRequest.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljp/recognize/client/HttpSceneryRecognitionRequest$HttpImageContent;Ljp/recognize/client/HttpSceneryRecognitionRequest$HttpSceneryRecognitionHint;)V]
+      [64] invokeinterface #109
+        + InterfaceMethodref [jp/recognize/SceneryRecognizer.recognize (Ljp/recognize/SceneryRecognitionRequest;)Ljp/recognize/SceneryRecognitionJob;]
+      [69] astore_3 v3
+      [70] aload_3 v3
+      [71] invokeinterface #108
+        + InterfaceMethodref [jp/recognize/SceneryRecognitionJob.waitFor ()V]
+      [76] aload_3 v3
+      [77] bipush 10
+      [79] invokeinterface #107
+        + InterfaceMethodref [jp/recognize/SceneryRecognitionJob.getResultAsWords (I)[Ljp/recognize/RecognitionResult$Word;]
+      [84] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a([B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;
+    Access flags: 0x2
+      = private android.graphics.Bitmap a(byte[],jp.recognize.RecognitionResult$Word[])
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 283, locals = 12, stack = 6):
+      [0] aload_1 v1
+      [1] iconst_0
+      [2] aload_1 v1
+      [3] arraylength
+      [4] invokestatic #70
+        + Methodref [android/graphics/BitmapFactory.decodeByteArray ([BII)Landroid/graphics/Bitmap;]
+      [7] astore_3 v3
+      [8] aload_3 v3
+      [9] aload_3 v3
+      [10] invokevirtual #68
+        + Methodref [android/graphics/Bitmap.getConfig ()Landroid/graphics/Bitmap$Config;]
+      [13] iconst_1
+      [14] invokevirtual #67
+        + Methodref [android/graphics/Bitmap.copy (Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;]
+      [17] astore v4
+      [19] aload_3 v3
+      [20] invokevirtual #69
+        + Methodref [android/graphics/Bitmap.recycle ()V]
+      [23] new #19
+        + Class [android/graphics/Canvas]
+      [26] dup
+      [27] aload v4
+      [29] invokespecial #71
+        + Methodref [android/graphics/Canvas.<init> (Landroid/graphics/Bitmap;)V]
+      [32] astore v5
+      [34] aload_2 v2
+      [35] dup
+      [36] astore v9
+      [38] arraylength
+      [39] istore v8
+      [41] iconst_0
+      [42] istore v7
+      [44] goto +86 (target=130)
+      [47] aload v9
+      [49] iload v7
+      [51] aaload
+      [52] astore v6
+      [54] aload v6
+      [56] invokeinterface #105
+        + InterfaceMethodref [jp/recognize/RecognitionResult$Word.getShape ()Ljp/recognize/Shape$Polygon;]
+      [61] invokeinterface #110
+        + InterfaceMethodref [jp/recognize/Shape$Polygon.getBounds ()Ljp/recognize/Shape$Rectangle;]
+      [66] astore v10
+      [68] new #22
+        + Class [android/graphics/Rect]
+      [71] dup
+      [72] aload v10
+      [74] invokeinterface #112
+        + InterfaceMethodref [jp/recognize/Shape$Rectangle.getLeft ()I]
+      [79] aload v10
+      [81] invokeinterface #114
+        + InterfaceMethodref [jp/recognize/Shape$Rectangle.getTop ()I]
+      [86] aload v10
+      [88] invokeinterface #113
+        + InterfaceMethodref [jp/recognize/Shape$Rectangle.getRight ()I]
+      [93] aload v10
+      [95] invokeinterface #111
+        + InterfaceMethodref [jp/recognize/Shape$Rectangle.getBottom ()I]
+      [100] invokespecial #79
+        + Methodref [android/graphics/Rect.<init> (IIII)V]
+      [103] astore v11
+      [105] aload v5
+      [107] aload v11
+      [109] aload_0 v0
+      [110] getfield #55
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.c Landroid/graphics/Paint;]
+      [113] invokevirtual #72
+        + Methodref [android/graphics/Canvas.drawRect (Landroid/graphics/Rect;Landroid/graphics/Paint;)V]
+      [116] aload v5
+      [118] aload v11
+      [120] aload_0 v0
+      [121] getfield #56
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.d Landroid/graphics/Paint;]
+      [124] invokevirtual #72
+        + Methodref [android/graphics/Canvas.drawRect (Landroid/graphics/Rect;Landroid/graphics/Paint;)V]
+      [127] iinc v7, 1
+      [130] iload v7
+      [132] iload v8
+      [134] ificmplt -87 (target=47)
+      [137] aload_2 v2
+      [138] dup
+      [139] astore v9
+      [141] arraylength
+      [142] istore v8
+      [144] iconst_0
+      [145] istore v7
+      [147] goto +126 (target=273)
+      [150] aload v9
+      [152] iload v7
+      [154] aaload
+      [155] astore v6
+      [157] aload v6
+      [159] invokeinterface #105
+        + InterfaceMethodref [jp/recognize/RecognitionResult$Word.getShape ()Ljp/recognize/Shape$Polygon;]
+      [164] invokeinterface #110
+        + InterfaceMethodref [jp/recognize/Shape$Polygon.getBounds ()Ljp/recognize/Shape$Rectangle;]
+      [169] astore v10
+      [171] new #22
+        + Class [android/graphics/Rect]
+      [174] dup
+      [175] aload v10
+      [177] invokeinterface #112
+        + InterfaceMethodref [jp/recognize/Shape$Rectangle.getLeft ()I]
+      [182] aload v10
+      [184] invokeinterface #114
+        + InterfaceMethodref [jp/recognize/Shape$Rectangle.getTop ()I]
+      [189] aload v10
+      [191] invokeinterface #113
+        + InterfaceMethodref [jp/recognize/Shape$Rectangle.getRight ()I]
+      [196] aload v10
+      [198] invokeinterface #111
+        + InterfaceMethodref [jp/recognize/Shape$Rectangle.getBottom ()I]
+      [203] invokespecial #79
+        + Methodref [android/graphics/Rect.<init> (IIII)V]
+      [206] astore v11
+      [208] aload_0 v0
+      [209] getfield #57
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.e Landroid/graphics/Paint;]
+      [212] aload v11
+      [214] invokevirtual #80
+        + Methodref [android/graphics/Rect.height ()I]
+      [217] aload v11
+      [219] invokevirtual #81
+        + Methodref [android/graphics/Rect.width ()I]
+      [222] ificmple +11 (target=233)
+      [225] aload v11
+      [227] invokevirtual #81
+        + Methodref [android/graphics/Rect.width ()I]
+      [230] goto +8 (target=238)
+      [233] aload v11
+      [235] invokevirtual #80
+        + Methodref [android/graphics/Rect.height ()I]
+      [238] i2f
+      [239] invokevirtual #78
+        + Methodref [android/graphics/Paint.setTextSize (F)V]
+      [242] aload v5
+      [244] aload v6
+      [246] invokeinterface #106
+        + InterfaceMethodref [jp/recognize/RecognitionResult$Word.getText ()Ljava/lang/String;]
+      [251] aload v11
+      [253] getfield #48
+        + Fieldref [android/graphics/Rect.left I]
+      [256] i2f
+      [257] aload v11
+      [259] getfield #49
+        + Fieldref [android/graphics/Rect.top I]
+      [262] i2f
+      [263] aload_0 v0
+      [264] getfield #57
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.e Landroid/graphics/Paint;]
+      [267] invokevirtual #73
+        + Methodref [android/graphics/Canvas.drawText (Ljava/lang/String;FFLandroid/graphics/Paint;)V]
+      [270] iinc v7, 1
+      [273] iload v7
+      [275] iload v8
+      [277] ificmplt -127 (target=150)
+      [280] aload v4
+      [282] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljp/recognize/scenery/android/sampleActivity;I)[B
+    Access flags: 0x1008
+      = static synthetic byte[] a(jp.recognize.scenery.android.sampleActivity,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] invokespecial #99
+        + Methodref [jp/recognize/scenery/android/sampleActivity.a (I)[B]
+      [5] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljp/recognize/scenery/android/sampleActivity;[B)[Ljp/recognize/RecognitionResult$Word;
+    Access flags: 0x1008
+      = static synthetic jp.recognize.RecognitionResult$Word[] a(jp.recognize.scenery.android.sampleActivity,byte[])
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #100
+        + Methodref [jp/recognize/scenery/android/sampleActivity.a ([B)[Ljp/recognize/RecognitionResult$Word;]
+      [5] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljp/recognize/scenery/android/sampleActivity;[B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;
+    Access flags: 0x1008
+      = static synthetic android.graphics.Bitmap a(jp.recognize.scenery.android.sampleActivity,byte[],jp.recognize.RecognitionResult$Word[])
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] aload_2 v2
+      [3] invokespecial #101
+        + Methodref [jp/recognize/scenery/android/sampleActivity.a ([B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;]
+      [6] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljp/recognize/scenery/android/sampleActivity;)Landroid/os/Handler;
+    Access flags: 0x1008
+      = static synthetic android.os.Handler a(jp.recognize.scenery.android.sampleActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #53
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.a Landroid/os/Handler;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Ljp/recognize/scenery/android/sampleActivity;)Landroid/widget/ImageView;
+    Access flags: 0x1008
+      = static synthetic android.widget.ImageView b(jp.recognize.scenery.android.sampleActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #54
+        + Fieldref [jp/recognize/scenery/android/sampleActivity.b Landroid/widget/ImageView;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: jp/recognize/scenery/android/d
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class jp.recognize.scenery.android.d extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [java/lang/Runnable]
+
+Constant Pool (count = 59):
+  + Class [android/os/Handler]
+  + Class [java/lang/Exception]
+  + Class [java/lang/Object]
+  + Class [java/lang/Runnable]
+  + Class [jp/recognize/scenery/android/d]
+  + Class [jp/recognize/scenery/android/e]
+  + Class [jp/recognize/scenery/android/f]
+  + Class [jp/recognize/scenery/android/sampleActivity]
+  + Fieldref [jp/recognize/scenery/android/d.a Ljp/recognize/scenery/android/sampleActivity;]
+  + Fieldref [jp/recognize/scenery/android/d.b I]
+  + Fieldref [jp/recognize/scenery/android/d.c Landroid/app/ProgressDialog;]
+  + Methodref [android/os/Handler.post (Ljava/lang/Runnable;)Z]
+  + Methodref [java/lang/Object.<init> ()V]
+  + Methodref [jp/recognize/scenery/android/e.<init> (Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;Landroid/graphics/Bitmap;)V]
+  + Methodref [jp/recognize/scenery/android/f.<init> (Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;)V]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.a (Ljp/recognize/scenery/android/sampleActivity;)Landroid/os/Handler;]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.a (Ljp/recognize/scenery/android/sampleActivity;I)[B]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.a (Ljp/recognize/scenery/android/sampleActivity;[B)[Ljp/recognize/RecognitionResult$Word;]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.a (Ljp/recognize/scenery/android/sampleActivity;[B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;)V]
+  + NameAndType [<init> (Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;Landroid/graphics/Bitmap;)V]
+  + NameAndType [a (Ljp/recognize/scenery/android/sampleActivity;)Landroid/os/Handler;]
+  + NameAndType [a (Ljp/recognize/scenery/android/sampleActivity;I)[B]
+  + NameAndType [a (Ljp/recognize/scenery/android/sampleActivity;[B)[Ljp/recognize/RecognitionResult$Word;]
+  + NameAndType [a (Ljp/recognize/scenery/android/sampleActivity;[B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;]
+  + NameAndType [a Ljp/recognize/scenery/android/sampleActivity;]
+  + NameAndType [b I]
+  + NameAndType [c Landroid/app/ProgressDialog;]
+  + NameAndType [post (Ljava/lang/Runnable;)Z]
+  + Utf8 [()V]
+  + Utf8 [(Ljava/lang/Runnable;)Z]
+  + Utf8 [(Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;]
+  + Utf8 [(Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;)V]
+  + Utf8 [(Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;Landroid/graphics/Bitmap;)V]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;)Landroid/os/Handler;]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;I)[B]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;ILandroid/app/ProgressDialog;)V]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;[B)[Ljp/recognize/RecognitionResult$Word;]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;[B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [Landroid/app/ProgressDialog;]
+  + Utf8 [Ljp/recognize/scenery/android/sampleActivity;]
+  + Utf8 [a]
+  + Utf8 [android/os/Handler]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [java/lang/Exception]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/Runnable]
+  + Utf8 [jp/recognize/scenery/android/d]
+  + Utf8 [jp/recognize/scenery/android/e]
+  + Utf8 [jp/recognize/scenery/android/f]
+  + Utf8 [jp/recognize/scenery/android/sampleActivity]
+  + Utf8 [post]
+  + Utf8 [run]
+
+Fields (count = 3):
+  + Field:        a Ljp/recognize/scenery/android/sampleActivity;
+    Access flags: 0x1010
+      = final synthetic jp.recognize.scenery.android.sampleActivity a
+  + Field:        b I
+    Access flags: 0x1012
+      = private final synthetic int b
+  + Field:        c Landroid/app/ProgressDialog;
+    Access flags: 0x1012
+      = private final synthetic android.app.ProgressDialog c
+
+Methods (count = 3):
+  - Method:       <init>(Ljp/recognize/scenery/android/sampleActivity;ILandroid/app/ProgressDialog;)V
+    Access flags: 0x0
+      = d(jp.recognize.scenery.android.sampleActivity,int,android.app.ProgressDialog)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 20, locals = 4, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #9
+        + Fieldref [jp/recognize/scenery/android/d.a Ljp/recognize/scenery/android/sampleActivity;]
+      [5] aload_0 v0
+      [6] iload_2 v2
+      [7] putfield #10
+        + Fieldref [jp/recognize/scenery/android/d.b I]
+      [10] aload_0 v0
+      [11] aload_3 v3
+      [12] putfield #11
+        + Fieldref [jp/recognize/scenery/android/d.c Landroid/app/ProgressDialog;]
+      [15] aload_0 v0
+      [16] invokespecial #13
+        + Methodref [java/lang/Object.<init> ()V]
+      [19] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       run()V
+    Access flags: 0x1
+      = public void run()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 83, locals = 4, stack = 6):
+      [0] aload_0 v0
+      [1] getfield #9
+        + Fieldref [jp/recognize/scenery/android/d.a Ljp/recognize/scenery/android/sampleActivity;]
+      [4] aload_0 v0
+      [5] getfield #10
+        + Fieldref [jp/recognize/scenery/android/d.b I]
+      [8] invokestatic #17
+        + Methodref [jp/recognize/scenery/android/sampleActivity.a (Ljp/recognize/scenery/android/sampleActivity;I)[B]
+      [11] astore_1 v1
+      [12] aload_0 v0
+      [13] getfield #9
+        + Fieldref [jp/recognize/scenery/android/d.a Ljp/recognize/scenery/android/sampleActivity;]
+      [16] aload_1 v1
+      [17] invokestatic #18
+        + Methodref [jp/recognize/scenery/android/sampleActivity.a (Ljp/recognize/scenery/android/sampleActivity;[B)[Ljp/recognize/RecognitionResult$Word;]
+      [20] astore_2 v2
+      [21] aload_0 v0
+      [22] getfield #9
+        + Fieldref [jp/recognize/scenery/android/d.a Ljp/recognize/scenery/android/sampleActivity;]
+      [25] aload_1 v1
+      [26] aload_2 v2
+      [27] invokestatic #19
+        + Methodref [jp/recognize/scenery/android/sampleActivity.a (Ljp/recognize/scenery/android/sampleActivity;[B[Ljp/recognize/RecognitionResult$Word;)Landroid/graphics/Bitmap;]
+      [30] astore_3 v3
+      [31] aload_0 v0
+      [32] getfield #9
+        + Fieldref [jp/recognize/scenery/android/d.a Ljp/recognize/scenery/android/sampleActivity;]
+      [35] invokestatic #16
+        + Methodref [jp/recognize/scenery/android/sampleActivity.a (Ljp/recognize/scenery/android/sampleActivity;)Landroid/os/Handler;]
+      [38] new #6
+        + Class [jp/recognize/scenery/android/e]
+      [41] dup
+      [42] aload_0 v0
+      [43] aload_0 v0
+      [44] getfield #11
+        + Fieldref [jp/recognize/scenery/android/d.c Landroid/app/ProgressDialog;]
+      [47] aload_3 v3
+      [48] invokespecial #14
+        + Methodref [jp/recognize/scenery/android/e.<init> (Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;Landroid/graphics/Bitmap;)V]
+      [51] invokevirtual #12
+        + Methodref [android/os/Handler.post (Ljava/lang/Runnable;)Z]
+      [54] pop
+      [55] goto +27 (target=82)
+      [58] astore_1 v1
+      [59] aload_0 v0
+      [60] getfield #9
+        + Fieldref [jp/recognize/scenery/android/d.a Ljp/recognize/scenery/android/sampleActivity;]
+      [63] invokestatic #16
+        + Methodref [jp/recognize/scenery/android/sampleActivity.a (Ljp/recognize/scenery/android/sampleActivity;)Landroid/os/Handler;]
+      [66] new #7
+        + Class [jp/recognize/scenery/android/f]
+      [69] dup
+      [70] aload_0 v0
+      [71] aload_0 v0
+      [72] getfield #11
+        + Fieldref [jp/recognize/scenery/android/d.c Landroid/app/ProgressDialog;]
+      [75] invokespecial #15
+        + Methodref [jp/recognize/scenery/android/f.<init> (Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;)V]
+      [78] invokevirtual #12
+        + Methodref [android/os/Handler.post (Ljava/lang/Runnable;)Z]
+      [81] pop
+      [82] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (0 -> 55: 58):
+      + Class [java/lang/Exception]
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;
+    Access flags: 0x1008
+      = static synthetic jp.recognize.scenery.android.sampleActivity a(jp.recognize.scenery.android.d)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #9
+        + Fieldref [jp/recognize/scenery/android/d.a Ljp/recognize/scenery/android/sampleActivity;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: jp/recognize/scenery/android/e
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class jp.recognize.scenery.android.e extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [java/lang/Runnable]
+
+Constant Pool (count = 47):
+  + Class [android/app/ProgressDialog]
+  + Class [android/widget/ImageView]
+  + Class [java/lang/Object]
+  + Class [java/lang/Runnable]
+  + Class [jp/recognize/scenery/android/d]
+  + Class [jp/recognize/scenery/android/e]
+  + Class [jp/recognize/scenery/android/sampleActivity]
+  + Fieldref [jp/recognize/scenery/android/e.a Ljp/recognize/scenery/android/d;]
+  + Fieldref [jp/recognize/scenery/android/e.b Landroid/app/ProgressDialog;]
+  + Fieldref [jp/recognize/scenery/android/e.c Landroid/graphics/Bitmap;]
+  + Methodref [android/app/ProgressDialog.dismiss ()V]
+  + Methodref [android/widget/ImageView.setImageBitmap (Landroid/graphics/Bitmap;)V]
+  + Methodref [java/lang/Object.<init> ()V]
+  + Methodref [jp/recognize/scenery/android/d.a (Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;]
+  + Methodref [jp/recognize/scenery/android/sampleActivity.b (Ljp/recognize/scenery/android/sampleActivity;)Landroid/widget/ImageView;]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;]
+  + NameAndType [a Ljp/recognize/scenery/android/d;]
+  + NameAndType [b (Ljp/recognize/scenery/android/sampleActivity;)Landroid/widget/ImageView;]
+  + NameAndType [b Landroid/app/ProgressDialog;]
+  + NameAndType [c Landroid/graphics/Bitmap;]
+  + NameAndType [dismiss ()V]
+  + NameAndType [setImageBitmap (Landroid/graphics/Bitmap;)V]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/graphics/Bitmap;)V]
+  + Utf8 [(Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;]
+  + Utf8 [(Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;Landroid/graphics/Bitmap;)V]
+  + Utf8 [(Ljp/recognize/scenery/android/sampleActivity;)Landroid/widget/ImageView;]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Landroid/app/ProgressDialog;]
+  + Utf8 [Landroid/graphics/Bitmap;]
+  + Utf8 [Ljp/recognize/scenery/android/d;]
+  + Utf8 [a]
+  + Utf8 [android/app/ProgressDialog]
+  + Utf8 [android/widget/ImageView]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [dismiss]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/Runnable]
+  + Utf8 [jp/recognize/scenery/android/d]
+  + Utf8 [jp/recognize/scenery/android/e]
+  + Utf8 [jp/recognize/scenery/android/sampleActivity]
+  + Utf8 [run]
+  + Utf8 [setImageBitmap]
+
+Fields (count = 3):
+  + Field:        a Ljp/recognize/scenery/android/d;
+    Access flags: 0x1010
+      = final synthetic jp.recognize.scenery.android.d a
+  + Field:        b Landroid/app/ProgressDialog;
+    Access flags: 0x1012
+      = private final synthetic android.app.ProgressDialog b
+  + Field:        c Landroid/graphics/Bitmap;
+    Access flags: 0x1012
+      = private final synthetic android.graphics.Bitmap c
+
+Methods (count = 2):
+  - Method:       <init>(Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;Landroid/graphics/Bitmap;)V
+    Access flags: 0x0
+      = e(jp.recognize.scenery.android.d,android.app.ProgressDialog,android.graphics.Bitmap)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 20, locals = 4, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #8
+        + Fieldref [jp/recognize/scenery/android/e.a Ljp/recognize/scenery/android/d;]
+      [5] aload_0 v0
+      [6] aload_2 v2
+      [7] putfield #9
+        + Fieldref [jp/recognize/scenery/android/e.b Landroid/app/ProgressDialog;]
+      [10] aload_0 v0
+      [11] aload_3 v3
+      [12] putfield #10
+        + Fieldref [jp/recognize/scenery/android/e.c Landroid/graphics/Bitmap;]
+      [15] aload_0 v0
+      [16] invokespecial #13
+        + Methodref [java/lang/Object.<init> ()V]
+      [19] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       run()V
+    Access flags: 0x1
+      = public void run()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 25, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #9
+        + Fieldref [jp/recognize/scenery/android/e.b Landroid/app/ProgressDialog;]
+      [4] invokevirtual #11
+        + Methodref [android/app/ProgressDialog.dismiss ()V]
+      [7] aload_0 v0
+      [8] getfield #8
+        + Fieldref [jp/recognize/scenery/android/e.a Ljp/recognize/scenery/android/d;]
+      [11] invokestatic #14
+        + Methodref [jp/recognize/scenery/android/d.a (Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;]
+      [14] invokestatic #15
+        + Methodref [jp/recognize/scenery/android/sampleActivity.b (Ljp/recognize/scenery/android/sampleActivity;)Landroid/widget/ImageView;]
+      [17] aload_0 v0
+      [18] getfield #10
+        + Fieldref [jp/recognize/scenery/android/e.c Landroid/graphics/Bitmap;]
+      [21] invokevirtual #12
+        + Methodref [android/widget/ImageView.setImageBitmap (Landroid/graphics/Bitmap;)V]
+      [24] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: jp/recognize/scenery/android/f
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class jp.recognize.scenery.android.f extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [java/lang/Runnable]
+
+Constant Pool (count = 43):
+  + String [認識に失敗しました。]
+  + Class [android/app/ProgressDialog]
+  + Class [android/widget/Toast]
+  + Class [java/lang/Object]
+  + Class [java/lang/Runnable]
+  + Class [jp/recognize/scenery/android/d]
+  + Class [jp/recognize/scenery/android/f]
+  + Fieldref [jp/recognize/scenery/android/f.a Ljp/recognize/scenery/android/d;]
+  + Fieldref [jp/recognize/scenery/android/f.b Landroid/app/ProgressDialog;]
+  + Methodref [android/app/ProgressDialog.dismiss ()V]
+  + Methodref [android/widget/Toast.makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+  + Methodref [android/widget/Toast.show ()V]
+  + Methodref [java/lang/Object.<init> ()V]
+  + Methodref [jp/recognize/scenery/android/d.a (Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;]
+  + NameAndType [a Ljp/recognize/scenery/android/d;]
+  + NameAndType [b Landroid/app/ProgressDialog;]
+  + NameAndType [dismiss ()V]
+  + NameAndType [makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+  + NameAndType [show ()V]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+  + Utf8 [(Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;]
+  + Utf8 [(Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Landroid/app/ProgressDialog;]
+  + Utf8 [Ljp/recognize/scenery/android/d;]
+  + Utf8 [a]
+  + Utf8 [android/app/ProgressDialog]
+  + Utf8 [android/widget/Toast]
+  + Utf8 [b]
+  + Utf8 [dismiss]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/Runnable]
+  + Utf8 [jp/recognize/scenery/android/d]
+  + Utf8 [jp/recognize/scenery/android/f]
+  + Utf8 [makeText]
+  + Utf8 [run]
+  + Utf8 [show]
+  + Utf8 [認識に失敗しました。]
+
+Fields (count = 2):
+  + Field:        a Ljp/recognize/scenery/android/d;
+    Access flags: 0x1010
+      = final synthetic jp.recognize.scenery.android.d a
+  + Field:        b Landroid/app/ProgressDialog;
+    Access flags: 0x1012
+      = private final synthetic android.app.ProgressDialog b
+
+Methods (count = 2):
+  - Method:       <init>(Ljp/recognize/scenery/android/d;Landroid/app/ProgressDialog;)V
+    Access flags: 0x0
+      = f(jp.recognize.scenery.android.d,android.app.ProgressDialog)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 15, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #8
+        + Fieldref [jp/recognize/scenery/android/f.a Ljp/recognize/scenery/android/d;]
+      [5] aload_0 v0
+      [6] aload_2 v2
+      [7] putfield #9
+        + Fieldref [jp/recognize/scenery/android/f.b Landroid/app/ProgressDialog;]
+      [10] aload_0 v0
+      [11] invokespecial #13
+        + Methodref [java/lang/Object.<init> ()V]
+      [14] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       run()V
+    Access flags: 0x1
+      = public void run()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 24, locals = 1, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #9
+        + Fieldref [jp/recognize/scenery/android/f.b Landroid/app/ProgressDialog;]
+      [4] invokevirtual #10
+        + Methodref [android/app/ProgressDialog.dismiss ()V]
+      [7] aload_0 v0
+      [8] getfield #8
+        + Fieldref [jp/recognize/scenery/android/f.a Ljp/recognize/scenery/android/d;]
+      [11] invokestatic #14
+        + Methodref [jp/recognize/scenery/android/d.a (Ljp/recognize/scenery/android/d;)Ljp/recognize/scenery/android/sampleActivity;]
+      [14] ldc #1
+        + String [認識に失敗しました。]
+      [16] iconst_1
+      [17] invokestatic #11
+        + Methodref [android/widget/Toast.makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
+      [20] invokevirtual #12
+        + Methodref [android/widget/Toast.show ()V]
+      [23] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
