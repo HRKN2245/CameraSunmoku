@@ -1,0 +1,14 @@
+jp.recognize.scenery.android.CameraPreviewActivity:
+    public static final java.lang.String PICTURE_FILENAME
+    public static final java.lang.String RESULT_PICTURE_DATASIZE
+jp.recognize.scenery.android.Constants
+jp.recognize.scenery.android.Utils:
+    6:6:public Utils()
+jp.recognize.scenery.android.sample.BuildConfig
+jp.recognize.scenery.android.sample.R
+jp.recognize.scenery.android.sample.R$attr
+jp.recognize.scenery.android.sample.R$drawable
+jp.recognize.scenery.android.sample.R$layout
+jp.recognize.scenery.android.sample.R$string
+jp.recognize.scenery.android.sampleActivity:
+    private static final int REQUEST_CODE
