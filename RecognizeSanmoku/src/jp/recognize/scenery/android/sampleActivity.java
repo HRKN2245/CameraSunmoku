@@ -27,7 +27,7 @@ import jp.recognize.RecognitionResult.Word;
 import jp.recognize.SceneryRecognitionJob;
 import jp.recognize.SceneryRecognitionRequest.SceneryRecognitionHint.LetterColor;
 import jp.recognize.SceneryRecognizer;
-import jp.recognize.Shape.Rectangle;
+import jp.recognize.Shape.*;
 import jp.recognize.client.HttpSceneryRecognitionRequest;
 import jp.recognize.client.HttpSceneryRecognitionRequest.HttpSceneryRecognitionHint;
 import jp.recognize.client.HttpSceneryRecognitionRequest.InputStreamImageContent;
@@ -100,12 +100,15 @@ public class sampleActivity extends Activity {
 					Word[] words = recognize(jpegData);
 					String input = null;
 					Intent intent = new Intent(sampleActivity.this,Sanmoku.class);
+					//文字を取得し、sanmokuActivityにデータを送信。
 					for(int i=0; i<words.length; i++){
-						System.out.println(words[i].getText());
-						input += words[i].getText();
+						System.out.println(words[i].getText()+","+words[i].getShape().getBounds().getTop()
+								+","+words[i].getShape().getBounds().getLeft()+","+words[i].getCategory());
 					}
+					input = getWords(words);
 					intent.putExtra("RecognizeData", input);
 					startActivity(intent);
+					finish();
 					
 					//bitmap: 認識結果を描くための変数
 					//final Bitmap bitmap = drawRecognizeResult(jpegData, words);
@@ -150,7 +153,12 @@ public class sampleActivity extends Activity {
 		SceneryRecognizer recognizer = new HttpSceneryRecognizer(new URL(Constants.RECOGNITION_URL));
 
 		// 認識を実行し認識ジョブを生成します
-		SceneryRecognitionJob job = recognizer.recognize(new HttpSceneryRecognitionRequest(Constants.API_KEY, Constants.CHARACTERS, Constants.WORDS, Constants.ANALYSIS, new InputStreamImageContent(ImageContentType.IMAGE_JPEG, new ByteArrayInputStream(jpegData)), new HttpSceneryRecognitionHint(null, 0, LetterColor.Unknown, false)));
+		SceneryRecognitionJob job = recognizer.recognize(
+				new HttpSceneryRecognitionRequest(Constants.API_KEY,
+						Constants.CHARACTERS, Constants.WORDS, Constants.ANALYSIS, 
+						new InputStreamImageContent(ImageContentType.IMAGE_JPEG,
+								new ByteArrayInputStream(jpegData)), 
+								new HttpSceneryRecognitionHint(null, 0, LetterColor.Unknown, false)));
 
 		// 認識ジョブが終了するまで待ちます
 		job.waitFor();
@@ -159,6 +167,27 @@ public class sampleActivity extends Activity {
 		return job.getResultAsWords(1000);
 	}
 
+	//認識文字を取得し、正しい文章になるように並び替えるメソッド
+	private String getWords(Word[] words){
+		String input = null;
+		Word tmp = null;
+		for(int i=0; i<words.length; i++){
+			//LeftPoint[i] = words[i].getShape().getBounds().getLeft();
+			for(int j=i; 0<j; j--){
+				if(words[j].getShape().getBounds().getTop() < words[j-1].getShape().getBounds().getTop()){
+					tmp = words[j];
+					words[j] = words[j-1];
+					words[j-1] = tmp;
+				}
+			}
+		}
+		
+		for(int i=0; i<words.length; i++){
+			if(i==0) input = words[i].getText();
+			else input += words[i].getText();
+		}
+		return input;
+	}
 	
 	//認識結果を描画するメソッド
 	/*

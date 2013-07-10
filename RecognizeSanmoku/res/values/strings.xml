@@ -2,6 +2,6 @@
 <resources>
 
     <string name="hello">Hello World, sampleActivity!</string>
-    <string name="app_name">情景文字認識サンプル</string>
+    <string name="app_name">RecognizeSanmoku</string>
 
 </resources>
