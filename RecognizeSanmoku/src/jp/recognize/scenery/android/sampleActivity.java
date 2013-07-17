@@ -101,10 +101,6 @@ public class sampleActivity extends Activity {
 					String input = null;
 					Intent intent = new Intent(sampleActivity.this,Sanmoku.class);
 					//文字を取得し、sanmokuActivityにデータを送信。
-					for(int i=0; i<words.length; i++){
-						System.out.println(words[i].getText()+","+words[i].getShape().getBounds().getTop()
-								+","+words[i].getShape().getBounds().getLeft()+","+words[i].getCategory());
-					}
 					input = getWords(words);
 					intent.putExtra("RecognizeData", input);
 					startActivity(intent);
@@ -164,15 +160,16 @@ public class sampleActivity extends Activity {
 		job.waitFor();
 
 		// 認識結果を取得します
-		return job.getResultAsWords(1000);
+		return job.getResultAsWords(100);
 	}
 
 	//認識文字を取得し、正しい文章になるように並び替えるメソッド
 	private String getWords(Word[] words){
 		String input = null;
 		Word tmp = null;
+		
+		//y軸順に並び替える。この時点ではx軸順から見て誤っている可能性がある。
 		for(int i=0; i<words.length; i++){
-			//LeftPoint[i] = words[i].getShape().getBounds().getLeft();
 			for(int j=i; 0<j; j--){
 				if(words[j].getShape().getBounds().getTop() < words[j-1].getShape().getBounds().getTop()){
 					tmp = words[j];
@@ -182,11 +179,43 @@ public class sampleActivity extends Activity {
 			}
 		}
 		
+		//y軸順に並び替えた単語配列の中で、同じ行にある単語をx軸順に並び替える。
 		for(int i=0; i<words.length; i++){
+			for(int j=i; 0<j; j--){
+				if(SameArrayJudge(words, j) && (words[j].getShape().getBounds().getLeft() < words[j-1].getShape().getBounds().getLeft())){
+					tmp = words[j];
+					words[j] = words[j-1];
+					words[j-1] = tmp;
+				}
+			}
+		}
+	
+		for(int i=0; i<words.length; i++){
+			System.out.println(words[i].getText()+","+words[i].getShape().getBounds().getLeft()+","+words[i].getShape().getBounds().getTop()
+					+","+words[i].getShape().getBounds().getBottom()+","+words[i].getShape().getBounds().getHeight());
 			if(i==0) input = words[i].getText();
 			else input += words[i].getText();
 		}
 		return input;
+	}
+	
+	//単語が同じ行にあるかを判断するメソッド
+	private boolean SameArrayJudge(Word[] words, int j){
+		int WordsBottom = 0 ,WordsBottomBefore = 0;
+		//前の単語が後の単語より少しだけ低い位置にあると認識された場合
+		if((WordsBottomBefore = words[j-1].getShape().getBounds().getBottom()) > (WordsBottom = words[j].getShape().getBounds().getBottom())){
+			if(words[j-1].getShape().getBounds().getTop() < words[j].getShape().getBounds().getTop())
+				return words[j].getShape().getBounds().getHeight() > 10 ? true : false;
+			else 
+				return words[j-1].getShape().getBounds().getHeight() - (WordsBottomBefore - WordsBottom) > 10 ? true : false;
+		}
+		//前の単語が後の単語より少しだけ高い位置にあると認識された場合
+		else{
+			if(words[j-1].getShape().getBounds().getTop() > words[j].getShape().getBounds().getTop())
+				return words[j-1].getShape().getBounds().getHeight() > 10 ? true : false;
+			else 
+				return words[j].getShape().getBounds().getHeight() - (WordsBottom - WordsBottomBefore) > 10 ? true : false;
+		}
 	}
 	
 	//認識結果を描画するメソッド
