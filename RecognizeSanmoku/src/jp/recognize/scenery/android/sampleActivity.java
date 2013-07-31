@@ -7,6 +7,16 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import jp.recognize.common.RecognitionResult.Word;
+import jp.recognize.common.SceneryRecognitionRequest.SceneryRecognitionHint.LetterColor;
+import jp.recognize.common.ImageContentType;
+import jp.recognize.common.SceneryRecognitionJob;
+import jp.recognize.common.SceneryRecognizer;
+import jp.recognize.common.client.HttpSceneryRecognitionRequest;
+import jp.recognize.common.client.HttpSceneryRecognizer;
+import jp.recognize.common.client.HttpSceneryRecognitionRequest.HttpSceneryRecognitionHint;
+import jp.recognize.common.client.HttpSceneryRecognitionRequest.InputStreamImageContent;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -22,16 +32,6 @@ import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
-import jp.recognize.ImageContentType;
-import jp.recognize.RecognitionResult.Word;
-import jp.recognize.SceneryRecognitionJob;
-import jp.recognize.SceneryRecognitionRequest.SceneryRecognitionHint.LetterColor;
-import jp.recognize.SceneryRecognizer;
-import jp.recognize.Shape.*;
-import jp.recognize.client.HttpSceneryRecognitionRequest;
-import jp.recognize.client.HttpSceneryRecognitionRequest.HttpSceneryRecognitionHint;
-import jp.recognize.client.HttpSceneryRecognitionRequest.InputStreamImageContent;
-import jp.recognize.client.HttpSceneryRecognizer;
 
 public class sampleActivity extends Activity {
 	private static final int REQUEST_CODE = 1;
@@ -96,7 +96,7 @@ public class sampleActivity extends Activity {
 		new Thread(new Runnable() {
 			public void run() {
 				try {
-					byte[] jpegData = getPictureData(pictureDataSize);
+					byte[] jpegData = CameraPreviewActivity.imageData;
 					Word[] words = recognize(jpegData);
 					String input = null;
 					Intent intent = new Intent(sampleActivity.this,Sanmoku.class);
@@ -126,6 +126,7 @@ public class sampleActivity extends Activity {
 		}).start();
 	}
 
+	//重要
 	//撮影した画像のデータを返すメソッド
 	private byte[] getPictureData(int pictureDataSize) throws IOException {
 		FileInputStream fileInputStream = null;
@@ -149,13 +150,10 @@ public class sampleActivity extends Activity {
 		SceneryRecognizer recognizer = new HttpSceneryRecognizer(new URL(Constants.RECOGNITION_URL));
 
 		// 認識を実行し認識ジョブを生成します
-		SceneryRecognitionJob job = recognizer.recognize(
-				new HttpSceneryRecognitionRequest(Constants.API_KEY,
-						Constants.CHARACTERS, Constants.WORDS, Constants.ANALYSIS, 
-						new InputStreamImageContent(ImageContentType.IMAGE_JPEG,
-								new ByteArrayInputStream(jpegData)), 
-								new HttpSceneryRecognitionHint(null, 0, LetterColor.Unknown, false)));
-
+		SceneryRecognitionJob job = recognizer.recognize(new HttpSceneryRecognitionRequest
+				(Constants.API_KEY, Constants.CHARACTERS, Constants.WORDS, Constants.ANALYSIS, 
+						new InputStreamImageContent(ImageContentType.IMAGE_JPEG, new ByteArrayInputStream(jpegData)), 
+						new HttpSceneryRecognitionHint(null, 0, LetterColor.Unknown, false)));
 		// 認識ジョブが終了するまで待ちます
 		job.waitFor();
 
@@ -189,7 +187,6 @@ public class sampleActivity extends Activity {
 				}
 			}
 		}
-	
 		for(int i=0; i<words.length; i++){
 			System.out.println(words[i].getText()+","+words[i].getShape().getBounds().getLeft()+","+words[i].getShape().getBounds().getTop()
 					+","+words[i].getShape().getBounds().getBottom()+","+words[i].getShape().getBounds().getHeight());
@@ -205,16 +202,18 @@ public class sampleActivity extends Activity {
 		//前の単語が後の単語より少しだけ低い位置にあると認識された場合
 		if((WordsBottomBefore = words[j-1].getShape().getBounds().getBottom()) > (WordsBottom = words[j].getShape().getBounds().getBottom())){
 			if(words[j-1].getShape().getBounds().getTop() < words[j].getShape().getBounds().getTop())
-				return words[j].getShape().getBounds().getHeight() > 10 ? true : false;
+				return true;
 			else 
-				return words[j-1].getShape().getBounds().getHeight() - (WordsBottomBefore - WordsBottom) > 10 ? true : false;
+				return words[j-1].getShape().getBounds().getHeight() - (WordsBottomBefore - WordsBottom) > words[j].getShape().getBounds().getHeight() / 5 
+						? true : false;
 		}
 		//前の単語が後の単語より少しだけ高い位置にあると認識された場合
 		else{
 			if(words[j-1].getShape().getBounds().getTop() > words[j].getShape().getBounds().getTop())
-				return words[j-1].getShape().getBounds().getHeight() > 10 ? true : false;
+				return true;
 			else 
-				return words[j].getShape().getBounds().getHeight() - (WordsBottom - WordsBottomBefore) > 10 ? true : false;
+				return words[j].getShape().getBounds().getHeight() - (WordsBottom - WordsBottomBefore) > words[j-1].getShape().getBounds().getHeight() / 5 
+						? true : false;
 		}
 	}
 	

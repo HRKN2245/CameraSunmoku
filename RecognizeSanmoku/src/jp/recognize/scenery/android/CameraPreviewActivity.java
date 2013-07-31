@@ -12,8 +12,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 public class CameraPreviewActivity extends Activity {
-	public static final String PICTURE_FILENAME = "image.jpg";
+	public static final String PICTURE_FILENAME = "image.jpeg";
 	public static final String RESULT_PICTURE_DATASIZE = "RESULT_PICTURE_SIZE";
+	public static byte[] imageData;
 	private CameraPreview cameraPreview;
 
 	@Override
@@ -23,6 +24,7 @@ public class CameraPreviewActivity extends Activity {
 			//Camera.takePicutureで撮影を行い、onPictureTakenをコールバックメソッドの引数として、撮影した
 			//画像をbyteデータとして取得
 			public void onPictureTaken(byte[] data, Camera camera) {
+				imageData = data;
 				FileOutputStream fileOutputStream = null;
 				BufferedOutputStream bufferedOutputStream = null;
 				try {
@@ -30,13 +32,15 @@ public class CameraPreviewActivity extends Activity {
 					fileOutputStream = openFileOutput(PICTURE_FILENAME, MODE_PRIVATE);
 					bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
 					bufferedOutputStream.write(data);
+					bufferedOutputStream.close();
 					cameraPreview.releaseCamera(); //カメラ解放
 					Intent intent = new Intent(); //Intent = アプリ間の連携
 					//putExtraで、第1引数に任意のKey、第2引数に格納したいデータを他のActivityに渡す
-					intent.putExtra(RESULT_PICTURE_DATASIZE, data.length);
+					intent.putExtra(RESULT_PICTURE_DATASIZE, imageData.length);
 					//メインActivityに実行結果を通知するメソッド。
 					//RESULT_OKは、Activity遷移の成功を示す。
-					setResult(Activity.RESULT_OK, intent);
+					if(data != null)
+						setResult(Activity.RESULT_OK, intent);
 				} catch (IOException e) {
 					//遷移のキャンセルを示す
 					setResult(Activity.RESULT_CANCELED);
