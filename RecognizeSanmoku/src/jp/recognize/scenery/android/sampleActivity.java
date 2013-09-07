@@ -106,7 +106,7 @@ public class sampleActivity extends Activity {
 					//Word[] words = recognize(jpegData);
 					SegmentGraph[] segmentGraph = recognize2(jpegData);
 					Segment seg = segmentGraph[0].getFirstSegment();
-					Candidate[] segArray = null;
+					Candidate[] segArray;
 					String input = null;
 					
 					int puttern = 1;
@@ -128,14 +128,19 @@ public class sampleActivity extends Activity {
 						int i = 0;
 						while(seg != null){
 							segArray = seg.getCandidates();
-							word[i][j] = segArray[j].getText();
-							System.out.print(word[i][j]+" "+j+",");
+							if(segArray.length-1 >= j)
+								word[i][j] = segArray[j].getText();
+							else {
+								word[i][j] = "";
+								System.out.println("nullった");
+							}
+							System.out.println(word[i][j]);
 							seg = seg.getNextSegment();
 							i++;
 						}
-						System.out.println();
 					}
 					
+					input = "aaa";
 					Intent intent = new Intent(sampleActivity.this,Sanmoku.class);
 					//文字を取得し、sanmokuActivityにデータを送信。
 					//input = getWords(words);
