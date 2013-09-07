@@ -4,10 +4,16 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import jp.recognize.common.RecognitionResult.Word;
+import jp.recognize.common.RecognitionResult.SegmentGraph;
+import jp.recognize.common.RecognitionResult.SegmentGraph.*;
+import jp.recognize.common.RecognitionResult.SegmentGraph.Segment;
+import jp.recognize.common.RecognitionResult.SegmentGraph.Segment.Candidate;
 import jp.recognize.common.SceneryRecognitionRequest.SceneryRecognitionHint.LetterColor;
 import jp.recognize.common.ImageContentType;
 import jp.recognize.common.SceneryRecognitionJob;
@@ -97,11 +103,42 @@ public class sampleActivity extends Activity {
 			public void run() {
 				try {
 					byte[] jpegData = CameraPreviewActivity.imageData;
-					Word[] words = recognize(jpegData);
+					//Word[] words = recognize(jpegData);
+					SegmentGraph[] segmentGraph = recognize2(jpegData);
+					Segment seg = segmentGraph[0].getFirstSegment();
+					Candidate[] segArray = null;
 					String input = null;
+					
+					int puttern = 1;
+					int segArrayMax = 0;
+					int wordCount = 0;
+					while(seg != null){
+						System.out.println(seg);
+						segArray = seg.getCandidates();
+						if(segArrayMax < segArray.length)
+							segArrayMax = segArray.length;
+						seg = seg.getNextSegment();
+						wordCount++;
+					}
+					
+					System.out.println(segArrayMax+","+wordCount);
+					String[][] word = new String[wordCount][segArrayMax];
+					for(int j=0; j<segArrayMax; j++){
+						seg = segmentGraph[0].getFirstSegment();
+						int i = 0;
+						while(seg != null){
+							segArray = seg.getCandidates();
+							word[i][j] = segArray[j].getText();
+							System.out.print(word[i][j]+" "+j+",");
+							seg = seg.getNextSegment();
+							i++;
+						}
+						System.out.println();
+					}
+					
 					Intent intent = new Intent(sampleActivity.this,Sanmoku.class);
 					//文字を取得し、sanmokuActivityにデータを送信。
-					input = getWords(words);
+					//input = getWords(words);
 					intent.putExtra("RecognizeData", input);
 					startActivity(intent);
 					finish();
@@ -145,11 +182,12 @@ public class sampleActivity extends Activity {
 	}
 
 	//重要
-	private Word[] recognize(byte[] jpegData) throws MalformedURLException, InterruptedException {
+	/*private Word[] recognize(byte[] jpegData) throws MalformedURLException, InterruptedException, UnsupportedEncodingException {
 		// SceneryRecognizerインスタンスを生成します
 		SceneryRecognizer recognizer = new HttpSceneryRecognizer(new URL(Constants.RECOGNITION_URL));
 
-		// 認識を実行し認識ジョブを生成します
+		// 認識を実行し認識ジョブを生成します 
+		System.out.println(Constants.WORDS);
 		SceneryRecognitionJob job = recognizer.recognize(new HttpSceneryRecognitionRequest
 				(Constants.API_KEY, Constants.CHARACTERS, Constants.WORDS, Constants.ANALYSIS, 
 						new InputStreamImageContent(ImageContentType.IMAGE_JPEG, new ByteArrayInputStream(jpegData)), 
@@ -159,8 +197,26 @@ public class sampleActivity extends Activity {
 
 		// 認識結果を取得します
 		return job.getResultAsWords(100);
+	}*/
+
+	private SegmentGraph[] recognize2(byte[] jpegData) throws MalformedURLException, InterruptedException, UnsupportedEncodingException {
+		// SceneryRecognizerインスタンスを生成します
+		SceneryRecognizer recognizer = new HttpSceneryRecognizer(new URL(Constants.RECOGNITION_URL));
+
+		// 認識を実行し認識ジョブを生成します 
+		System.out.println(Constants.WORDS);
+		SceneryRecognitionJob job = recognizer.recognize(new HttpSceneryRecognitionRequest
+				(Constants.API_KEY, Constants.CHARACTERS, Constants.WORDS, Constants.ANALYSIS, 
+						new InputStreamImageContent(ImageContentType.IMAGE_JPEG, new ByteArrayInputStream(jpegData)), 
+						new HttpSceneryRecognitionHint(null, 0, LetterColor.Unknown, false)));
+		// 認識ジョブが終了するまで待ちます
+		job.waitFor();
+
+		// 認識結果を取得します
+		return job.getResultAsSegmentGraphs();
 	}
 
+	
 	//認識文字を取得し、正しい文章になるように並び替えるメソッド
 	private String getWords(Word[] words){
 		String input = null;

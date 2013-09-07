@@ -44,7 +44,7 @@ public class Sanmoku extends Activity
     	if(RecognizeData.length() > 0){
     		Pattern pYear = Pattern.compile("[０-９]{4}[年．／]");
     		Pattern pMonth = Pattern.compile("１?[０-９][月．／]");
-    		Pattern pDay = Pattern.compile("[０-３]?[０-９][日．／]?");
+    		Pattern pDay = Pattern.compile("[１-３]?[０-９][日]");
 
     		//年の部分の抽出
     		Matcher m = pYear.matcher(RecognizeData);
