@@ -112,15 +112,18 @@ public class sampleActivity extends Activity {
 					int puttern = 1;
 					int segArrayMax = 0;
 					int wordCount = 0;
+					//文字数と、候補数の最大値を取得する。
 					while(seg != null){
 						System.out.println(seg);
 						segArray = seg.getCandidates();
 						if(segArrayMax < segArray.length)
 							segArrayMax = segArray.length;
+						puttern *= segArray.length;
 						seg = seg.getNextSegment();
 						wordCount++;
 					}
 					
+					//全ての候補をword[][]の中に入れる。
 					System.out.println(segArrayMax+","+wordCount);
 					String[][] word = new String[wordCount][segArrayMax];
 					for(int j=0; j<segArrayMax; j++){
@@ -130,17 +133,31 @@ public class sampleActivity extends Activity {
 							segArray = seg.getCandidates();
 							if(segArray.length-1 >= j)
 								word[i][j] = segArray[j].getText();
-							else {
+							else 
 								word[i][j] = "";
-								System.out.println("nullった");
-							}
-							System.out.println(word[i][j]);
+							//System.out.println(word[i][j]);
 							seg = seg.getNextSegment();
 							i++;
 						}
 					}
 					
-					input = "aaa";
+					int[] index = new int[wordCount];
+					int tmp = 0;
+					boolean flag = false;
+					for(int i=0; i<puttern; i++){
+						for(int j=0; j<wordCount; j++){
+							System.out.println(word[j][index[j]]);
+							if(j == wordCount-1){
+								index[j]++;
+							}
+							if(index[j] > word[j].length || word[j][index[j]] == ""){
+								index[j-1]++;
+								for(int k=j-1; k<index.length; k++){
+									index[k] = 0;
+								}
+							}
+						}
+					}
 					Intent intent = new Intent(sampleActivity.this,Sanmoku.class);
 					//文字を取得し、sanmokuActivityにデータを送信。
 					//input = getWords(words);
