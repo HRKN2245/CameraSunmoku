@@ -32,16 +32,16 @@ public class Sanmoku extends Activity
     	//文章の解析部分
     	if(RecognizeData.length() > 0) { 
     		for(net.reduls.sanmoku.Morpheme e : net.reduls.sanmoku.Tagger.parse(RecognizeData)) {
-    			//TextView txt = new TextView(this);
+    			TextView txt = new TextView(this);
     			//SpannableString 文字の装飾
     			SpannableString spannable = DataFormatter.format("<"+e.surface+">\n"+e.feature);
-    			//txt.setText(spannable, TextView.BufferType.SPANNABLE);
-    			//resultArea.addView(txt);
+    			txt.setText(spannable, TextView.BufferType.SPANNABLE);
+    			resultArea.addView(txt);
     		}
     	}
 
     	//日付の抜き出し部分
-    	if(RecognizeData.length() > 0){
+    	/*if(RecognizeData.length() > 0){
     		Pattern pYear = Pattern.compile("[０-９]{4}[年．／]");
     		Pattern pMonth = Pattern.compile("１?[０-９][月．／]");
     		Pattern pDay = Pattern.compile("[１-３]?[０-９][日]");
@@ -69,7 +69,7 @@ public class Sanmoku extends Activity
     			txt.setText(m.group());
     			resultArea.addView(txt);
     		}
-    	}
+    	}*/
 
     }
 }

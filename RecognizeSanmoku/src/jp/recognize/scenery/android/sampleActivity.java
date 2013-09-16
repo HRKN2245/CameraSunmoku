@@ -12,7 +12,6 @@ import java.net.URLEncoder;
 import jp.recognize.common.RecognitionResult.Word;
 import jp.recognize.common.RecognitionResult.SegmentGraph;
 import jp.recognize.common.RecognitionResult.SegmentGraph.*;
-import jp.recognize.common.RecognitionResult.SegmentGraph.Segment;
 import jp.recognize.common.RecognitionResult.SegmentGraph.Segment.Candidate;
 import jp.recognize.common.SceneryRecognitionRequest.SceneryRecognitionHint.LetterColor;
 import jp.recognize.common.ImageContentType;
@@ -104,63 +103,24 @@ public class sampleActivity extends Activity {
 				try {
 					byte[] jpegData = CameraPreviewActivity.imageData;
 					//Word[] words = recognize(jpegData);
-					SegmentGraph[] segmentGraph = recognize2(jpegData);
-					Segment seg = segmentGraph[0].getFirstSegment();
-					Candidate[] segArray;
-					String input = null;
+					SegmentGraph[] segmentGraph = recognize2(jpegData); //断片グラフを取得する。
+					String input = "";
+					int[] states = {0,0};//[0]にパターン数、[1]に文字数が入るステータス配列。
+					//配列にしているのは、参照渡しするため。
 					
-					int puttern = 1;
-					int segArrayMax = 0;
-					int wordCount = 0;
+					setSegmentGraph(segmentGraph);
+					
 					//文字数と、候補数の最大値を取得する。
-					while(seg != null){
-						System.out.println(seg);
-						segArray = seg.getCandidates();
-						if(segArrayMax < segArray.length)
-							segArrayMax = segArray.length;
-						puttern *= segArray.length;
-						seg = seg.getNextSegment();
-						wordCount++;
-					}
+					setStates(segmentGraph,states);
 					
-					//全ての候補をword[][]の中に入れる。
-					System.out.println(segArrayMax+","+wordCount);
-					String[][] word = new String[wordCount][segArrayMax];
-					for(int j=0; j<segArrayMax; j++){
-						seg = segmentGraph[0].getFirstSegment();
-						int i = 0;
-						while(seg != null){
-							segArray = seg.getCandidates();
-							if(segArray.length-1 >= j)
-								word[i][j] = segArray[j].getText();
-							else 
-								word[i][j] = "";
-							//System.out.println(word[i][j]);
-							seg = seg.getNextSegment();
-							i++;
-						}
-					}
+					String[][] word = new String[states[1]][2];
+					//全てのパターンを配列に代入する。
+					word = getString(states, segmentGraph);
 					
-					int[] index = new int[wordCount];
-					int tmp = 0;
-					boolean flag = false;
-					for(int i=0; i<puttern; i++){
-						for(int j=0; j<wordCount; j++){
-							System.out.println(word[j][index[j]]);
-							if(j == wordCount-1){
-								index[j]++;
-							}
-							if(index[j] > word[j].length || word[j][index[j]] == ""){
-								index[j-1]++;
-								for(int k=j-1; k<index.length; k++){
-									index[k] = 0;
-								}
-							}
-						}
-					}
+					input = getWords(word,states);
+					
 					Intent intent = new Intent(sampleActivity.this,Sanmoku.class);
 					//文字を取得し、sanmokuActivityにデータを送信。
-					//input = getWords(words);
 					intent.putExtra("RecognizeData", input);
 					startActivity(intent);
 					finish();
@@ -203,24 +163,6 @@ public class sampleActivity extends Activity {
 		}
 	}
 
-	//重要
-	/*private Word[] recognize(byte[] jpegData) throws MalformedURLException, InterruptedException, UnsupportedEncodingException {
-		// SceneryRecognizerインスタンスを生成します
-		SceneryRecognizer recognizer = new HttpSceneryRecognizer(new URL(Constants.RECOGNITION_URL));
-
-		// 認識を実行し認識ジョブを生成します 
-		System.out.println(Constants.WORDS);
-		SceneryRecognitionJob job = recognizer.recognize(new HttpSceneryRecognitionRequest
-				(Constants.API_KEY, Constants.CHARACTERS, Constants.WORDS, Constants.ANALYSIS, 
-						new InputStreamImageContent(ImageContentType.IMAGE_JPEG, new ByteArrayInputStream(jpegData)), 
-						new HttpSceneryRecognitionHint(null, 0, LetterColor.Unknown, false)));
-		// 認識ジョブが終了するまで待ちます
-		job.waitFor();
-
-		// 認識結果を取得します
-		return job.getResultAsWords(100);
-	}*/
-
 	private SegmentGraph[] recognize2(byte[] jpegData) throws MalformedURLException, InterruptedException, UnsupportedEncodingException {
 		// SceneryRecognizerインスタンスを生成します
 		SceneryRecognizer recognizer = new HttpSceneryRecognizer(new URL(Constants.RECOGNITION_URL));
@@ -237,86 +179,159 @@ public class sampleActivity extends Activity {
 		// 認識結果を取得します
 		return job.getResultAsSegmentGraphs();
 	}
-
 	
-	//認識文字を取得し、正しい文章になるように並び替えるメソッド
-	private String getWords(Word[] words){
-		String input = null;
-		Word tmp = null;
+	private void setSegmentGraph(SegmentGraph[] segmentGraph) {
+		// TODO 自動生成されたメソッド・スタブ
+		for(int i=0; i<segmentGraph.length; i++){
+			if(segmentGraph[i].getFirstSegment() == null) continue;
+			System.out.println("ループ"+i);
+			Segment seg = segmentGraph[i].getFirstSegment();
+			while(seg != null){
+				System.out.println(seg);
+				seg = seg.getNextSegment();
+			}
+		}
 		
-		//y軸順に並び替える。この時点ではx軸順から見て誤っている可能性がある。
-		for(int i=0; i<words.length; i++){
-			for(int j=i; 0<j; j--){
-				if(words[j].getShape().getBounds().getTop() < words[j-1].getShape().getBounds().getTop()){
-					tmp = words[j];
-					words[j] = words[j-1];
-					words[j-1] = tmp;
+		for(int i=0; i<segmentGraph.length-1; i++){
+			if(segmentGraph[i] != null){
+				for(int j=i+1; j<segmentGraph.length; j++){
+					if(segmentGraph[j] != null){
+						if(segmentGraph[j].getFirstSegment() == null)
+							segmentGraph[j] = null;
+						else if(Math.abs(segmentGraph[i].getFirstSegment().getShape().getBounds().getTop() - 
+								segmentGraph[j].getFirstSegment().getShape().getBounds().getTop()) < 50)
+							segmentGraph[j] = null;
+					}
 				}
 			}
 		}
 		
-		//y軸順に並び替えた単語配列の中で、同じ行にある単語をx軸順に並び替える。
-		for(int i=0; i<words.length; i++){
-			for(int j=i; 0<j; j--){
-				if(SameArrayJudge(words, j) && (words[j].getShape().getBounds().getLeft() < words[j-1].getShape().getBounds().getLeft())){
-					tmp = words[j];
-					words[j] = words[j-1];
-					words[j-1] = tmp;
+		SegmentGraph tmp = null;
+		
+		for(int i=0; i<segmentGraph.length; i++){
+			if(segmentGraph[i] != null){
+				for(int j=i; 0<j; j--){
+					if(segmentGraph[j-1] == null){
+						tmp = segmentGraph[j];
+						segmentGraph[j] = segmentGraph[j-1];
+						segmentGraph[j-1] = tmp;
+					}
+					else if(segmentGraph[j].getFirstSegment().getShape().getBounds().getTop() < 
+							segmentGraph[j-1].getFirstSegment().getShape().getBounds().getTop()){
+						tmp = segmentGraph[j];
+						segmentGraph[j] = segmentGraph[j-1];
+						segmentGraph[j-1] = tmp;
+					}
 				}
 			}
 		}
-		for(int i=0; i<words.length; i++){
-			System.out.println(words[i].getText()+","+words[i].getShape().getBounds().getLeft()+","+words[i].getShape().getBounds().getTop()
-					+","+words[i].getShape().getBounds().getBottom()+","+words[i].getShape().getBounds().getHeight());
-			if(i==0) input = words[i].getText();
-			else input += words[i].getText();
+		
+		for(int i=0; i<segmentGraph.length; i++){
+			if(segmentGraph[i] == null) break;
+			Segment seg = segmentGraph[i].getFirstSegment();
+			while(seg != null){
+				System.out.println(seg);
+				seg = seg.getNextSegment();
+			}
+		}
+	}
+	
+	//文字数、スコアを取得するメソッド
+	//statesの配列化は、参照渡しをさせるため。
+	private void setStates(SegmentGraph[] segmentGraph, int[] states){
+		//0がパターン数、1が文字数
+		Candidate[] segArray;
+		double TotalScore = 0.0;
+		Segment seg = segmentGraph[0].getFirstSegment();
+		while(seg != null){
+			segArray = seg.getCandidates();
+			TotalScore += segArray[0].getScore();
+			seg = seg.getNextSegment();
+			states[1]++;
+		}
+		System.out.println(TotalScore);
+		//一番有効な文字のトータルスコアが設定値以上だと、認識失敗とする。
+		//ピントが合わない状態で撮影した場合の処置。
+		if(TotalScore > 5.0)
+			Toast.makeText(sampleActivity.this, "認識に失敗しました。", Toast.LENGTH_LONG).show();
+	}
+	
+	//全パターンを配列に代入するメソッド
+	private String[][] getString(int[] states, SegmentGraph[] segmentGraph){
+		Segment seg = segmentGraph[0].getFirstSegment();
+		Candidate[] segArray;
+		String word[][] = new String[states[1]][2];
+		//for(int j=0; j<2; j++){
+		int i = 0;
+		while(seg != null){
+			segArray = seg.getCandidates();
+			//if(segArray.length-1 >= j)
+			word[i][0] = segArray[0].getText();
+			word[i][1] = getToUpperString(word[i][0]);
+			if(word[i][1] != null) states[0]++; 
+			//System.out.println(word[i][j]);
+			seg = seg.getNextSegment();
+			i++;
+		}
+		//}
+		return word;
+	}
+	
+	//大文字を小文字にするメソッド。
+	private String getToUpperString(String word) {
+		// TODO 自動生成されたメソッド・スタブ
+		switch(word.toCharArray()[0]){
+		case 'あ': return "ぁ"; 
+		case 'ア': return "ァ";
+		case 'い': return "ぃ"; 
+		case 'イ': return "ィ";
+		case 'う': return "ぅ"; 
+		case 'ウ': return "ゥ";
+		case 'え': return "ェ"; 
+		case 'お': return "ぉ";
+		case 'オ': return "ォ";
+		case 'つ': return "っ"; 
+		case 'ツ': return "ッ";
+		case 'や': return "ゃ"; 
+		case 'ヤ': return "ャ";
+		case 'ゆ': return "ゅ"; 
+		case 'ユ': return "ュ";
+		case 'よ': return "ょ"; 
+		case 'ヨ': return "ョ";
+		default: return null;
+		}
+	}
+	
+	//全パターンを出力し、文字列として取得するメソッド
+	private String getWords(String[][] word, int[] states){
+		String input = "";
+		int[] index = new int[states[1]];
+		for(int i=0; i<(int)Math.pow(2, states[0]); i++){
+			for(int j=0; j<states[1]; j++){
+				//System.out.print(word[j][index[j]]);
+				input += word[j][index[j]];
+				if(j == states[1]-1) index[j]++;
+				if(index[j] > word[j].length-1 || word[j][index[j]] == null)
+					getIndex(word,index,j);
+			}
+			input += " ";
+			//System.out.println("\n------------------------------------------------");
 		}
 		return input;
 	}
 	
-	//単語が同じ行にあるかを判断するメソッド
-	private boolean SameArrayJudge(Word[] words, int j){
-		int WordsBottom = 0 ,WordsBottomBefore = 0;
-		//前の単語が後の単語より少しだけ低い位置にあると認識された場合
-		if((WordsBottomBefore = words[j-1].getShape().getBounds().getBottom()) > (WordsBottom = words[j].getShape().getBounds().getBottom())){
-			if(words[j-1].getShape().getBounds().getTop() < words[j].getShape().getBounds().getTop())
-				return true;
-			else 
-				return words[j-1].getShape().getBounds().getHeight() - (WordsBottomBefore - WordsBottom) > words[j].getShape().getBounds().getHeight() / 5 
-						? true : false;
+	//全パターンを出力するために、インデックスを取得するメソッド
+	private int[] getIndex(String[][] word, int[] index, int j){
+		if(j-1 >= 0){
+			index[j-1]++;
+			for(int k=j; k<index.length; k++){
+				index[k] = 0;
+			}
+			if(index[j-1] > word[j-1].length-1 || word[j-1][index[j-1]] == null)
+				return getIndex(word,index,j-1);
+			return index;
 		}
-		//前の単語が後の単語より少しだけ高い位置にあると認識された場合
-		else{
-			if(words[j-1].getShape().getBounds().getTop() > words[j].getShape().getBounds().getTop())
-				return true;
-			else 
-				return words[j].getShape().getBounds().getHeight() - (WordsBottom - WordsBottomBefore) > words[j-1].getShape().getBounds().getHeight() / 5 
-						? true : false;
-		}
+		else return index;
 	}
-	
-	//認識結果を描画するメソッド
-	/*
-	private Bitmap drawRecognizeResult(byte[] pictureData, Word[] words) {
-		Bitmap bitmap = BitmapFactory.decodeByteArray(pictureData, 0, pictureData.length);
-		final Bitmap mutableBitmap = bitmap.copy(bitmap.getConfig(), true);
-		bitmap.recycle();
-		Canvas canvas = new Canvas(mutableBitmap);
 
-		for (Word word : words) {
-			Rectangle bounds = word.getShape().getBounds();
-			Rect rect = new Rect(bounds.getLeft(), bounds.getTop(), bounds.getRight(), bounds.getBottom());
-			canvas.drawRect(rect, fillPaint);
-			canvas.drawRect(rect, framePaint);
-		}
-		
-		for (Word word : words) {
-			Rectangle bounds = word.getShape().getBounds();
-			Rect rect = new Rect(bounds.getLeft(), bounds.getTop(), bounds.getRight(), bounds.getBottom());
-			textPaint.setTextSize(rect.height() > rect.width() ? rect.width() : rect.height());
-			canvas.drawText(word.getText(), rect.left, rect.top, textPaint);
-		}
-
-		return mutableBitmap;
-	}*/
 }
