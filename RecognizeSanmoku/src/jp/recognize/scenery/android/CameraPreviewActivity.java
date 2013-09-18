@@ -22,7 +22,7 @@ public class CameraPreviewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		cameraPreview = new CameraPreview(this, new PictureCallback() {
 			//Camera.takePicutureで撮影を行い、onPictureTakenをコールバックメソッドの引数として、撮影した
-			//画像をbyteデータとして取得
+			//画像をbyteデータ(byte[] data)として取得
 			public void onPictureTaken(byte[] data, Camera camera) {
 				imageData = data;
 				FileOutputStream fileOutputStream = null;

@@ -180,6 +180,11 @@ public class sampleActivity extends Activity {
 		return job.getResultAsSegmentGraphs();
 	}
 	
+	//断片グラフを設定するメソッド。
+	//複数行の断片グラフを取得した場合、同じ結果が複数出ることがあるので、その同じ結果の断片グラフ配列除去
+	//断片グラフの要素がない配列も除去。
+	//読み取り結果が認識すべき文字数と一致しない断片グラフ配列も除去
+	//断片グラフの無駄な配列を全て除去し、
 	private void setSegmentGraph(SegmentGraph[] segmentGraph) {
 		// TODO 自動生成されたメソッド・スタブ
 		for(int i=0; i<segmentGraph.length; i++){
