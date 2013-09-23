@@ -58,6 +58,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 			Parameters parameters = camera.getParameters();
 			Size previewSize = max(parameters.getSupportedPreviewSizes());
 			parameters.setPreviewSize(previewSize.width, previewSize.height);
+			parameters.setPictureSize(previewSize.width, previewSize.height);
 			//パラメータのセット
 			camera.setParameters(parameters);
 			//surfaceHolderを設定する。

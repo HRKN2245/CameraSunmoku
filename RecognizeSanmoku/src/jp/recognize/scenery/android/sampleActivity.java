@@ -103,30 +103,48 @@ public class sampleActivity extends Activity {
 				try {
 					byte[] jpegData = CameraPreviewActivity.imageData;
 					//Word[] words = recognize(jpegData);
-					SegmentGraph[] segmentGraph = recognize2(jpegData); //断片グラフを取得する。
+					SegmentGraph[] segmentGraphtmp = recognize2(jpegData), //断片グラフを取得する。
+									segmentGraph = null;  //正しく直された断片グラフ
+					int[] wordCount, //文字数
+							puttern; //パターン数
 					String input = "";
-					int[] states = {0,0};//[0]にパターン数、[1]に文字数が入るステータス配列。
-					//配列にしているのは、参照渡しするため。
 					
-					setSegmentGraph(segmentGraph);
+					//断片グラフの設定
+					setSegmentGraph(segmentGraphtmp);
 					
-					//文字数と、候補数の最大値を取得する。
-					setStates(segmentGraph,states);
+					//設定した断片グラフのうち、null要素を全て削った新しい断片グラフ配列の宣言
+					for(int i=0; i<segmentGraphtmp.length; i++){
+						if(segmentGraphtmp[i] == null){
+							segmentGraph = new SegmentGraph[i];
+							break;
+						}
+					}
+					//配列のコピー
+					System.arraycopy(segmentGraphtmp, 0, segmentGraph, 0, segmentGraph.length);
 					
-					String[][] word = new String[states[1]][2];
+					//文字数の取得
+					wordCount = new int[segmentGraph.length];
+					puttern = new int[segmentGraph.length];
+					setStates(segmentGraph, wordCount);
+					
+					//認識結果の単語を入れる配列を宣言。
+					String word[][][] = new String[segmentGraph.length][][];
+					for(int i=0; i<segmentGraph.length; i++){
+						word[i] = new String[wordCount[i]][2];
+					}
+
 					//全てのパターンを配列に代入する。
-					word = getString(states, segmentGraph);
+					word = getString(wordCount, puttern, segmentGraph);
 					
-					input = getWords(word,states);
+					//文字列を取得する。
+					input = getWords(word, wordCount, puttern);
 					
 					Intent intent = new Intent(sampleActivity.this,Sanmoku.class);
 					//文字を取得し、sanmokuActivityにデータを送信。
 					intent.putExtra("RecognizeData", input);
 					startActivity(intent);
 					finish();
-					
-					//bitmap: 認識結果を描くための変数
-					//final Bitmap bitmap = drawRecognizeResult(jpegData, words);
+				
 					handler.post(new Runnable() {
 						public void run() {
 							progressDialog.dismiss();
@@ -185,55 +203,62 @@ public class sampleActivity extends Activity {
 	//断片グラフの要素がない配列も除去。
 	//読み取り結果が認識すべき文字数と一致しない断片グラフ配列も除去
 	//断片グラフの無駄な配列を全て除去し、
-	private void setSegmentGraph(SegmentGraph[] segmentGraph) {
+	private void setSegmentGraph(SegmentGraph[] segmentGraphtmp) {
 		// TODO 自動生成されたメソッド・スタブ
-		for(int i=0; i<segmentGraph.length; i++){
-			if(segmentGraph[i].getFirstSegment() == null) continue;
+		SegmentGraph stmp = null;
+		
+		//ただの出力
+		for(int i=0; i<segmentGraphtmp.length; i++){
+			if(segmentGraphtmp[i].getFirstSegment() == null) continue;
 			System.out.println("ループ"+i);
-			Segment seg = segmentGraph[i].getFirstSegment();
+			Segment seg = segmentGraphtmp[i].getFirstSegment();
 			while(seg != null){
 				System.out.println(seg);
 				seg = seg.getNextSegment();
 			}
 		}
 		
-		for(int i=0; i<segmentGraph.length-1; i++){
-			if(segmentGraph[i] != null){
-				for(int j=i+1; j<segmentGraph.length; j++){
-					if(segmentGraph[j] != null){
-						if(segmentGraph[j].getFirstSegment() == null)
-							segmentGraph[j] = null;
-						else if(Math.abs(segmentGraph[i].getFirstSegment().getShape().getBounds().getTop() - 
-								segmentGraph[j].getFirstSegment().getShape().getBounds().getTop()) < 50)
-							segmentGraph[j] = null;
+		//同じ行のものをnullにする。
+		for(int i=0; i<segmentGraphtmp.length-1; i++){
+			if(segmentGraphtmp[i] != null){
+				for(int j=i+1; j<segmentGraphtmp.length; j++){
+					if(segmentGraphtmp[j] != null){
+						if(segmentGraphtmp[j].getFirstSegment() == null)
+							segmentGraphtmp[j] = null;
+						else if(Math.abs(segmentGraphtmp[i].getFirstSegment().getShape().getBounds().getTop() - 
+								segmentGraphtmp[j].getFirstSegment().getShape().getBounds().getTop()) < 50){
+							segmentGraphtmp[j] = null;
+						}
 					}
 				}
 			}
 		}
 		
-		SegmentGraph tmp = null;
-		
-		for(int i=0; i<segmentGraph.length; i++){
-			if(segmentGraph[i] != null){
+		//並び替え
+		for(int i=0; i<segmentGraphtmp.length; i++){
+			if(segmentGraphtmp[i] != null){
 				for(int j=i; 0<j; j--){
-					if(segmentGraph[j-1] == null){
-						tmp = segmentGraph[j];
-						segmentGraph[j] = segmentGraph[j-1];
-						segmentGraph[j-1] = tmp;
+					if(segmentGraphtmp[j-1] == null){
+						stmp = segmentGraphtmp[j];
+						segmentGraphtmp[j] = segmentGraphtmp[j-1];
+						segmentGraphtmp[j-1] = stmp;
 					}
-					else if(segmentGraph[j].getFirstSegment().getShape().getBounds().getTop() < 
-							segmentGraph[j-1].getFirstSegment().getShape().getBounds().getTop()){
-						tmp = segmentGraph[j];
-						segmentGraph[j] = segmentGraph[j-1];
-						segmentGraph[j-1] = tmp;
+					else if(segmentGraphtmp[j].getFirstSegment().getShape().getBounds().getTop() < 
+							segmentGraphtmp[j-1].getFirstSegment().getShape().getBounds().getTop()){
+						stmp = segmentGraphtmp[j];
+						segmentGraphtmp[j] = segmentGraphtmp[j-1];
+						segmentGraphtmp[j-1] = stmp;
 					}
 				}
 			}
 		}
 		
-		for(int i=0; i<segmentGraph.length; i++){
-			if(segmentGraph[i] == null) break;
-			Segment seg = segmentGraph[i].getFirstSegment();
+		//再出力
+		System.out.println("ここより下が本番");
+		for(int i=0; i<segmentGraphtmp.length; i++){
+			System.out.println("ループ"+i);
+			if(segmentGraphtmp[i] == null) break;
+			Segment seg = segmentGraphtmp[i].getFirstSegment();
 			while(seg != null){
 				System.out.println(seg);
 				seg = seg.getNextSegment();
@@ -243,40 +268,39 @@ public class sampleActivity extends Activity {
 	
 	//文字数、スコアを取得するメソッド
 	//statesの配列化は、参照渡しをさせるため。
-	private void setStates(SegmentGraph[] segmentGraph, int[] states){
-		//0がパターン数、1が文字数
+	private void setStates(SegmentGraph[] segmentGraph, int[] wordCount){
 		Candidate[] segArray;
-		double TotalScore = 0.0;
-		Segment seg = segmentGraph[0].getFirstSegment();
-		while(seg != null){
-			segArray = seg.getCandidates();
-			TotalScore += segArray[0].getScore();
-			seg = seg.getNextSegment();
-			states[1]++;
+		for(int i=0; i<segmentGraph.length; i++){
+			double TotalScore = 0.0;
+			Segment seg = segmentGraph[i].getFirstSegment();
+			while(seg != null){
+				segArray = seg.getCandidates();
+				TotalScore += segArray[0].getScore();
+				seg = seg.getNextSegment();
+				wordCount[i]++;
+			}
+			System.out.println(TotalScore);
+			//一番有効な文字のトータルスコアが設定値以上だと、認識失敗とする。
+			//ピントが合わない状態で撮影した場合の処置。
+			if(TotalScore > 100.0)
+				Toast.makeText(sampleActivity.this, "認識に失敗しました。", Toast.LENGTH_LONG).show();
 		}
-		System.out.println(TotalScore);
-		//一番有効な文字のトータルスコアが設定値以上だと、認識失敗とする。
-		//ピントが合わない状態で撮影した場合の処置。
-		if(TotalScore > 5.0)
-			Toast.makeText(sampleActivity.this, "認識に失敗しました。", Toast.LENGTH_LONG).show();
 	}
 	
 	//全パターンを配列に代入するメソッド
-	private String[][] getString(int[] states, SegmentGraph[] segmentGraph){
-		Segment seg = segmentGraph[0].getFirstSegment();
+	private String[][][] getString(int[] wordCount, int[] puttern, SegmentGraph[] segmentGraph){
 		Candidate[] segArray;
-		String word[][] = new String[states[1]][2];
-		//for(int j=0; j<2; j++){
-		int i = 0;
-		while(seg != null){
-			segArray = seg.getCandidates();
-			//if(segArray.length-1 >= j)
-			word[i][0] = segArray[0].getText();
-			word[i][1] = getToUpperString(word[i][0]);
-			if(word[i][1] != null) states[0]++; 
-			//System.out.println(word[i][j]);
-			seg = seg.getNextSegment();
-			i++;
+		String word[][][] = new String[segmentGraph.length][][];
+		for(int i=0; i<segmentGraph.length; i++){
+			Segment seg = segmentGraph[i].getFirstSegment();
+			word[i] = new String[wordCount[i]][2];
+			for(int j=0; j<wordCount[i]; j++){
+				segArray = seg.getCandidates();
+				word[i][j][0] = segArray[0].getText();
+				word[i][j][1] = getToUpperString(word[i][j][0]);
+				if(word[i][j][1] != null) puttern[i]++; 
+				seg = seg.getNextSegment();
+			}
 		}
 		//}
 		return word;
@@ -303,37 +327,43 @@ public class sampleActivity extends Activity {
 		case 'ユ': return "ュ";
 		case 'よ': return "ょ"; 
 		case 'ヨ': return "ョ";
+		case 'へ': return "ヘ";
+		case 'べ': return "ベ";
+		case 'ぺ': return "ペ";
 		default: return null;
 		}
 	}
 	
 	//全パターンを出力し、文字列として取得するメソッド
-	private String getWords(String[][] word, int[] states){
+	private String getWords(String[][][] word, int[] wordCount, int[] puttern){
 		String input = "";
-		int[] index = new int[states[1]];
-		for(int i=0; i<(int)Math.pow(2, states[0]); i++){
-			for(int j=0; j<states[1]; j++){
-				//System.out.print(word[j][index[j]]);
-				input += word[j][index[j]];
-				if(j == states[1]-1) index[j]++;
-				if(index[j] > word[j].length-1 || word[j][index[j]] == null)
-					getIndex(word,index,j);
+		for(int i=0; i<word.length; i++){
+			int[] index = new int[wordCount[i]];
+			for(int j=0; j<Math.pow(2, puttern[i]); j++){
+				for(int k=0; k<wordCount[i]; k++){
+					//k文字目というカウント
+					input += word[i][k][index[k]];
+					if(k == wordCount[i]-1) index[k]++;
+					if(index[k] > word[i][k].length-1 || word[i][k][index[k]] == null)
+						index = getIndex(word,index,i,k);
+				}
+				input += " ";
 			}
-			input += " ";
-			//System.out.println("\n------------------------------------------------");
+			input += "\n";
 		}
 		return input;
 	}
 	
 	//全パターンを出力するために、インデックスを取得するメソッド
-	private int[] getIndex(String[][] word, int[] index, int j){
-		if(j-1 >= 0){
-			index[j-1]++;
-			for(int k=j; k<index.length; k++){
-				index[k] = 0;
+	private int[] getIndex(String[][][] word, int[] index, int i, int k){
+		if(k-1 >= 0){
+			System.out.println("getIndex");
+			index[k-1]++;
+			for(int l=k; l<index.length; l++){
+				index[l] = 0;
 			}
-			if(index[j-1] > word[j-1].length-1 || word[j-1][index[j-1]] == null)
-				return getIndex(word,index,j-1);
+			if(index[k-1] > word[i][k-1].length-1 || word[i][k-1][index[k-1]] == null)
+				return getIndex(word,index,i,k-1);
 			return index;
 		}
 		else return index;
