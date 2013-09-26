@@ -3,6 +3,8 @@ package jp.recognize.scenery.android;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.reduls.sanmoku.FeatureEx;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -32,9 +34,10 @@ public class Sanmoku extends Activity
     	//文章の解析部分
     	if(RecognizeData.length() > 0) { 
     		for(net.reduls.sanmoku.Morpheme e : net.reduls.sanmoku.Tagger.parse(RecognizeData)) {
+    			FeatureEx fe = new FeatureEx(e);
     			TextView txt = new TextView(this);
     			//SpannableString 文字の装飾
-    			SpannableString spannable = DataFormatter.format("<"+e.surface+">\n"+e.feature);
+    			SpannableString spannable = DataFormatter.format("<"+e.surface+">\n"+e.feature+","+fe.baseform+","+fe.pronunciation+","+fe.reading);
     			txt.setText(spannable, TextView.BufferType.SPANNABLE);
     			resultArea.addView(txt);
     		}
