@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/list_bg"
+    >
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="0px"
+    android:layout_weight="128"
+    android:background="@drawable/schedule"
+    />
+<ListView  
+    android:id="@+id/calendar_list_view"
+    android:layout_width="fill_parent" 
+    android:layout_height="0px" 
+    android:layout_weight="772"
+    android:scrollbars="none"
+    android:divider="@drawable/line"
+    android:dividerHeight="4dp"
+    android:cacheColorHint="#00000000"
+    />
+</LinearLayout>

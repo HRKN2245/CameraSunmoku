@@ -3,7 +3,6 @@
 	<name>RecognizeSanmoku</name>
 	<comment></comment>
 	<projects>
-		<project>CalendarViewer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
