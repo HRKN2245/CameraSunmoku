@@ -283,7 +283,7 @@ public class sampleActivity extends Activity {
 			System.out.println(TotalScore);
 			//一番有効な文字のトータルスコアが設定値以上だと、認識失敗とする。
 			//ピントが合わない状態で撮影した場合の処置。
-			if(TotalScore > 5.0)
+			if(TotalScore > 50.0)
 				Toast.makeText(sampleActivity.this, "認識に失敗しました。", Toast.LENGTH_LONG).show();
 		}
 	}
