@@ -1,9 +1,24 @@
-# view AndroidManifest.xml #generated:29
+# view AndroidManifest.xml #generated:45
 -keep class jp.recognize.scenery.android.CameraPreviewActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:34
+# view AndroidManifest.xml #generated:50
 -keep class jp.recognize.scenery.android.Sanmoku { <init>(...); }
 
-# view AndroidManifest.xml #generated:19
+# view AndroidManifest.xml #generated:40
 -keep class jp.recognize.scenery.android.sampleActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:21
+-keep class sample.calendar.CalendarViewerActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:35
+-keep class sample.calendar.EditActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:30
+-keep class sample.calendar.EventActivity { <init>(...); }
+
+# onClick res/layout/edit.xml #generated:227
+-keepclassmembers class * { *** onDeleteClicked(...); }
+
+# onClick res/layout/edit.xml #generated:220
+-keepclassmembers class * { *** onSaveClicked(...); }
 

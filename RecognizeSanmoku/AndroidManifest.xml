@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jp.recognize.scenery.android.sample"
+    package="sample.calendar"
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="8" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -12,19 +12,35 @@
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
 
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
+        <activity android:name="CalendarViewerActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait"
+                  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="EventActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait"
+                  >
+        </activity>
+        <activity android:name="EditActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait"
+                  >
+        </activity>
         <activity
             android:name="jp.recognize.scenery.android.sampleActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="jp.recognize.scenery.android.CameraPreviewActivity"

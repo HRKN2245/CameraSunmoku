@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.text.SpannableString;
-import jp.recognize.scenery.android.sample.R;
+import sample.calendar.R;
 
 public class Sanmoku extends Activity{
     /** Called when the activity is first created. */

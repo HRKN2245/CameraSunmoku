@@ -2,6 +2,9 @@
 <resources>
 
     <string name="hello">Hello World, sampleActivity!</string>
-    <string name="app_name">RecognizeSanmoku</string>
+    <string name="app_name">CalendarViewer</string>
+    <string name="save_message">保存中</string>
+    <string name="delete_message">削除中</string>
+    <string name="recognize_name">RecognizeSanmoku</string>
 
 </resources>

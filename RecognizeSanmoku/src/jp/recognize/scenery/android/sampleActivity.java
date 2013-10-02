@@ -50,6 +50,7 @@ public class sampleActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		System.out.println("起動！！");
 
 		fillPaint = new Paint();
 		fillPaint.setStyle(Style.FILL);
