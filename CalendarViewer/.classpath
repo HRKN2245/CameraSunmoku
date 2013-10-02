@@ -5,7 +5,7 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="/RecognizeSanmoku/bin/classes/jp/recognize/scenery/android"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/RecognizeSanmoku"/>
-	<classpathentry kind="lib" path="/RecognizeSanmoku/bin/classes"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    >
+<View
+    android:layout_width="0px"
+    android:layout_height="0px"
+    android:layout_weight="53"
+    />
+<View
+    android:layout_width="11dp"
+    android:layout_height="11dp"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/select_icon"
+    />
+<TextView  
+    android:id="@+id/calendar_title"
+    android:layout_width="0px" 
+    android:layout_height="wrap_content" 
+    android:layout_weight="363"
+    android:paddingLeft="10dp"
+    />
+<View
+    android:layout_width="0px"
+    android:layout_height="0px"
+    android:layout_weight="43"
+    />
+</LinearLayout>
