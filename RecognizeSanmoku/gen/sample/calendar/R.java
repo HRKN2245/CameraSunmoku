@@ -33,28 +33,27 @@ public final class R {
         public static final int select_icon=0x7f020013;
     }
     public static final class id {
-        public static final int aaa=0x7f050001;
-        public static final int button1=0x7f050004;
+        public static final int button1=0x7f050003;
         public static final int calendar_list_view=0x7f050000;
-        public static final int calendar_title=0x7f05000f;
-        public static final int editButton=0x7f050002;
-        public static final int edit_description=0x7f05000d;
-        public static final int edit_dtend_hour=0x7f05000a;
-        public static final int edit_dtend_minute=0x7f05000b;
-        public static final int edit_dtstart_day=0x7f050007;
-        public static final int edit_dtstart_hour=0x7f050008;
-        public static final int edit_dtstart_minute=0x7f050009;
-        public static final int edit_dtstart_month=0x7f050006;
-        public static final int edit_dtstart_year=0x7f050005;
-        public static final int edit_location=0x7f05000c;
-        public static final int edit_title=0x7f050003;
-        public static final int entry_date=0x7f050011;
-        public static final int entry_list_view=0x7f05000e;
-        public static final int entry_location=0x7f050013;
-        public static final int entry_time=0x7f050012;
-        public static final int entry_title=0x7f050010;
-        public static final int search_result_area=0x7f050015;
-        public static final int textView=0x7f050014;
+        public static final int calendar_title=0x7f05000e;
+        public static final int editButton=0x7f050001;
+        public static final int edit_description=0x7f05000c;
+        public static final int edit_dtend_hour=0x7f050009;
+        public static final int edit_dtend_minute=0x7f05000a;
+        public static final int edit_dtstart_day=0x7f050006;
+        public static final int edit_dtstart_hour=0x7f050007;
+        public static final int edit_dtstart_minute=0x7f050008;
+        public static final int edit_dtstart_month=0x7f050005;
+        public static final int edit_dtstart_year=0x7f050004;
+        public static final int edit_location=0x7f05000b;
+        public static final int edit_title=0x7f050002;
+        public static final int entry_date=0x7f050010;
+        public static final int entry_list_view=0x7f05000d;
+        public static final int entry_location=0x7f050012;
+        public static final int entry_time=0x7f050011;
+        public static final int entry_title=0x7f05000f;
+        public static final int search_result_area=0x7f050014;
+        public static final int textView=0x7f050013;
     }
     public static final class layout {
         public static final int calendar=0x7f030000;

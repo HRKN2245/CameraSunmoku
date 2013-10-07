@@ -228,6 +228,8 @@ public class sampleActivity extends Activity {
 							segmentGraphtmp[j] = null;
 						else if(Math.abs(segmentGraphtmp[i].getFirstSegment().getShape().getBounds().getTop() - 
 								segmentGraphtmp[j].getFirstSegment().getShape().getBounds().getTop()) < 50){
+							if(getScore(segmentGraphtmp[i].getFirstSegment()) > getScore(segmentGraphtmp[j].getFirstSegment()))
+								segmentGraphtmp[i] = segmentGraphtmp[j];
 							segmentGraphtmp[j] = null;
 						}
 					}
@@ -267,25 +269,32 @@ public class sampleActivity extends Activity {
 		}
 	}
 	
-	//文字数、スコアを取得するメソッド
-	//statesの配列化は、参照渡しをさせるため。
+	//文字数を取得するメソッド
 	private void setStates(SegmentGraph[] segmentGraph, int[] wordCount){
-		Candidate[] segArray;
 		for(int i=0; i<segmentGraph.length; i++){
-			double TotalScore = 0.0;
 			Segment seg = segmentGraph[i].getFirstSegment();
 			while(seg != null){
-				segArray = seg.getCandidates();
-				TotalScore += segArray[0].getScore();
 				seg = seg.getNextSegment();
 				wordCount[i]++;
 			}
-			System.out.println(TotalScore);
 			//一番有効な文字のトータルスコアが設定値以上だと、認識失敗とする。
 			//ピントが合わない状態で撮影した場合の処置。
-			if(TotalScore > 50.0)
+			if(getScore(seg) > 50.0)
 				Toast.makeText(sampleActivity.this, "認識に失敗しました。", Toast.LENGTH_LONG).show();
 		}
+	}
+	
+	//スコアを取得するメソッド
+	private double getScore(Segment seg){
+		double score = 0.0;
+		Candidate[] segArray;
+			while(seg != null){
+				segArray = seg.getCandidates();
+				score += segArray[0].getScore();
+				seg = seg.getNextSegment();
+			}
+			System.out.println(score);
+		return score;
 	}
 	
 	//全パターンを配列に代入するメソッド

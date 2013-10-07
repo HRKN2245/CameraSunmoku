@@ -25,6 +25,8 @@ public class EditActivity extends Activity implements OnClickListener {
 	private ArrayAdapter<Integer> dayAdapter;
 	private ArrayAdapter<Integer> hourAdapter;
 	private ArrayAdapter<String> minuteAdapter;
+	
+	private static final int EDIT_ACTIVITY = 1000;
 
 	// 分のformat
 	private static final String minuteFormat = "%02d";
@@ -34,6 +36,7 @@ public class EditActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.edit);
 		
+		//認識ボタンを押したときの処理
 		Button bt = (Button) findViewById(R.id.button1);
 		bt.setOnClickListener(this);
 
@@ -235,7 +238,30 @@ public class EditActivity extends Activity implements OnClickListener {
 		//intent.setAction(Intent.ACTION_MAIN);
 		//intent.setClassName("jp.recognize.scenery.android", "jp.recognize.scenery.android.sampleActivity");
 		//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
-		startActivity(intent);
+		startActivityForResult(intent,EDIT_ACTIVITY);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO 自動生成されたメソッド・スタブ
+		super.onActivityResult(requestCode, resultCode, data);
+		System.out.println(resultCode);
+		System.out.println(RESULT_OK);
+		String exWord[];
+		if(requestCode == EDIT_ACTIVITY){
+			if(resultCode == RESULT_OK){
+				System.out.println("OK");
+				exWord  = data.getStringArrayExtra("str");
+				int[] ScheduleNum = new int[exWord.length];
+				for(int i=0; i<exWord.length; i++){
+					ScheduleNum[i] = Integer.parseInt(exWord[i]);
+					System.out.println("OK2");
+				}
+				
+				((Spinner) findViewById(R.id.edit_dtstart_year))
+				.setSelection(ScheduleNum[0]);
+			}
+		}
 	}
 	
 	

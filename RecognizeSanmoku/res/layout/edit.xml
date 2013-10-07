@@ -1,236 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/aaa"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@drawable/edit_bg"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="135" />
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@drawable/edit_bg"
-        android:orientation="vertical" >
+        android:layout_height="0dp"
+        android:layout_weight="539"
+        android:orientation="horizontal" >
 
         <View
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="135" />
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="55" />
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="539"
-            android:orientation="horizontal" >
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="369"
+            android:orientation="vertical" >
 
             <View
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="55" />
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="32"
+                android:background="@drawable/edit_title" />
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="369"
-                android:orientation="vertical" >
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="32"
-                    android:background="@drawable/edit_title" />
-
-                <LinearLayout
-                    android:id="@+id/editButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="20" >
-
-                    <EditText
-                        android:id="@+id/edit_title"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="70" />
-
-                    <Button
-                        android:id="@+id/button1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="30"
-                        android:text="認識" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="27" />
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="56"
-                    android:orientation="horizontal" >
-
-                    <Spinner
-                        android:id="@+id/edit_dtstart_year"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="97"
-                        android:background="@drawable/box_m"
-                        android:padding="10dp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="47"
-                        android:background="@drawable/edit_year" />
-
-                    <Spinner
-                        android:id="@+id/edit_dtstart_month"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="65"
-                        android:background="@drawable/box_s"
-                        android:padding="10dp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="47"
-                        android:background="@drawable/edit_month" />
-
-                    <Spinner
-                        android:id="@+id/edit_dtstart_day"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="65"
-                        android:background="@drawable/box_s"
-                        android:padding="10dp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="47"
-                        android:background="@drawable/edit_day" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="27" />
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="56"
-                    android:orientation="horizontal" >
-
-                    <Spinner
-                        android:id="@+id/edit_dtstart_hour"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="65"
-                        android:background="@drawable/box_s"
-                        android:padding="10dp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="36"
-                        android:background="@drawable/edit_colon" />
-
-                    <Spinner
-                        android:id="@+id/edit_dtstart_minute"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="65"
-                        android:background="@drawable/box_s"
-                        android:padding="10dp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="37"
-                        android:background="@drawable/edit_kara" />
-
-                    <Spinner
-                        android:id="@+id/edit_dtend_hour"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="65"
-                        android:background="@drawable/box_s"
-                        android:padding="10dp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="36"
-                        android:background="@drawable/edit_colon" />
-
-                    <Spinner
-                        android:id="@+id/edit_dtend_minute"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="65"
-                        android:background="@drawable/box_s"
-                        android:padding="10dp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="32"
-                    android:background="@drawable/edit_place" />
+                android:id="@+id/editButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="20" >
 
                 <EditText
-                    android:id="@+id/edit_location"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="56" />
+                    android:id="@+id/edit_title"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="70" />
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="32"
-                    android:background="@drawable/edit_detail" />
-
-                <EditText
-                    android:id="@+id/edit_description"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="56" />
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:text="認識" />
             </LinearLayout>
 
             <View
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="27" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="56"
+                android:orientation="horizontal" >
+
+                <Spinner
+                    android:id="@+id/edit_dtstart_year"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="97"
+                    android:background="@drawable/box_m"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="47"
+                    android:background="@drawable/edit_year" />
+
+                <Spinner
+                    android:id="@+id/edit_dtstart_month"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="65"
+                    android:background="@drawable/box_s"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="47"
+                    android:background="@drawable/edit_month" />
+
+                <Spinner
+                    android:id="@+id/edit_dtstart_day"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="65"
+                    android:background="@drawable/box_s"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="47"
+                    android:background="@drawable/edit_day" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="27" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="56"
+                android:orientation="horizontal" >
+
+                <Spinner
+                    android:id="@+id/edit_dtstart_hour"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="65"
+                    android:background="@drawable/box_s"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="36"
+                    android:background="@drawable/edit_colon" />
+
+                <Spinner
+                    android:id="@+id/edit_dtstart_minute"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="65"
+                    android:background="@drawable/box_s"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="37"
+                    android:background="@drawable/edit_kara" />
+
+                <Spinner
+                    android:id="@+id/edit_dtend_hour"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="65"
+                    android:background="@drawable/box_s"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="36"
+                    android:background="@drawable/edit_colon" />
+
+                <Spinner
+                    android:id="@+id/edit_dtend_minute"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="65"
+                    android:background="@drawable/box_s"
+                    android:padding="10dp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="32"
+                android:background="@drawable/edit_place" />
+
+            <EditText
+                android:id="@+id/edit_location"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="56" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="32"
+                android:background="@drawable/edit_detail" />
+
+            <EditText
+                android:id="@+id/edit_description"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
                 android:layout_weight="56" />
         </LinearLayout>
 
         <View
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="54" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="126"
-            android:orientation="horizontal" >
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="240"
-                android:background="@drawable/bottun_save"
-                android:onClick="onSaveClicked" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="240"
-                android:background="@drawable/bottun_delete"
-                android:onClick="onDeleteClicked" />
-        </LinearLayout>
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="56" />
     </LinearLayout>
 
-</RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="54" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="126"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="240"
+            android:background="@drawable/bottun_save"
+            android:onClick="onSaveClicked" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="240"
+            android:background="@drawable/bottun_delete"
+            android:onClick="onDeleteClicked" />
+    </LinearLayout>
+
+</LinearLayout>
