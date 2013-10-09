@@ -140,10 +140,10 @@ public class sampleActivity extends Activity {
 					//文字列を取得する。
 					input = getWords(word, wordCount, puttern);
 					
-					Intent intent = new Intent(sampleActivity.this,Sanmoku.class);
-					//文字を取得し、sanmokuActivityにデータを送信。
-					intent.putExtra("RecognizeData", input);
-					startActivity(intent);
+					Sanmoku sanmoku = new Sanmoku(input);
+					Intent intent = new Intent();
+					intent.putExtra("str", sanmoku.SanmokuStart());
+					setResult(RESULT_OK, intent);
 					finish();
 				
 					handler.post(new Runnable() {

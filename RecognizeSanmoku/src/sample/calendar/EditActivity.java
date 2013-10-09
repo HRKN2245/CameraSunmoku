@@ -238,7 +238,7 @@ public class EditActivity extends Activity implements OnClickListener {
 		//intent.setAction(Intent.ACTION_MAIN);
 		//intent.setClassName("jp.recognize.scenery.android", "jp.recognize.scenery.android.sampleActivity");
 		//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
-		startActivityForResult(intent,EDIT_ACTIVITY);
+		startActivityForResult(intent, EDIT_ACTIVITY);
 	}
 
 	@Override
@@ -250,16 +250,23 @@ public class EditActivity extends Activity implements OnClickListener {
 		String exWord[];
 		if(requestCode == EDIT_ACTIVITY){
 			if(resultCode == RESULT_OK){
-				System.out.println("OK");
 				exWord  = data.getStringArrayExtra("str");
 				int[] ScheduleNum = new int[exWord.length];
-				for(int i=0; i<exWord.length; i++){
+				System.out.println(ScheduleNum.length);
+				for(int i=0; i<ScheduleNum.length; i++){
+					System.out.println(exWord[i]);
 					ScheduleNum[i] = Integer.parseInt(exWord[i]);
-					System.out.println("OK2");
 				}
 				
 				((Spinner) findViewById(R.id.edit_dtstart_year))
-				.setSelection(ScheduleNum[0]);
+				.setSelection(yearAdapter.getPosition((ScheduleNum[0])));
+				
+				((Spinner) findViewById(R.id.edit_dtstart_month))
+				.setSelection(monthAdapter.getPosition(ScheduleNum[1]));
+				
+				((Spinner) findViewById(R.id.edit_dtstart_day)).setSelection(dayAdapter
+						.getPosition(ScheduleNum[2]));
+				
 			}
 		}
 	}
