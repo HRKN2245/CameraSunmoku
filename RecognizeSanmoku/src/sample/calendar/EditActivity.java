@@ -242,33 +242,50 @@ public class EditActivity extends Activity implements OnClickListener {
 	}
 
 	@Override
+	//認識結果を受け取る
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO 自動生成されたメソッド・スタブ
 		super.onActivityResult(requestCode, resultCode, data);
-		System.out.println(resultCode);
-		System.out.println(RESULT_OK);
 		String exWord[];
 		if(requestCode == EDIT_ACTIVITY){
 			if(resultCode == RESULT_OK){
 				exWord  = data.getStringArrayExtra("str");
 				int[] ScheduleNum = new int[exWord.length];
 				System.out.println(ScheduleNum.length);
+				
 				for(int i=0; i<ScheduleNum.length; i++){
 					System.out.println(exWord[i]);
-					ScheduleNum[i] = Integer.parseInt(exWord[i]);
+					ScheduleNum[i] = ParseInt(exWord[i]);
+					//年月日の判断
+					if(exWord[i].length() == 4){
+						((Spinner) findViewById(R.id.edit_dtstart_year)).
+						setSelection(yearAdapter.getPosition((ScheduleNum[i])));
+					}
+					else if(exWord[i].length() < 4) {
+						char ch = exWord[i].charAt(exWord[i].length()-1);
+						if(ch == '月' || ch == '/' || ch == '／' || ch == '.'){
+							((Spinner) findViewById(R.id.edit_dtstart_month))
+									.setSelection(monthAdapter.getPosition(ScheduleNum[i]));
+						}	
+						else{
+							((Spinner) findViewById(R.id.edit_dtstart_day)).setSelection(dayAdapter
+									.getPosition(ScheduleNum[i]));
+						}
+					}
 				}
-				
-				((Spinner) findViewById(R.id.edit_dtstart_year))
-				.setSelection(yearAdapter.getPosition((ScheduleNum[0])));
-				
-				((Spinner) findViewById(R.id.edit_dtstart_month))
-				.setSelection(monthAdapter.getPosition(ScheduleNum[1]));
-				
-				((Spinner) findViewById(R.id.edit_dtstart_day)).setSelection(dayAdapter
-						.getPosition(ScheduleNum[2]));
-				
 			}
 		}
+	}
+	
+	private int ParseInt(String str){
+		int num;
+		try{
+			num = Integer.parseInt(str);
+		}catch(NumberFormatException nfe){
+			str = str.substring(0, str.length()-1);
+			return ParseInt(str);
+		}
+		return num;
 	}
 	
 	

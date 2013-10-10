@@ -36,7 +36,7 @@ public class Sanmoku{
     	String[] strTmp = new String[3];
 		Pattern pYear = Pattern.compile("(平成|昭和|Ｈ)?([０-９]{1,4})[年．／]");
 		Pattern pMonth = Pattern.compile("([０-９]?[０-９]|[１][０-２])[月．／]");
-		Pattern pDay = Pattern.compile("([０-２]?[０-９]|[３][０-１])[日]");
+		Pattern pDay = Pattern.compile("([０-２]?[０-９]|[３][０-１])[日]?");
 		Pattern pTime = Pattern.compile(time);
 		Matcher m;
 		int ArrayIndex = 0;
@@ -55,14 +55,14 @@ public class Sanmoku{
 				//月の部分の抽出
 				m = pMonth.matcher(word[i]);
 				if(m.find()){
-					strTmp[1] = m.group(1);
+					strTmp[1] = m.group(0);
 					ArrayIndex++;
 				}
 
 				//日にちの部分の抽出
 				m = pDay.matcher(word[i]);
 				if(m.find()){
-					strTmp[2] = m.group(1);
+					strTmp[2] = m.group(0);
 					ArrayIndex++;
 				}
 
