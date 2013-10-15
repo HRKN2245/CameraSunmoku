@@ -231,6 +231,8 @@ public class EditActivity extends Activity implements OnClickListener {
 						minuteFormat, dtend.get(Calendar.MINUTE) / 5 * 5)));
 	}
 
+	//認識ボタンをタッチしたときの処理
+	//カメラを起動する。
 	@Override
 	public void onClick(View v) {
 		// TODO 自動生成されたメソッド・スタブ
@@ -251,16 +253,17 @@ public class EditActivity extends Activity implements OnClickListener {
 			if(resultCode == RESULT_OK){
 				exWord  = data.getStringArrayExtra("str");
 				int[] ScheduleNum = new int[exWord.length];
-				System.out.println(ScheduleNum.length);
-				
 				for(int i=0; i<ScheduleNum.length; i++){
 					System.out.println(exWord[i]);
+					//Stringをintにする。
 					ScheduleNum[i] = ParseInt(exWord[i]);
 					//年月日の判断
+					//年の判断は、４文字だったら年であるとする。
 					if(exWord[i].length() == 4){
 						((Spinner) findViewById(R.id.edit_dtstart_year)).
 						setSelection(yearAdapter.getPosition((ScheduleNum[i])));
 					}
+					//月日は、4以下の場合。
 					else if(exWord[i].length() < 4) {
 						char ch = exWord[i].charAt(exWord[i].length()-1);
 						if(ch == '月' || ch == '/' || ch == '／' || ch == '.'){
@@ -277,6 +280,8 @@ public class EditActivity extends Activity implements OnClickListener {
 		}
 	}
 	
+	//Stringをintにするメソッド。
+	//NumberFormatExceptionが発生した場合（１２月、３０日など、漢字が入る場合が当たる）、漢字を除去して、再起呼び出し。
 	private int ParseInt(String str){
 		int num;
 		try{
