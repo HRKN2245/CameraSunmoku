@@ -29,7 +29,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
 
-public class sampleActivity extends Activity {
+public class RecognizeActivity extends Activity {
 	private static final int REQUEST_CODE = 1;
 
 	private Handler handler = new Handler();
@@ -114,7 +114,7 @@ public class sampleActivity extends Activity {
 					handler.post(new Runnable() {
 						public void run() {
 							progressDialog.dismiss();
-							Toast.makeText(sampleActivity.this, "認識に失敗しました。", Toast.LENGTH_LONG).show();
+							Toast.makeText(RecognizeActivity.this, "認識に失敗しました。", Toast.LENGTH_LONG).show();
 						}
 					});
 				}

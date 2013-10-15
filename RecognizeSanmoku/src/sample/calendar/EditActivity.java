@@ -3,7 +3,7 @@ package sample.calendar;
 import java.util.Calendar;
 
 import sample.calendar.R;
-import jp.recognize.scenery.android.sampleActivity;
+import jp.recognize.scenery.android.RecognizeActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -236,10 +236,7 @@ public class EditActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO 自動生成されたメソッド・スタブ
-		Intent intent = new Intent(this, sampleActivity.class);
-		//intent.setAction(Intent.ACTION_MAIN);
-		//intent.setClassName("jp.recognize.scenery.android", "jp.recognize.scenery.android.sampleActivity");
-		//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+		Intent intent = new Intent(this, RecognizeActivity.class);
 		startActivityForResult(intent, EDIT_ACTIVITY);
 	}
 

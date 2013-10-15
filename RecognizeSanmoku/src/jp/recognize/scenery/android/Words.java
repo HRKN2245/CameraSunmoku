@@ -106,7 +106,7 @@ public class Words{
 			//一番有効な文字のトータルスコアが設定値以上だと、認識失敗とする。
 			//ピントが合わない状態で撮影した場合の処置。
 			if(getScore(seg) > 50.0)
-				context = new sampleActivity();
+				context = new RecognizeActivity();
 				Toast.makeText(context, "認識に失敗しました。", Toast.LENGTH_LONG).show();
 		}
 	}
