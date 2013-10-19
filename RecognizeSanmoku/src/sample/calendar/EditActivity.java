@@ -254,22 +254,22 @@ public class EditActivity extends Activity implements OnClickListener {
 					System.out.println(exWord[i]);
 					//Stringをintにする。
 					ScheduleNum[i] = ParseInt(exWord[i]);
-					//年月日の判断
+					//年月日、時間の判断 全て数字なので、判断が困難
 					//年の判断は、４文字だったら年であるとする。
 					if(exWord[i].length() == 4){
 						((Spinner) findViewById(R.id.edit_dtstart_year)).
 						setSelection(yearAdapter.getPosition((ScheduleNum[i])));
 					}
-					//月日は、4以下の場合。
+					//月日、時間は、4文字以下の場合。
 					else if(exWord[i].length() < 4) {
 						char ch = exWord[i].charAt(exWord[i].length()-1);
 						if(ch == '月' || ch == '/' || ch == '／' || ch == '.'){
 							((Spinner) findViewById(R.id.edit_dtstart_month))
 									.setSelection(monthAdapter.getPosition(ScheduleNum[i]));
 						}	
-						else{
-							((Spinner) findViewById(R.id.edit_dtstart_day)).setSelection(dayAdapter
-									.getPosition(ScheduleNum[i]));
+						else if(ch == '時' || ch == '：' || ch == ':'){
+							((Spinner) findViewById(R.id.edit_dtstart_hour))
+							.setSelection(hourAdapter.getPosition(ScheduleNum[i]));
 						}
 					}
 				}
