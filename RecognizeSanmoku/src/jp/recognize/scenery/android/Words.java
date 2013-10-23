@@ -10,7 +10,6 @@ public class Words{
 	private SegmentGraph[] segmentGraphtmp, segmentGraph = null;  //正しく直された断片グラフ
 	private int[] wordCount, puttern; //文字数、パターン数
 	private String[][][] word;
-	private Context context;
 	
 	Words(SegmentGraph[] segmentGraphtmp){
 		this.segmentGraphtmp = segmentGraphtmp;
@@ -169,6 +168,7 @@ public class Words{
 		case 'べ': return "ベ";
 		case 'ぺ': return "ペ";
 		case 'ｏ': return "０";
+		case 'Ｏ': return "０";
 		default: return null;
 		}
 	}

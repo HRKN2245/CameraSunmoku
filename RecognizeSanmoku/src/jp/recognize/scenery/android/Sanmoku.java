@@ -12,8 +12,9 @@ import android.text.SpannableString;
 public class Sanmoku{
 	private String recognizeData;
 	private String[] exWord, strTmp;
-	private int ArrayIndex = 0;
+	private int ArrayIndex = 0, FlagIndex = 0;
 	private static final int STR_TMP = 30;
+	public int[] exFlag ={0,0,0,0,0,0,0}; //年、月、日、開始時、開始分、終了時、終了分
 	
 	//引数ありコンストラクタ
 	Sanmoku(String recognizeData){
@@ -36,7 +37,7 @@ public class Sanmoku{
     	//日付、時間の抜き出し部分
     private void ExtractWord(String recognizeData){
     	String[] word = recognizeData.split("[ \n]+");
-    	String[] strTmp = new String[STR_TMP];
+    	strTmp = new String[STR_TMP];
 		
     	if(recognizeData.length() > 0){
     		DayExtract(word);
@@ -56,56 +57,78 @@ public class Sanmoku{
     	Matcher m = null;
     	for(int i=0; i<word.length; i++){
     		for(int j=0; j<2; j++){ //年、月日の2回という意味
-    			switch(j){
-    			case 0: m = pYear.matcher(word[i]);
-    					Check(m, 2);
+    			if(j == 0){
+    				m = pYear.matcher(word[i]);
+    				if(Check(m, 2)){
+    					exFlag[FlagIndex++] = 1;
     					word[i] = m.replaceAll("");
-    					break;
-    			case 1: m = pDay.matcher(word[i]);
-    					Check(m, 1);
-    					Check(m, 3);
+    				}
     			}
-    			System.out.println("ok");
+    			else{
+    				m = pDay.matcher(word[i]);
+    				if(Check(m, 2))
+    					exFlag[FlagIndex++] = 2;
+    				if(Check(m, 4))
+    					exFlag[FlagIndex++] = 3;
+    			}
     		}
+    		System.out.println("Dayok");
     	}
     }
 
     //時間抽出するメソッド
     private void TimeExtract(String[] word){
     	Pattern pTime = Pattern.compile(RegularExpression.TIME);
-    	Pattern pExpression = Pattern.compile(RegularExpression.END_TIME_EXPRESSION);
+    	Pattern pExpression = Pattern.compile("~|～");
     	Matcher m;
     	int offset;
     	boolean flag = false;
     	for(int i=0; i<word.length; i++){
+    		System.out.println("Timeok");
     		m = pExpression.matcher(word[i]);
     		offset = 0;
     		if(m.find(offset)){
+    			System.out.println(m.group());
     			offset = m.end();
     			flag = true;
     		}
     		m =pTime.matcher(word[i]);
     		if(flag) m.region(0, offset); //正規検索エンジンの設定○○：○○　～　××：××　の　「～」の場所から左と右に分ける。
-    		Check(m, 1); //○時の取得
-    		Check(m, 4); //○分の取得
-    		Check(m, offset, 1); //終了時間の○時取得
-    		Check(m, offset, 4); //終了時間の○分取得
+    		if(Check(m, 3)){
+    			exFlag[FlagIndex++] = 4; //○時の取得
+    			System.out.println("ok");
+    		}
+    		if(Check(m, 5))
+    			exFlag[4] = 5; //○分の取得
+    			System.out.println("ok");
+    		if(flag){
+    			if(Check(m, offset, 3))
+    				exFlag[FlagIndex++] = 6; //終了時間の○時取得
+    			if(Check(m, offset, 5))
+    				exFlag[FlagIndex++] = 7;//終了時間の○分取得
+    		}
     		
     	}
     }
     
     //正規表現パターンと文字列のチェックを行うメソッド
-    private void Check(Matcher m, int groupNumber){
-    	if(m.find()){
+    private boolean Check(Matcher m, int groupNumber){
+    	if(m.find(0)){
     		strTmp[ArrayIndex++] = m.group(groupNumber);
+    		return true;
+    	}
+    	else{
+    		return false;
     	}
     }
     
     //おーばーろーど
-    private void Check(Matcher m, int start, int groupNumber){
+    private boolean Check(Matcher m, int start, int groupNumber){
     	if(m.find(start)){
     		strTmp[ArrayIndex++] = m.group(groupNumber);
+    		return true;
     	}
+    	return false;
     }
     
 }

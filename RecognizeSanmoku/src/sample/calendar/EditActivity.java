@@ -81,7 +81,7 @@ public class EditActivity extends Activity implements OnClickListener {
 		((Spinner) findViewById(R.id.edit_dtend_hour)).setAdapter(hourAdapter);
 
 		// 分一覧
-		for (int i = 0; i < 60; i += 5) {
+		for (int i = 0; i < 60; i ++) {
 			minuteAdapter.add(String.format(minuteFormat, i));
 		}
 		((Spinner) findViewById(R.id.edit_dtstart_minute))
@@ -246,32 +246,47 @@ public class EditActivity extends Activity implements OnClickListener {
 		// TODO 自動生成されたメソッド・スタブ
 		super.onActivityResult(requestCode, resultCode, data);
 		String exWord[];
+		int exFlagID[];
 		if(requestCode == EDIT_ACTIVITY){
 			if(resultCode == RESULT_OK){
 				exWord  = data.getStringArrayExtra("str");
-				int[] ScheduleNum = new int[exWord.length];
+				exFlagID = data.getIntArrayExtra("flag");
+				int[]ScheduleNum = new int[exWord.length];
+			
 				for(int i=0; i<ScheduleNum.length; i++){
 					System.out.println(exWord[i]);
-					//Stringをintにする。
-					ScheduleNum[i] = ParseInt(exWord[i]);
 					//年月日、時間の判断 全て数字なので、判断が困難
-					//年の判断は、４文字だったら年であるとする。
-					if(exWord[i].length() == 4){
-						((Spinner) findViewById(R.id.edit_dtstart_year)).
-						setSelection(yearAdapter.getPosition((ScheduleNum[i])));
+					ScheduleNum[i] = ParseInt(exWord[i]);
+					//char ch = exWord[i].charAt(exWord[i].length()-1);
+					if(exFlagID[i] == 1){
+						((Spinner) findViewById(R.id.edit_dtstart_year))
+						.setSelection(yearAdapter.getPosition(ScheduleNum[i]));
+					}	
+					else if(exFlagID[i] == 2){
+						((Spinner) findViewById(R.id.edit_dtstart_month))
+						.setSelection(monthAdapter.getPosition(ScheduleNum[i]));
 					}
-					//月日、時間は、4文字以下の場合。
-					else if(exWord[i].length() < 4) {
-						char ch = exWord[i].charAt(exWord[i].length()-1);
-						if(ch == '月' || ch == '/' || ch == '／' || ch == '.'){
-							((Spinner) findViewById(R.id.edit_dtstart_month))
-									.setSelection(monthAdapter.getPosition(ScheduleNum[i]));
-						}	
-						else if(ch == '時' || ch == '：' || ch == ':'){
-							((Spinner) findViewById(R.id.edit_dtstart_hour))
-							.setSelection(hourAdapter.getPosition(ScheduleNum[i]));
-						}
+					else if(exFlagID[i] == 3){
+						((Spinner) findViewById(R.id.edit_dtstart_day)).setSelection(dayAdapter
+								.getPosition(ScheduleNum[i]));
 					}
+					else if(exFlagID[i] == 4){
+						((Spinner) findViewById(R.id.edit_dtstart_hour))
+						.setSelection(hourAdapter.getPosition(ScheduleNum[i]));
+					}
+					else if(exFlagID[i] == 5){
+						((Spinner) findViewById(R.id.edit_dtstart_minute))
+						.setSelection(minuteAdapter.getPosition(Integer.toString(ScheduleNum[i])));
+					}
+					else if(exFlagID[i] == 6){
+						((Spinner) findViewById(R.id.edit_dtend_hour))
+						.setSelection(hourAdapter.getPosition(ScheduleNum[i]));
+					}
+					else if(exFlagID[i] == 7){
+						((Spinner) findViewById(R.id.edit_dtend_minute))
+						.setSelection(minuteAdapter.getPosition(Integer.toString(ScheduleNum[i])));
+					}
+					
 				}
 			}
 		}

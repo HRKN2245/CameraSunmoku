@@ -41,7 +41,6 @@ public class RecognizeActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		System.out.println("起動！！");
 
 		fillPaint = new Paint();
 		fillPaint.setStyle(Style.FILL);
@@ -96,11 +95,13 @@ public class RecognizeActivity extends Activity {
 					byte[] jpegData = CameraPreviewActivity.imageData;
 					SegmentGraph[] segmentGraphtmp = recognize(jpegData); //断片グラフを取得する。
 					
+					System.out.println("OK");
 					Words words = new Words(segmentGraphtmp);
-					//文字列を取得するし、形態素解析を行う。	
+					//文字列を取得し、形態素解析を行う。	
 					Sanmoku sanmoku = new Sanmoku(words.getWords());
 					Intent intent = new Intent();
 					intent.putExtra("str", sanmoku.SanmokuStart());
+					intent.putExtra("flag", sanmoku.exFlag);
 					setResult(RESULT_OK, intent);
 					finish();
 				
