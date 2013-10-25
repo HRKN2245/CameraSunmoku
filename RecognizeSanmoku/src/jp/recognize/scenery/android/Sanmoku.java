@@ -79,7 +79,7 @@ public class Sanmoku{
     //時間抽出するメソッド
     private void TimeExtract(String[] word){
     	Pattern pTime = Pattern.compile(RegularExpression.TIME);
-    	Pattern pExpression = Pattern.compile("~|～");
+    	Pattern pExpression = Pattern.compile(RegularExpression.END_TIME_EXPRESSION);
     	Matcher m;
     	int offset;
     	boolean flag = false;

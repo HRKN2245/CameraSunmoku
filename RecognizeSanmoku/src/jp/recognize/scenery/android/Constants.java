@@ -11,7 +11,7 @@ public class Constants{
 	public static final String REAdress = "[０-９]+[－ー][０-９]+";
 	public static final String REDay = "[０-９][０-９][０-９][０-９]／[０-１]?[０-９]／[０-３]?[０-９]";
 	public static final String RETell = "[０-９]+[－]?[０-９]+[－]?[０-９]+";
-	public static final String WORDS = "default+user("+RETime+")+user("+REAdress+")+user("+REDay+")+user("+RETell+")";
+	public static final String WORDS = "default";
 	public static final String ANALYSIS = "deep";
 }
 
