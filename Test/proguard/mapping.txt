@@ -1,0 +1,54 @@
+jp.recognize.scenery.android.CameraPreview -> jp.recognize.scenery.android.a:
+    java.lang.String TAG -> a
+    android.hardware.Camera camera -> b
+    android.hardware.Camera$PictureCallback pictureCallback -> c
+    void surfaceChanged(android.view.SurfaceHolder,int,int,int) -> surfaceChanged
+    void surfaceCreated(android.view.SurfaceHolder) -> surfaceCreated
+    android.hardware.Camera$Size max(java.util.List) -> a
+    void surfaceDestroyed(android.view.SurfaceHolder) -> surfaceDestroyed
+    void releaseCamera() -> a
+    void onAutoFocus(boolean,android.hardware.Camera) -> onAutoFocus
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+jp.recognize.scenery.android.CameraPreviewActivity -> jp.recognize.scenery.android.CameraPreviewActivity:
+    jp.recognize.scenery.android.CameraPreview cameraPreview -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onDestroy() -> onDestroy
+    void onStop() -> onStop
+    void onPause() -> onPause
+    jp.recognize.scenery.android.CameraPreview access$0(jp.recognize.scenery.android.CameraPreviewActivity) -> a
+jp.recognize.scenery.android.CameraPreviewActivity$1 -> jp.recognize.scenery.android.b:
+    jp.recognize.scenery.android.CameraPreviewActivity this$0 -> a
+    void onPictureTaken(byte[],android.hardware.Camera) -> onPictureTaken
+jp.recognize.scenery.android.Utils -> jp.recognize.scenery.android.c:
+    void closeSilently(java.io.Closeable) -> a
+jp.recognize.scenery.android.sampleActivity -> jp.recognize.scenery.android.sampleActivity:
+    android.os.Handler handler -> a
+    android.widget.ImageView imageView -> b
+    android.graphics.Paint fillPaint -> c
+    android.graphics.Paint framePaint -> d
+    android.graphics.Paint textPaint -> e
+    void onCreate(android.os.Bundle) -> onCreate
+    void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    byte[] getPictureData(int) -> a
+    jp.recognize.RecognitionResult$Word[] recognize(byte[]) -> a
+    android.graphics.Bitmap drawRecognizeResult(byte[],jp.recognize.RecognitionResult$Word[]) -> a
+    byte[] access$0(jp.recognize.scenery.android.sampleActivity,int) -> a
+    jp.recognize.RecognitionResult$Word[] access$1(jp.recognize.scenery.android.sampleActivity,byte[]) -> a
+    android.graphics.Bitmap access$2(jp.recognize.scenery.android.sampleActivity,byte[],jp.recognize.RecognitionResult$Word[]) -> a
+    android.os.Handler access$3(jp.recognize.scenery.android.sampleActivity) -> a
+    android.widget.ImageView access$4(jp.recognize.scenery.android.sampleActivity) -> b
+jp.recognize.scenery.android.sampleActivity$1 -> jp.recognize.scenery.android.d:
+    jp.recognize.scenery.android.sampleActivity this$0 -> a
+    int val$pictureDataSize -> b
+    android.app.ProgressDialog val$progressDialog -> c
+    void run() -> run
+    jp.recognize.scenery.android.sampleActivity access$0(jp.recognize.scenery.android.sampleActivity$1) -> a
+jp.recognize.scenery.android.sampleActivity$1$1 -> jp.recognize.scenery.android.e:
+    jp.recognize.scenery.android.sampleActivity$1 this$1 -> a
+    android.app.ProgressDialog val$progressDialog -> b
+    android.graphics.Bitmap val$bitmap -> c
+    void run() -> run
+jp.recognize.scenery.android.sampleActivity$1$2 -> jp.recognize.scenery.android.f:
+    jp.recognize.scenery.android.sampleActivity$1 this$1 -> a
+    android.app.ProgressDialog val$progressDialog -> b
+    void run() -> run

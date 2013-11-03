@@ -15,6 +15,7 @@ public class Sanmoku{
 	private int ArrayIndex = 0, FlagIndex = 0;
 	private static final int STR_TMP = 30;
 	public int[] exFlag ={0,0,0,0,0,0,0}; //年、月、日、開始時、開始分、終了時、終了分
+	private int[] ScheduleWeight;
 	
 	//引数ありコンストラクタ
 	Sanmoku(String recognizeData){
@@ -37,6 +38,7 @@ public class Sanmoku{
     	//日付、時間の抜き出し部分
     private void ExtractWord(String recognizeData){
     	String[] word = recognizeData.split("[ \n]+");
+    	ScheduleWeight = new int[word.length];
     	strTmp = new String[STR_TMP];
 		
     	if(recognizeData.length() > 0){

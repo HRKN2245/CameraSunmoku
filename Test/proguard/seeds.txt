@@ -1,0 +1,8 @@
+jp.recognize.scenery.android.CameraPreviewActivity
+jp.recognize.scenery.android.CameraPreviewActivity: CameraPreviewActivity()
+jp.recognize.scenery.android.sample.R$drawable: int ic_launcher
+jp.recognize.scenery.android.sample.R$layout: int main
+jp.recognize.scenery.android.sample.R$string: int app_name
+jp.recognize.scenery.android.sample.R$string: int hello
+jp.recognize.scenery.android.sampleActivity
+jp.recognize.scenery.android.sampleActivity: sampleActivity()
