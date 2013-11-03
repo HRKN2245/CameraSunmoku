@@ -57,29 +57,28 @@ public class Sanmoku{
     
     private void AddressExtract(String[] word){
     	try{
-    		File dir = new File("Adress");
+    		File dir = new File("sdcard/data/data/jp.recognize.scenery.android/files/Adress");
     		File[] files = dir.listFiles();
     		String str;
     		Matcher m = null;
     		boolean flag = false;
     		for(int i=0; i<word.length; i++){
     			for(int j=0; j<files.length; j++){
-    				File txtFile = new File(files[j].getName()+".txt");
-    				BufferedReader br = new BufferedReader(new FileReader(txtFile));
+    				BufferedReader br = new BufferedReader(new FileReader(files[j]));
+    				System.out.println(files[j].getName());
     				while((str = br.readLine()) != null){
-    					Pattern pAddress = Pattern.compile(str);
-    					m = pAddress.matcher(word[i]);
-    					if(m.find()){
-    						System.out.println(m.group());
+    					if(word[i].equals(str)){
+    						strTmp[ArrayIndex++] = str;
     						flag = true;
     						break;
     					}
     				}
-    				if(flag) break;
     				br.close();
+    				if(flag) break;
     			}
     			if(flag) break;
     		}
+    		if(!flag) System.out.println("抽出できません");
     	}catch(FileNotFoundException fe){
     		System.out.println("Fileが見つかりません。");
     	}catch(IOException ie){}

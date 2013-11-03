@@ -1,9 +1,9 @@
-# view AndroidManifest.xml #generated:31
+# view AndroidManifest.xml #generated:33
 -keep class jp.recognize.scenery.android.CameraPreviewActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:22
+# view AndroidManifest.xml #generated:24
 -keep class jp.recognize.scenery.android.RecognizeActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:36
+# view AndroidManifest.xml #generated:38
 -keep class jp.recognize.scenery.android.Sanmoku { <init>(...); }
 

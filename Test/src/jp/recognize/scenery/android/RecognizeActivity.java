@@ -1,8 +1,7 @@
 package jp.recognize.scenery.android;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -94,16 +93,13 @@ public class RecognizeActivity extends Activity {
 				try {
 					byte[] jpegData = CameraPreviewActivity.imageData;
 					SegmentGraph[] segmentGraphtmp = recognize(jpegData); //断片グラフを取得する。
-					
-					System.out.println("OK");
 					Words words = new Words(segmentGraphtmp);
 					//文字列を取得し、形態素解析を行う。	
 					Sanmoku sanmoku = new Sanmoku(words.getWords());
-					Intent intent = new Intent();
-					intent.putExtra("str", sanmoku.SanmokuStart());
-					intent.putExtra("flag", sanmoku.exFlag);
-					setResult(RESULT_OK, intent);
-					finish();
+					String[] str = sanmoku.SanmokuStart();
+					for(int i=0; i<str.length; i++){
+						System.out.println(str[i]);
+					}
 				
 					handler.post(new Runnable() {
 						public void run() {
