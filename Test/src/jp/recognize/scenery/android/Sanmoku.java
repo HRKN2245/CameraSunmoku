@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,8 +18,9 @@ public class Sanmoku{
 	private String recognizeData;
 	private String[] exWord, strTmp;
 	private int ArrayIndex = 0, FlagIndex = 0;
-	private static final int STR_TMP = 30;
+	private static final int STR_TMP = 30,ADDRESS_DATA = 1000000;
 	public int[] exFlag ={0,0,0,0,0,0,0}; //年、月、日、開始時、開始分、終了時、終了分
+	
 	
 	//引数ありコンストラクタ
 	Sanmoku(String recognizeData){
@@ -42,7 +44,6 @@ public class Sanmoku{
     private void ExtractWord(String recognizeData){
     	String[] word = recognizeData.split("[ \n]+");
     	strTmp = new String[STR_TMP];
-		
     	if(recognizeData.length() > 0){
     		//DayExtract(word);
     		//TimeExtract(word);
@@ -56,30 +57,42 @@ public class Sanmoku{
     }
     
     private void AddressExtract(String[] word){
-    	try{
-    		File dir = new File("sdcard/data/data/jp.recognize.scenery.android/files/Adress");
-    		File[] files = dir.listFiles();
-    		String str;
-    		Matcher m = null;
-    		boolean flag = false;
-    		for(int i=0; i<word.length; i++){
-    			for(int j=0; j<files.length; j++){
-    				BufferedReader br = new BufferedReader(new FileReader(files[j]));
-    				System.out.println(files[j].getName());
-    				while((str = br.readLine()) != null){
-    					if(word[i].equals(str)){
-    						strTmp[ArrayIndex++] = str;
-    						flag = true;
-    						break;
-    					}
-    				}
-    				br.close();
-    				if(flag) break;
-    			}
-    			if(flag) break;
-    		}
-    		if(!flag) System.out.println("抽出できません");
-    	}catch(FileNotFoundException fe){
+    	String[] addressData = new String[ADDRESS_DATA];
+		boolean flag = false;
+		setAddress(addressData);
+		for(int i=0; i<word.length; i++){
+			flag = false;
+			for(int j=0; j<addressData.length; j++){
+				if(addressData[j] != null){
+					if(word[i].equals(addressData[j])){
+						strTmp[ArrayIndex++] = addressData[j];
+						flag = true;
+					}
+				}
+				else break;
+				if(flag) break;
+			}
+			if(!flag) System.out.println("抽出できません");
+		}
+	}
+    
+    private void setAddress(String[] addressData){
+    	String tablet = "sdcard/data/data/jp.recognize.scenery.android/files/Adress";
+    	String smartPhone = "sdcard/Address";
+    	File dir = new File(smartPhone);
+		File[] files = dir.listFiles();
+		String str;
+		BufferedReader br = null;
+		try{
+			int j=0;
+			for(int i=0; i<files.length; i++){
+				br = new BufferedReader(new FileReader(files[i]));
+				while((str = br.readLine()) !=null){
+					addressData[j++] = str;
+				}
+			}
+			br.close();
+		}catch(FileNotFoundException fe){
     		System.out.println("Fileが見つかりません。");
     	}catch(IOException ie){}
     }
