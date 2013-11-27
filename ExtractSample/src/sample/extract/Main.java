@@ -33,6 +33,7 @@ public class Main {
 		} catch (IOException ie){
 			ie.printStackTrace();
 		}
+		//各形態素を取得する。
 		Sanmoku sanmoku = new Sanmoku(word);
 		morpheme = sanmoku.SanmokuStart();
 		
@@ -49,7 +50,10 @@ public class Main {
 			weight[i] = w[i].getWeight();
 		}
 		
-		for(int i=0; i<weight.length; i++){
+		
+		Excel excel = new Excel(morpheme, weight);
+		excel.createXLS();
+		/*for(int i=0; i<weight.length; i++){
 			System.out.println((i+1)+"つ目");
 			for(int j=0; j<morpheme.length; j++){
 				for(int k=0; k<morpheme[j].length; k++){
@@ -57,7 +61,7 @@ public class Main {
 				}
 				System.out.println();
 			}
-		}
+		}*/
 
 	}
 
