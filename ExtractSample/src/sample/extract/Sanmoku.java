@@ -12,6 +12,7 @@ public class Sanmoku {
 		str =  new String[this.word.length][];
 	}
 	
+	//各形態素を取得するメソッド
 	public String[][] SanmokuStart(){
 		for(int i=0; i<word.length; i++){
 			if(word[i].length() > 0) {
