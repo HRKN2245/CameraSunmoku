@@ -8,27 +8,35 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class TxtFileInput {
-	private File file;
-	private ArrayList<String> word;
+	private File[] files;
+	private File dir;
+	private ArrayList<String> list;
+	private String[][] word;
 	public TxtFileInput() {
 		// TODO 自動生成されたコンストラクター・スタブ
-		file = new File("sample.txt");
-		word = new ArrayList<String>();
+		dir = new File("txt");
+		files = dir.listFiles();
+		list = new ArrayList<String>();
+		word = new String[files.length][];
 	}
 	
-	public ArrayList<String> input(){
+	public String[][] input(){
 		String str;
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			while((str = br.readLine()) != null){
-				word.add(str);
+		for(int i=0; i<files.length; i++){
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(files[i]));
+				while((str = br.readLine()) != null){
+					list.add(str);
+				}
+				br.close();
+			} catch (FileNotFoundException e) {
+				// TODO 自動生成された catch ブロック
+				System.out.println("ファイルが見つかりません");
+			} catch (IOException ie){
+				ie.printStackTrace();
 			}
-			br.close();
-		} catch (FileNotFoundException e) {
-			// TODO 自動生成された catch ブロック
-			System.out.println("ファイルが見つかりません");
-		} catch (IOException ie){
-			ie.printStackTrace();
+			word[i] = list.toArray(new String[0]);
+			list.clear();
 		}
 		return word;
 	}

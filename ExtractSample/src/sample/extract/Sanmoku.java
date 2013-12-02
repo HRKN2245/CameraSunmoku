@@ -1,35 +1,40 @@
 package sample.extract;
-import java.util.ArrayList;
 import net.reduls.sanmoku.FeatureEx;
 
 
 public class Sanmoku {
-	private String[] word;
-	private String[][] str;
+	private String[][] word;
+	private String[][][] morpheme;
 	
-	Sanmoku(ArrayList<String> word){
-		this.word = word.toArray(new String[0]);
-		str =  new String[this.word.length][];
+	Sanmoku(String[][] word){
+		this.word = word;
+		morpheme =  new String[this.word.length][][];
+		for(int i=0; i<morpheme.length; i++){
+			morpheme[i] = new String[this.word[i].length][];
+		}
 	}
 	
 	//各形態素を取得するメソッド
-	public String[][] SanmokuStart(){
+	public String[][][] SanmokuStart(){
 		for(int i=0; i<word.length; i++){
-			if(word[i].length() > 0) {
-				str[i] = new String[net.reduls.sanmoku.Tagger.parse(word[i]).size()];
-				int j = 0;
-				for(net.reduls.sanmoku.Morpheme e : net.reduls.sanmoku.Tagger.parse(word[i])) {
-					if(i == 0 && j == 0){
-						str[i][j] = "";
-						j++;
-						continue;
+			for(int j=0; j<word[i].length; j++){
+				if(word[i][j].length() > 0) {
+					morpheme[i][j] = new String[net.reduls.sanmoku.Tagger.parse(word[i][j]).size()];
+					int k = 0;
+					for(net.reduls.sanmoku.Morpheme e : net.reduls.sanmoku.Tagger.parse(word[i][j])) {
+						if(j == 0 && k == 0){
+							morpheme[i][j][k] = "";
+							k++;
+							continue;
+						}
+						FeatureEx fe = new FeatureEx(e);
+						morpheme[i][j][k] = e.surface;
+						System.out.println(morpheme[i][j][k]);
+						k++;
 					}
-					FeatureEx fe = new FeatureEx(e);
-					str[i][j] = e.surface;
-					j++;
 				}
 			}
 		}
-		return str;
+		return morpheme;
 	}
 }
