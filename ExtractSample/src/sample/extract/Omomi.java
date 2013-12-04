@@ -90,7 +90,6 @@ public class Omomi {
 							m = schedule.matcher(morpheme[i][k][l]);
 							if(m.find()) s++;
 						}
-						else System.out.println("住所です。");
 						//重みの計算。
 						Calc(i,j,k,l,s,meanWeight);
 					}
@@ -114,7 +113,6 @@ public class Omomi {
 		double cSum = 0.0;
 		for(int n=0; n<contextWeight.size(); n++){
 			cSum += contextArray.get(0).get(n) * (1.0/(double)(1+((k+1)-contextArray.get(1).get(n)))); //array.get(n)[0]は重み、[1]はその行数が入っている。
-			System.out.println(cSum);
 		}
 		weight[i][j][k][l] = (cSum + meanWeight) * s;
 	}	

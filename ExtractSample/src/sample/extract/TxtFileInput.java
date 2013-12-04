@@ -26,7 +26,8 @@ public class TxtFileInput {
 			try {
 				BufferedReader br = new BufferedReader(new FileReader(files[i]));
 				while((str = br.readLine()) != null){
-					list.add(str);
+					if(str.length() > 0)
+						list.add(str);
 				}
 				br.close();
 			} catch (FileNotFoundException e) {

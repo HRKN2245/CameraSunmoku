@@ -16,6 +16,7 @@ public class Excel {
 	private double[][][][] weight;
 	private HSSFWorkbook[] wb;
 	private Sheet sheet;
+	private Row[] row;
 	private FileOutputStream out;
 	
 	
@@ -29,9 +30,10 @@ public class Excel {
 		String[] sheetName = {"日付重み","時間重み","住所重み"};
 		for(int i=0; i<weight.length; i++){
 			wb[i] = new HSSFWorkbook();
+			row = new Row[morpheme[i].length*2];
 			for(int j=0; j<weight[i].length; j++){
 				sheet = wb[i].createSheet(sheetName[j]);
-				for(int k=0; k<morpheme[i].length; k++){
+				for(int k=0; k<morpheme[i].length*2; k=k+2){
 					inputCell(i,j,k);
 				}
 			}
@@ -54,28 +56,29 @@ public class Excel {
 	 * @param k 行インデックス
 	 */
 	private void inputCell(int i, int j, int k){
-		Row[] row = new Row[morpheme[i].length];
 		row[k] = sheet.createRow(k);
-		Cell[] cell = new Cell[morpheme[i][k].length*2];
-		for(int n=0; n<cell.length; n=n+2){
+		row[k+1] = sheet.createRow(k+1);
+		Cell[] cell = new Cell[morpheme[i][k/2].length];
+		for(int n=0; n<cell.length; n++){
 			//形態素の出力。またはセルの設定
 			cell[n] = row[k].createCell(n);
-			cell[n].setCellValue(morpheme[i][k][n/2]);
+			cell[n].setCellValue(morpheme[i][k/2][n]);
 			CellStyle morphemeStyle = wb[i].createCellStyle();
 			morphemeStyle.setAlignment(CellStyle.ALIGN_CENTER);
 			morphemeStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
 		    morphemeStyle.setFillForegroundColor(IndexedColors.AQUA.getIndex());
+		    morphemeStyle.setBorderRight(CellStyle.BORDER_MEDIUM);
 		    cell[n].setCellStyle(morphemeStyle);
 		    
 		    //各形態素の重みを出力。またはセルの設定
-			cell[n+1] = row[k].createCell(n+1);
-			cell[n+1].setCellValue(weight[i][j][k][n/2]);
+			cell[n] = row[k+1].createCell(n);
+			cell[n].setCellValue(weight[i][j][k/2][n]);
 		    CellStyle weightStyle = wb[i].createCellStyle();
 		    weightStyle.setAlignment(CellStyle.ALIGN_CENTER);
 			weightStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
 		    weightStyle.setFillForegroundColor(IndexedColors.ROSE.getIndex());
 		    weightStyle.setBorderRight(CellStyle.BORDER_MEDIUM);
-		    cell[n+1].setCellStyle(weightStyle);
+		    cell[n].setCellStyle(weightStyle);
 		}
 	}
 }
