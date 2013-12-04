@@ -29,7 +29,7 @@ public class Sanmoku {
 						}
 						FeatureEx fe = new FeatureEx(e);
 						morpheme[i][j][k] = e.surface;
-						System.out.println(morpheme[i][j][k]);
+						//System.out.println(morpheme[i][j][k]);
 						k++;
 					}
 				}
