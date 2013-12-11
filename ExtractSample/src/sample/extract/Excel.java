@@ -27,7 +27,7 @@ public class Excel {
 	}
 	
 	public void createXLS(){
-		String[] sheetName = {"日付重み","時間重み","住所重み"};
+		String[] sheetName = {"年重み","月重み","日重み","時重み","分重み"};
 		for(int i=0; i<weight.length; i++){
 			wb[i] = new HSSFWorkbook();
 			row = new Row[morpheme[i].length*2];
@@ -39,7 +39,7 @@ public class Excel {
 			}
 
 			try {
-				out = new FileOutputStream("excel\\kekka"+(i+1)+".xls");
+				out = new FileOutputStream("excel\\kekka"+(i)+".xls");
 				wb[i].write(out);
 			} catch (FileNotFoundException e) {
 				// TODO 自動生成された catch ブロック

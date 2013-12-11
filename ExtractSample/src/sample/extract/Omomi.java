@@ -5,13 +5,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Omomi {
-	private final int SCHEDULE_ELEMENT = 6;
+	private final int SCHEDULE_ELEMENT = 5;
 	private double[][][][] weight; //重み。日付、時間、住所重みと3つに分けられ、更にそこから行列に分けられる。
 	private ArrayList<Integer> contextWeight; //周辺語重みが入るArrayList
 	private ArrayList<Integer> contextLine; //周辺語重みが何行目にあるかが入るArrayList
 	private ArrayList<ArrayList<Integer>> contextArray; //周辺後重みの数値と、その周辺後の行数を持つArrayList
 	private String[][][] morpheme;
-	private Pattern context, schedule, mean; //周辺後重み、スケジュール重み、意味重み
+	private Pattern context, schedule, preMean, aftMean; //周辺後重み、スケジュール重み
 	
 	//引数ありコンストラクタ
 	Omomi(String[][][] morpheme){
@@ -26,8 +26,6 @@ public class Omomi {
 			for(int j=0; j<weight[i].length; j++){
 				weight[i][j] = new double[morpheme[i].length][];
 				for(int k=0; k<morpheme[i].length; k++){
-					System.out.println("k="+k);
-					System.out.println(morpheme[i].length);
 					weight[i][j][k] = new double[morpheme[i][k].length];
 				}
 			}
@@ -36,30 +34,44 @@ public class Omomi {
 	
 	private void contextDecision(int id){
 		switch(id){
-		//日付のパターンを取得
+		//年のパターンを取得
 		case 0: context = Pattern.compile(RegularExpression.EXPRESSION_DAYS);
 				schedule = Pattern.compile(RegularExpression.YEAR);
-				mean = Pattern.compile(RegularExpression.COUNTER_WORD_DAYS);
+				preMean = Pattern.compile(RegularExpression.CONTEXT_PREWORD_YEAR);
+				aftMean = Pattern.compile(RegularExpression.CONTEXT_AFTWORD_YEAR);
 				break;
-		//時間のパターンを取得
-		case 1: context = Pattern.compile(RegularExpression.EXPRESSION_TIME);
-				schedule = Pattern.compile(RegularExpression.TIME);
-				mean = Pattern.compile(RegularExpression.COUNTER_WORD_TIME);
+		//月のパターンを取得
+		case 1: context = Pattern.compile(RegularExpression.EXPRESSION_DAYS);
+				schedule = Pattern.compile(RegularExpression.MONTH);
+				preMean = Pattern.compile(RegularExpression.CONTEXT_PREWORD_MONTH);
+				aftMean = Pattern.compile(RegularExpression.CONTEXT_AFTWORD_MONTH);
 				break;
-		//住所のパターンを取得
-		case 2: schedule = null;
-				context = Pattern.compile(RegularExpression.EXPRESSION_ADDRESS);
-				mean = null;
+		//日のパターンを取得
+		case 2: context = Pattern.compile(RegularExpression.EXPRESSION_DAYS);
+				schedule = Pattern.compile(RegularExpression.DAYS);
+				preMean = Pattern.compile(RegularExpression.CONTEXT_PREWORD_DAYS);
+				aftMean = Pattern.compile(RegularExpression.CONTEXT_AFTWORD_DAYS);
+				break;
+		//時のパターン取得		
+		case 3: context = Pattern.compile(RegularExpression.EXPRESSION_TIME);
+				schedule = Pattern.compile(RegularExpression.HOUR);
+				preMean = null;
+				aftMean = Pattern.compile(RegularExpression.CONTEXT_WORD_HOUR);
+				break;
+		//分のパターン取得		
+		case 4: context = Pattern.compile(RegularExpression.EXPRESSION_TIME);
+				schedule = Pattern.compile(RegularExpression.MINUTE);
+				preMean = Pattern.compile(RegularExpression.CONTEXT_PREWORD_MINUTE);
+				aftMean = Pattern.compile(RegularExpression.CONTEXT_AFTWORD_MINUTE);
+		
 		}
 	}
 	
 	//重みの取得
 	public double[][][][] getWeight(){
 		int[] c = new int[2];  //周辺語重みと、その周辺語の行インデックスが入る。
-		int[] tmp = new int[2]; //参照渡しを防ぐためのダミー配列
 		int s; //数字や地域表現があると重みがつく。
 		int meanWeight; //スケジュール情報を意味づける表現の重み。年、月など
-		Matcher m;
 		//iはファイルインデックスを示す。jはどのスケジュール情報の重みかを示す。kは行、lは列を示す。
 		for(int i=0; i<weight.length; i++){ //txtファイル数分ループ
 			System.out.println(i+1+"回目");
@@ -72,29 +84,47 @@ public class Omomi {
 				for(int k=0; k<morpheme[i].length; k++){  //行ループ
 					meanWeight = 0;
 					for(int l=0; l<morpheme[i][k].length; l++){ //列ループ
-						m = context.matcher(morpheme[i][k][l]);
-						if(m.find()){
-							System.out.println(m.group()+"が見つかりました。");
+						if(context.matcher(morpheme[i][k][l]).find()){
+							//System.out.println(m.group()+"が見つかりました。");
 							contextWeight.add(1);
 							contextLine.add(k+1);
 							contextArray.add(contextWeight);
 							contextArray.add(contextLine);
 						}
-						if(mean != null){
+						/*if(mean != null){
 							m = mean.matcher(morpheme[i][k][l]);
 							if(m.find()) meanWeight++;
-						}
+						}*/
 					}
 					for(int l=0; l<morpheme[i][k].length; l++){ //列ループ
-						s = 0;
+						s = 0;  //初期化
+						meanWeight = 0; //初期化
+						boolean frag = false;
 						if(schedule != null){
-							m = schedule.matcher(morpheme[i][k][l]);
-							if(m.find()) s++;
+							if(l != 0){
+								if(morpheme[i][k][l-1] != null){
+									if(preMean != null && preMean.matcher(morpheme[i][k][l-1]).find()){
+										meanWeight = meanWeight + 4;
+										frag = true;
+									}
+								}
+							}
+							if(l != morpheme[i][k].length-1){
+								if(morpheme[i][k][l+1] != null){
+									if(aftMean.matcher(morpheme[i][k][l+1]).find()){
+										meanWeight = meanWeight + 4;
+										frag = true;
+									}
+								}
+							}
+							if(schedule.matcher(morpheme[i][k][l]).find() && frag) s++;
 						}
 						//重みの計算。
 						Calc(i,j,k,l,s,meanWeight);
 					}
+					System.out.println();
 				}
+				System.out.println();
 			}
 		}
 		return weight;
@@ -116,5 +146,6 @@ public class Omomi {
 			cSum += contextArray.get(0).get(n) * (1.0/(double)(1+((k+1)-contextArray.get(1).get(n)))); //array.get(n)[0]は重み、[1]はその行数が入っている。
 		}
 		weight[i][j][k][l] = (cSum + meanWeight) * s;
+		System.out.print(weight[i][j][k][l]+" ");
 	}	
 }
