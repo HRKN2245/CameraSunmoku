@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Omomi {
+	private final int SCHEDULE_ELEMENT = 6;
 	private double[][][][] weight; //重み。日付、時間、住所重みと3つに分けられ、更にそこから行列に分けられる。
 	private ArrayList<Integer> contextWeight; //周辺語重みが入るArrayList
 	private ArrayList<Integer> contextLine; //周辺語重みが何行目にあるかが入るArrayList
@@ -15,7 +16,7 @@ public class Omomi {
 	//引数ありコンストラクタ
 	Omomi(String[][][] morpheme){
 		this.morpheme = morpheme;
-		weight = new double[this.morpheme.length][3][][]; //まず日付、時間、住所重みの3つに分ける。
+		weight = new double[this.morpheme.length][SCHEDULE_ELEMENT][][]; //まず年、月、日、時、分、住所の６つ
 		contextWeight = new ArrayList<Integer>();
 		contextLine = new ArrayList<Integer>();
 		contextArray = new ArrayList<ArrayList<Integer>>();
