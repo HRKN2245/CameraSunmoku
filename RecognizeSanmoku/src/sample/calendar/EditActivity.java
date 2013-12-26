@@ -251,7 +251,7 @@ public class EditActivity extends Activity implements OnClickListener {
 			if(resultCode == RESULT_OK){
 				exWord  = data.getStringArrayExtra("str");
 				exFlagID = data.getIntArrayExtra("flag");
-				int[]ScheduleNum = new int[exWord.length];
+				int[] ScheduleNum = new int[exWord.length];
 			
 				for(int i=0; i<ScheduleNum.length; i++){
 					System.out.println(exWord[i]);

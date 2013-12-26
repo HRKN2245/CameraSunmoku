@@ -1,136 +1,46 @@
 package jp.recognize.scenery.android;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import sample.calendar.RegularExpression;
-
-import net.reduls.sanmoku.FeatureEx;
-
-import android.text.SpannableString;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sanmoku{
 	private String recognizeData;
-	private String[] exWord, strTmp;
-	private int ArrayIndex = 0, FlagIndex = 0;
-	private static final int STR_TMP = 30;
-	public int[] exFlag ={0,0,0,0,0,0,0}; //年、月、日、開始時、開始分、終了時、終了分
-	private int[] ScheduleWeight;
+	private String[][] morpheme;
+	private Map<String, String> feature = new HashMap<String, String>();
 	
 	//引数ありコンストラクタ
 	Sanmoku(String recognizeData){
 		this.recognizeData = recognizeData;
 	}
 	
-    public String[] SanmokuStart(){
-    	//文章の解析部分
-    	if(recognizeData.length() > 0) { 
-    		for(net.reduls.sanmoku.Morpheme e : net.reduls.sanmoku.Tagger.parse(recognizeData)) {
-    			FeatureEx fe = new FeatureEx(e);
-    			SpannableString spannable = DataFormatter.format("<"+e.surface+">\n"+e.feature+","+fe.baseform+","+fe.pronunciation+","+fe.reading);
-    		}
-    	}
-    	
-    	ExtractWord(recognizeData);
-    	return exWord;
-    }
+	public String[][] getMorpheme(){
+		setMorpheme();
+		return morpheme;
+	}
 
-    	//日付、時間の抜き出し部分
-    private void ExtractWord(String recognizeData){
-    	String[] word = recognizeData.split("[ \n]+");
-    	ScheduleWeight = new int[word.length];
-    	strTmp = new String[STR_TMP];
-		
-    	if(recognizeData.length() > 0){
-    		DayExtract(word);
-    		TimeExtract(word);
+	private void setMorpheme(){
+		String[] word = recognizeData.split("[ \n]+");
+		morpheme = new String[word.length][];
+		for(int i=0; i<word.length; i++){
+			if(word[i].length() > 0) {
+				morpheme[i] = new String[net.reduls.sanmoku.Tagger.parse(word[i]).size()];
+				int j = 0;
+				for(net.reduls.sanmoku.Morpheme e : net.reduls.sanmoku.Tagger.parse(word[i])) {
+					if(i == 0 && j == 0){
+						morpheme[i][j] = "";
+						j++;
+						continue;
+					}
+					morpheme[i][j] = e.surface;
+					feature.put(morpheme[i][j], e.feature);  //Mapの作成。（形態素、その属性（地域など））のように、各形態素の属性がマッピングされる。
+					j++;
+				}
+			}
 		}
-		exWord = new String[ArrayIndex];
-		for(int i=0; i<exWord.length; i++){
-			exWord[i] = strTmp[i];
-		}
-			
-    }
-    
-    //日付抽出をするメソッド
-    private void DayExtract(String[] word){
-    	Pattern pYear = Pattern.compile(RegularExpression.YEAR);
-    	Pattern pDay = Pattern.compile(RegularExpression.MONTH+RegularExpression.DAY);
-    	Matcher m = null;
-    	for(int i=0; i<word.length; i++){
-    		for(int j=0; j<2; j++){ //年、月日の2回という意味
-    			if(j == 0){
-    				m = pYear.matcher(word[i]);
-    				if(Check(m, 2)){
-    					exFlag[FlagIndex++] = 1;
-    					word[i] = m.replaceAll("");
-    				}
-    			}
-    			else{
-    				m = pDay.matcher(word[i]);
-    				if(Check(m, 2))
-    					exFlag[FlagIndex++] = 2;
-    				if(Check(m, 4))
-    					exFlag[FlagIndex++] = 3;
-    			}
-    		}
-    		System.out.println("Dayok");
-    	}
-    }
-
-    //時間抽出するメソッド
-    private void TimeExtract(String[] word){
-    	Pattern pTime = Pattern.compile(RegularExpression.TIME);
-    	Pattern pExpression = Pattern.compile(RegularExpression.END_TIME_EXPRESSION);
-    	Matcher m;
-    	int offset;
-    	boolean flag = false;
-    	for(int i=0; i<word.length; i++){
-    		System.out.println("Timeok");
-    		m = pExpression.matcher(word[i]);
-    		offset = 0;
-    		if(m.find(offset)){
-    			System.out.println(m.group());
-    			offset = m.end();
-    			flag = true;
-    		}
-    		m =pTime.matcher(word[i]);
-    		if(flag) m.region(0, offset); //正規検索エンジンの設定○○：○○　～　××：××　の　「～」の場所から左と右に分ける。
-    		if(Check(m, 3)){
-    			exFlag[FlagIndex++] = 4; //○時の取得
-    			System.out.println("ok");
-    		}
-    		if(Check(m, 5))
-    			exFlag[4] = 5; //○分の取得
-    			System.out.println("ok");
-    		if(flag){
-    			if(Check(m, offset, 3))
-    				exFlag[FlagIndex++] = 6; //終了時間の○時取得
-    			if(Check(m, offset, 5))
-    				exFlag[FlagIndex++] = 7;//終了時間の○分取得
-    		}
-    		
-    	}
-    }
-    
-    //正規表現パターンと文字列のチェックを行うメソッド
-    private boolean Check(Matcher m, int groupNumber){
-    	if(m.find(0)){
-    		strTmp[ArrayIndex++] = m.group(groupNumber);
-    		return true;
-    	}
-    	else{
-    		return false;
-    	}
-    }
-    
-    //おーばーろーど
-    private boolean Check(Matcher m, int start, int groupNumber){
-    	if(m.find(start)){
-    		strTmp[ArrayIndex++] = m.group(groupNumber);
-    		return true;
-    	}
-    	return false;
-    }
-    
+	}
+	
+	//マッピングデータを取得するメソッド
+	public Map<String, String> getFeature(){   //マッピングしたデータを返すメソッド。
+		return feature;
+	}
 }

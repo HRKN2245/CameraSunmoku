@@ -1,7 +1,5 @@
 package jp.recognize.scenery.android;
 
-import android.content.Context;
-import android.widget.Toast;
 import jp.recognize.common.RecognitionResult.SegmentGraph;
 import jp.recognize.common.RecognitionResult.SegmentGraph.Segment;
 import jp.recognize.common.RecognitionResult.SegmentGraph.Segment.Candidate;
@@ -10,10 +8,37 @@ public class Words{
 	private SegmentGraph[] segmentGraphtmp, segmentGraph = null;  //正しく直された断片グラフ
 	private int[] wordCount, puttern; //文字数、パターン数
 	private String[][][] word;
+	private String str;
 	
 	Words(SegmentGraph[] segmentGraphtmp){
 		this.segmentGraphtmp = segmentGraphtmp;
+	}
+	
+	//認識したデータを一つの文字列として取得する。
+	public String getWords(){
+		setWords();
+		return str;
+	}
+	
+	//認識したデータを文字列にするメソッド
+	private void setWords(){
+		str = "";
 		setSegmentGraph();
+		setString();
+		for(int i=0; i<word.length; i++){
+			int[] index = new int[wordCount[i]];
+			for(int j=0; j<Math.pow(2, puttern[i]); j++){
+				for(int k=0; k<wordCount[i]; k++){
+					//k文字目というカウント
+					str += word[i][k][index[k]];
+					if(k == wordCount[i]-1) index[k]++;
+					if(index[k] > word[i][k].length-1 || word[i][k][index[k]] == null)
+						index = getIndex(word,index,i,k);
+				}
+				str += " ";
+			}
+			str += "\n";
+		}
 	}
 	
 	//断片グラフを設定するメソッド。
@@ -93,37 +118,19 @@ public class Words{
 		}
 	}
 	
-	//文字数を取得するメソッド
-	private void setWordCount(){
-		wordCount = new int[segmentGraph.length];
-		for(int i=0; i<segmentGraph.length; i++){
-			Segment seg = segmentGraph[i].getFirstSegment();
-			while(seg != null){
-				seg = seg.getNextSegment();
-				wordCount[i]++;
-			}
-			//一番有効な文字のトータルスコアが設定値以上だと、認識失敗とする。
-			//ピントが合わない状態で撮影した場合の処置。
-			//if(getScore(seg) > 50.0){
-				//context = new RecognizeActivity();
-				//Toast.makeText(context, "認識に失敗しました。", Toast.LENGTH_LONG).show();
-			//}
-		}
-	}
-	
 	//スコアを取得するメソッド
 	private double getScore(Segment seg){
 		double score = 0.0;
 		Candidate[] segArray;
-			while(seg != null){
-				segArray = seg.getCandidates();
-				score += segArray[0].getScore();
-				seg = seg.getNextSegment();
-			}
-			System.out.println(score);
+		while(seg != null){
+			segArray = seg.getCandidates();
+			score += segArray[0].getScore();
+			seg = seg.getNextSegment();
+		}
+		System.out.println(score);
 		return score;
 	}
-	
+
 	//全パターンを配列に代入するメソッド
 	private void setString(){
 		setWordCount();
@@ -140,6 +147,24 @@ public class Words{
 				if(word[i][j][1] != null) puttern[i]++; 
 				seg = seg.getNextSegment();
 			}
+		}
+	}
+
+	//文字数を取得するメソッド
+	private void setWordCount(){
+		wordCount = new int[segmentGraph.length];
+		for(int i=0; i<segmentGraph.length; i++){
+			Segment seg = segmentGraph[i].getFirstSegment();
+			while(seg != null){
+				seg = seg.getNextSegment();
+				wordCount[i]++;
+			}
+			//一番有効な文字のトータルスコアが設定値以上だと、認識失敗とする。
+			//ピントが合わない状態で撮影した場合の処置。
+			//if(getScore(seg) > 50.0){
+				//context = new RecognizeActivity();
+				//Toast.makeText(context, "認識に失敗しました。", Toast.LENGTH_LONG).show();
+			//}
 		}
 	}
 	
@@ -171,27 +196,6 @@ public class Words{
 		case 'Ｏ': return "０";
 		default: return null;
 		}
-	}
-	
-	//全パターンを出力し、文字列として取得するメソッド
-	public String getWords(){
-		String input = "";
-		setString();
-		for(int i=0; i<word.length; i++){
-			int[] index = new int[wordCount[i]];
-			for(int j=0; j<Math.pow(2, puttern[i]); j++){
-				for(int k=0; k<wordCount[i]; k++){
-					//k文字目というカウント
-					input += word[i][k][index[k]];
-					if(k == wordCount[i]-1) index[k]++;
-					if(index[k] > word[i][k].length-1 || word[i][k][index[k]] == null)
-						index = getIndex(word,index,i,k);
-				}
-				input += " ";
-			}
-			input += "\n";
-		}
-		return input;
 	}
 	
 	//全パターンを出力するために、インデックスを取得するメソッド

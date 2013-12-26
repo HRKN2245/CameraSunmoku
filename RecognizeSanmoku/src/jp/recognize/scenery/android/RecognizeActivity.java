@@ -96,12 +96,11 @@ public class RecognizeActivity extends Activity {
 					SegmentGraph[] segmentGraphtmp = recognize(jpegData); //断片グラフを取得する。
 					
 					System.out.println("OK");
-					Words words = new Words(segmentGraphtmp);
 					//文字列を取得し、形態素解析を行う。	
-					Sanmoku sanmoku = new Sanmoku(words.getWords());
+					Sanmoku sanmoku = new Sanmoku(new Words(segmentGraphtmp).getWords());
 					Intent intent = new Intent();
-					intent.putExtra("str", sanmoku.SanmokuStart());
-					intent.putExtra("flag", sanmoku.exFlag);
+					intent.putExtra("str", sanmoku.getMorpheme());
+					//intent.putExtra("flag", sanmoku.exFlag);
 					setResult(RESULT_OK, intent);
 					finish();
 				

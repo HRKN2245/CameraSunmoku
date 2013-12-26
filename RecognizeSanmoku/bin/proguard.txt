@@ -4,9 +4,6 @@
 # view AndroidManifest.xml #generated:41
 -keep class jp.recognize.scenery.android.RecognizeActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:51
--keep class jp.recognize.scenery.android.Sanmoku { <init>(...); }
-
 # view AndroidManifest.xml #generated:22
 -keep class sample.calendar.CalendarViewerActivity { <init>(...); }
 
